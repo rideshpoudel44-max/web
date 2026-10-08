@@ -155,7 +155,7 @@
             </div>
 
             <div class="space-y-2">
-                <span class="font-cursive text-2xl sm:text-3xl text-rose-300">Namaste & Welcome, My Love</span>
+                <span class="font-cursive text-2xl sm:text-3xl text-rose-300"> My Love</span>
                 <h1 class="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">I Made Something For You</h1>
             </div>
 
@@ -165,7 +165,7 @@
 
             <div class="pt-2">
                 <button onclick="openMainHub()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-400 text-white font-semibold text-sm shadow-xl shadow-rose-500/30 hover:scale-105 hover:shadow-rose-500/50 transition-all duration-300 flex items-center justify-center gap-3 mx-auto cursor-pointer">
-                    <span>Open This ✨</span>
+                    <span>click here love ✨</span>
                     <i class="fas fa-arrow-right"></i>
                 </button>
             </div>
@@ -224,3 +224,412 @@
                     <i class="fas fa-folder-open hidden group-hover:inline-block"></i>
                 </div>
                 <span class="text-xs uppercase tracking-widest text-amber-300 font-semibold mb-1">Folder 01</span>
+                <h3 class="font-serif text-lg font-bold text-white mb-1">Thank You Letter</h3>
+                <p class="text-[11px] text-slate-300">Expressing gratitude for everything you bring to my life.</p>
+            </div>
+
+            <div onclick="openModal('sorryModal')" class="glass-folder p-6 rounded-2xl cursor-pointer flex flex-col items-center text-center group">
+                <div class="w-16 h-16 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-folder-closed group-hover:hidden"></i>
+                    <i class="fas fa-folder-open hidden group-hover:inline-block"></i>
+                </div>
+                <span class="text-xs uppercase tracking-widest text-rose-300 font-semibold mb-1">Folder 02</span>
+                <h3 class="font-serif text-lg font-bold text-white mb-1">Sorry Letter</h3>
+                <p class="text-[11px] text-slate-300">Owning my mistakes and acknowledging your feelings.</p>
+            </div>
+
+            <div onclick="openModal('apologyModal')" class="glass-folder p-6 rounded-2xl cursor-pointer flex flex-col items-center text-center group">
+                <div class="w-16 h-16 rounded-2xl bg-pink-500/20 text-pink-300 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
+                    <i class="fas fa-folder-closed group-hover:hidden"></i>
+                    <i class="fas fa-folder-open hidden group-hover:inline-block"></i>
+                </div>
+                <span class="text-xs uppercase tracking-widest text-pink-300 font-semibold mb-1">Folder 03</span>
+                <h3 class="font-serif text-lg font-bold text-white mb-1">Apology & Promises</h3>
+                <p class="text-[11px] text-slate-300">My commitments to change and protect your peace.</p>
+            </div>
+
+            <div onclick="openModal('bouquetModal')" class="glass-folder p-6 rounded-2xl cursor-pointer flex flex-col items-center text-center group border-rose-400/40 bg-rose-500/10">
+                <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-400 text-white flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-rose-500/30">
+                    <i class="fas fa-gift"></i>
+                </div>
+                <span class="text-xs uppercase tracking-widest text-rose-300 font-semibold mb-1">Special Gift</span>
+                <h3 class="font-serif text-lg font-bold text-white mb-1">Digital Bouquet 💐</h3>
+                <p class="text-[11px] text-rose-200">Fresh roses that will never wither, just for you.</p>
+            </div>
+
+        </section>
+
+
+        <!-- PHOTO GALLERY -->
+        <section id="memoriesGallery" class="w-full space-y-8 my-10">
+            <div class="text-center">
+                <span class="text-xs uppercase tracking-widest text-rose-400 font-semibold">Our Unbreakable Bond</span>
+                <h2 class="font-serif text-3xl font-bold text-white mt-1">Moments I Treasure</h2>
+                <p class="text-xs text-slate-400 mt-1">Every single moment spent with you is etched in my heart</p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-2">
+                <div class="polaroid rounded-lg">
+                    <div class="h-52 sm:h-60 overflow-hidden rounded bg-slate-800">
+                        <img src="memories/photo1.jpg" alt="Memory 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                    <p class="font-cursive text-slate-800 text-2xl text-center mt-3 font-semibold">That Unforgettable Smile</p>
+                    <p class="text-slate-500 text-[11px] text-center italic">"Your joy lights up my entire world."</p>
+                </div>
+
+                <div class="polaroid rounded-lg">
+                    <div class="h-52 sm:h-60 overflow-hidden rounded bg-slate-800">
+                        <img src="memories/photo2.jpg" alt="Memory 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                    <p class="font-cursive text-slate-800 text-2xl text-center mt-3 font-semibold">Precious Memories</p>
+                    <p class="text-slate-500 text-[11px] text-center italic">"Every second with you is a gift."</p>
+                </div>
+
+                <div class="polaroid rounded-lg sm:col-span-2 md:col-span-1">
+                    <div class="h-52 sm:h-60 overflow-hidden rounded bg-slate-800">
+                        <img src="memories/photo3.jpg" alt="Memory 3" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80'">
+                    </div>
+                    <p class="font-cursive text-slate-800 text-2xl text-center mt-3 font-semibold">Waiting For You</p>
+                    <p class="text-slate-500 text-[11px] text-center italic">"Counting down until I hold your hand again."</p>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- RESPONSE SECTION -->
+        <section id="interactiveResponse" class="w-full text-center py-10 glass-card rounded-3xl p-6 sm:p-12 relative overflow-hidden border-rose-500/30 my-6">
+            <div class="max-w-xl mx-auto space-y-6">
+                <div class="inline-block p-4 bg-rose-500/10 rounded-full text-rose-400 text-3xl mb-1">
+                    <i class="fas fa-heart-pulse"></i>
+                </div>
+
+                <h2 class="font-serif text-3xl font-bold text-white">Whenever You Are Ready</h2>
+
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    There is no pressure or rush. Take all the time you need to heal. Whenever you feel comfortable, click below to message me directly.
+                </p>
+
+                <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
+                    <a href="https://wa.me/9779800000000?text=I%20read%20your%20website.%20I'm%20ready%20to%20talk%20❤️" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-rose-500/40 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fas fa-comment-heart"></i> I'm Ready To Talk
+                    </a>
+                    
+                    <a href="https://wa.me/9779800000000?text=I%20read%20your%20website.%20I%20need%20a%20little%20more%20time%20⏳" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card border border-white/20 text-slate-200 hover:bg-white/10 font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-sm">
+                        <i class="fas fa-hourglass-half"></i> I Need A Little More Time
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="text-center py-6 text-xs text-slate-500 border-t border-white/5 w-full">
+            Crafted with all my love by Ridesh for the most special girl in his life. ❤️
+        </footer>
+
+    </main>
+
+
+    <!-- ==================== MODALS / POPUPS ==================== -->
+
+    <!-- PROPOSAL MODAL -->
+    <div id="proposalModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass-card-glow max-w-xl w-full rounded-3xl p-6 sm:p-10 relative text-center max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal('proposalModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-rose-500 to-pink-500 text-white flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg shadow-rose-500/50">
+                <i class="fas fa-ring"></i>
+            </div>
+
+            <span class="font-cursive text-3xl text-rose-300">From The Depth Of My Heart</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-4">Will You Give Us Another Chance?</h2>
+
+            <div class="font-sans text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 my-6 text-left">
+                <p class="text-center italic text-rose-200">"In spite of the distance, in spite of the arguments, my heart still chooses you every single day."</p>
+
+                <p>
+                    My love, I don't just want to say sorry—I want to rebuild our bond stronger, kinder, and more loving than ever before. You are my best friend, my happiness, and the person I want to share my future with.
+                </p>
+
+                <p>
+                    I promise to cherish you, respect your feelings, and hold your hand through every season of life. Will you take my hand again and let me make things right?
+                </p>
+            </div>
+
+            <div class="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
+                <a href="https://wa.me/9779800000000?text=Yes!%20I%20forgive%20you%20and%20I%20love%20you%20so%20much%20❤️" target="_blank" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 text-white font-bold text-sm shadow-lg hover:scale-105 transition-all">
+                    Yes, I Love You! ❤️
+                </a>
+                <a href="https://wa.me/9779800000000?text=I%20need%20a%20big%20hug%20first%20🫂" target="_blank" class="px-8 py-3.5 rounded-full glass-card border border-white/20 text-slate-200 font-semibold text-sm hover:bg-white/10 transition-all">
+                    I Need A Hug First 🫂
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL 1: THANK YOU LETTER -->
+    <div id="thankYouModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-10 relative border-amber-500/30 max-h-[85vh] overflow-y-auto">
+            <button onclick="closeModal('thankYouModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="text-center mb-6">
+                <span class="font-cursive text-3xl text-amber-300">Folder 01</span>
+                <h2 class="font-serif text-3xl font-bold text-white mt-1">Thank You For Everything</h2>
+                <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-amber-400 to-transparent mx-auto mt-2"></div>
+            </div>
+            <div class="font-sans text-slate-200 text-sm sm:text-base leading-relaxed space-y-4">
+                <p class="text-amber-200 font-serif font-medium text-lg">My Dearest,</p>
+                <p>
+                    Before anything else, I want to say thank you. Thank you for entering my life and bringing so much light, warmth, and brightness into it.
+                </p>
+                <p>
+                    Thank you for every smile you've shared with me, every comforting word during hard times, and every beautiful memory we have created together. Being with you has shown me what true happiness feels like.
+                </p>
+                <p>
+                    Even when we are far apart, your presence remains constant in my thoughts. You have made me a better person just by being yourself, and I will always be grateful for you.
+                </p>
+                <div class="pt-4 border-t border-white/10 text-right">
+                    <span class="font-cursive text-2xl text-amber-300">Forever Thankful, Ridesh ❤️</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL 2: SORRY LETTER -->
+    <div id="sorryModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-10 relative border-rose-500/30 max-h-[85vh] overflow-y-auto">
+            <button onclick="closeModal('sorryModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="text-center mb-6">
+                <span class="font-cursive text-3xl text-rose-400">Folder 02</span>
+                <h2 class="font-serif text-3xl font-bold text-white mt-1">From My Whole Heart, I'm Sorry</h2>
+                <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-rose-400 to-transparent mx-auto mt-2"></div>
+            </div>
+            <div class="font-sans text-slate-200 text-sm sm:text-base leading-relaxed space-y-4">
+                <p class="text-rose-200 font-serif font-medium text-lg">My Sweet Girl,</p>
+                <p>
+                    I am truly, deeply sorry for the arguments and misunderstandings we've had over these past few months. Knowing that my words or actions caused you sorrow weighs heavily on my heart every single day.
+                </p>
+                <p>
+                    I take full responsibility. I should have been more understanding, more gentle, and more attentive to your feelings. Instead of bringing you peace, I brought you distress—and for that, I regret every careless moment.
+                </p>
+                <p>
+                    Being far away from you makes this hurt even more, because all I want to do is hold you close and make things right. You deserve only gentleness and care, never pain.
+                </p>
+                <div class="pt-4 border-t border-white/10 text-right">
+                    <span class="font-cursive text-2xl text-rose-300">Sincerely Yours, Ridesh ❤️</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL 3: APOLOGY & PROMISES -->
+    <div id="apologyModal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass-card max-w-2xl w-full rounded-3xl p-6 sm:p-10 relative border-pink-500/30 max-h-[85vh] overflow-y-auto">
+            <button onclick="closeModal('apologyModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="text-center mb-6">
+                <span class="font-cursive text-3xl text-pink-300">Folder 03</span>
+                <h2 class="font-serif text-3xl font-bold text-white mt-1">My Solemn Promises To You</h2>
+                <div class="w-16 h-0.5 bg-gradient-to-r from-transparent via-pink-400 to-transparent mx-auto mt-2"></div>
+            </div>
+            <div class="font-sans text-slate-200 text-sm sm:text-base leading-relaxed space-y-4">
+                <p class="text-pink-200 font-serif font-medium text-lg">My Love,</p>
+                <p>
+                    An apology without change is just words. So here are my genuine promises to you moving forward:
+                </p>
+                <ul class="space-y-3 text-sm sm:text-base pl-2">
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-pink-400 mt-1"></i>
+                        <span><strong>I Promise To Listen First:</strong> I will listen to your feelings with empathy, without being defensive or dismissing what you feel.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-pink-400 mt-1"></i>
+                        <span><strong>I Promise Patience:</strong> During disagreements, I will choose love and understanding over trying to win an argument.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-check-circle text-pink-400 mt-1"></i>
+                        <span><strong>I Promise To Value Your Peace:</strong> Your happiness and emotional safety will always be my top priority.</span>
+                    </li>
+                </ul>
+                <p class="pt-2">
+                    Take all the time you need. I will be here waiting calmly and patiently whenever you feel ready to talk again.
+                </p>
+                <div class="pt-4 border-t border-white/10 text-right">
+                    <span class="font-cursive text-2xl text-pink-300">With All My Love, Ridesh ❤️</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- MODAL 4: DIGITAL BOUQUET -->
+    <div id="bouquetModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="glass-card max-w-lg w-full rounded-3xl p-8 relative border-rose-400/50 text-center">
+            <button onclick="closeModal('bouquetModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <span class="font-cursive text-3xl text-rose-300">A Gift From Me</span>
+            <h2 class="font-serif text-3xl font-bold text-white mb-4">A Bouquet Just For You</h2>
+
+            <div class="my-6 bouquet-animated inline-block">
+                <div class="text-7xl sm:text-8xl select-none filter drop-shadow-lg">
+                    💐
+                </div>
+            </div>
+
+            <p class="font-sans text-slate-200 text-sm sm:text-base leading-relaxed mb-6">
+                "Since distance keeps me from handing you real flowers today, I built these digital roses for you. They will never wither, fade, or lose their charm—just like my love for you."
+            </p>
+
+            <div class="p-4 rounded-2xl bg-rose-500/10 border border-rose-500/30 text-rose-200 text-xs sm:text-sm font-serif italic">
+                🌹 Red Roses for Unconditional Love <br>
+                ✨ Sparkles for the joy you bring into my life
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
+    <script>
+        // --- SCREEN TRANSITION FUNCTION ---
+        function openMainHub() {
+            const greetingScreen = document.getElementById('greetingScreen');
+            const mainHub = document.getElementById('mainHub');
+            const musicWidget = document.getElementById('musicWidget');
+
+            // Hide initial screen
+            greetingScreen.style.opacity = '0';
+            greetingScreen.style.pointerEvents = 'none';
+
+            setTimeout(() => {
+                greetingScreen.style.display = 'none';
+                
+                mainHub.classList.remove('hidden');
+                musicWidget.classList.remove('hidden');
+
+                // Trigger animation fade-in
+                setTimeout(() => {
+                    mainHub.classList.remove('opacity-0');
+                    mainHub.classList.add('opacity-100');
+
+                    musicWidget.classList.remove('opacity-0');
+                    musicWidget.classList.add('opacity-100');
+                }, 50);
+            }, 500);
+        }
+
+        // --- MODAL CONTROLS ---
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.classList.add('opacity-100');
+        }
+        function closeModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.classList.remove('opacity-100');
+        }
+
+        // --- MUSIC PLAYER CONTROLS ---
+        function toggleMusic() {
+            const audio = document.getElementById('upaharAudio');
+            const musicIcon = document.getElementById('musicIcon');
+            const musicText = document.getElementById('musicText');
+            const equalizer = document.getElementById('equalizer');
+
+            if (audio.paused) {
+                audio.play().then(() => {
+                    musicIcon.className = 'fas fa-pause';
+                    musicText.textContent = 'Pause Music';
+                    equalizer.classList.remove('hidden');
+                }).catch(() => {
+                    alert("Make sure 'upahar.mp3' is inside your project folder!");
+                });
+            } else {
+                audio.pause();
+                musicIcon.className = 'fas fa-music';
+                musicText.textContent = 'Play "Upahar"';
+                equalizer.classList.add('hidden');
+            }
+        }
+
+        // --- FLOATING HEARTS ON CLICK ---
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('button') || e.target.closest('a') || e.target.closest('.glass-folder') || e.target.closest('.glass-card-glow')) return;
+            const heart = document.createElement('i');
+            heart.className = 'fas fa-heart click-heart';
+            heart.style.left = `${e.clientX}px`;
+            heart.style.top = `${e.clientY}px`;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1200);
+        });
+
+        // --- ROSE PETALS ANIMATION ---
+        const canvas = document.getElementById('petalCanvas');
+        const ctx = canvas.getContext('2d');
+        let petals = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class Petal {
+            constructor() { this.reset(); }
+            reset() {
+                this.x = Math.random() * canvas.width;
+                this.y = -20;
+                this.size = Math.random() * 8 + 6;
+                this.speedY = Math.random() * 1.2 + 0.5;
+                this.speedX = Math.random() * 0.8 - 0.4;
+                this.rotation = Math.random() * 360;
+                this.rotSpeed = Math.random() * 2 - 1;
+                this.opacity = Math.random() * 0.6 + 0.3;
+                this.color = ['#fda4af', '#f43f5e', '#e11d48', '#fecdd3'][Math.floor(Math.random() * 4)];
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.y * 0.02) * 0.5;
+                this.rotation += this.rotSpeed;
+                if (this.y > canvas.height + 20) this.reset();
+            }
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                ctx.globalAlpha = this.opacity;
+                ctx.fillStyle = this.color;
+                
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.bezierCurveTo(-this.size, -this.size, -this.size, this.size, 0, this.size * 1.5);
+                ctx.bezierCurveTo(this.size, this.size, this.size, -this.size, 0, 0);
+                ctx.fill();
+                ctx.restore();
+            }
+        }
+
+        for (let i = 0; i < Math.min(Math.floor(window.innerWidth / 12), 50); i++) {
+            petals.push(new Petal());
+        }
+
+        function animatePetals() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            petals.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animatePetals);
+        }
+        animatePetals();
+    </script>
+</body>
+</html>
