@@ -37,7 +37,6 @@
             overflow-x: hidden;
         }
 
-        /* Glassmorphism Cards */
         .glass-card {
             background: rgba(255, 255, 255, 0.04);
             backdrop-filter: blur(20px);
@@ -53,7 +52,6 @@
             box-shadow: 0 0 35px rgba(244, 63, 94, 0.25);
         }
 
-        /* Interactive Folder Styles */
         .glass-folder {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             background: rgba(255, 255, 255, 0.03);
@@ -67,7 +65,6 @@
             box-shadow: 0 20px 40px rgba(244, 63, 94, 0.3);
         }
 
-        /* Click Floating Heart */
         .click-heart {
             position: fixed;
             pointer-events: none;
@@ -83,7 +80,6 @@
             100% { opacity: 0; transform: translate(-50%, -140px) scale(1.6) rotate(-15deg); }
         }
 
-        /* Polaroid Gallery Effect */
         .polaroid {
             background: #ffffff;
             padding: 12px 12px 24px 12px;
@@ -98,14 +94,12 @@
             box-shadow: 0 20px 45px rgba(244, 63, 94, 0.4);
         }
 
-        /* Canvas Overlay */
         #petalCanvas {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none; z-index: 1;
         }
 
-        /* Animations */
         @keyframes pulseBar {
             0%, 100% { height: 6px; }
             50% { height: 18px; }
@@ -129,15 +123,13 @@
 </head>
 <body class="relative min-h-screen text-slate-100 antialiased selection:bg-rose-500 selection:text-white">
 
-    <!-- Falling Rose Petals Canvas -->
     <canvas id="petalCanvas"></canvas>
 
-    <!-- Audio Element (Swoopna Suman - Upahar) -->
     <audio id="upaharAudio" src="upahar.mp3" loop preload="auto"></audio>
 
-    <!-- Music Player Top Right Widget -->
-    <div id="musicWidget" class="fixed top-5 right-5 z-50 transition-all duration-500 opacity-0 pointer-events-none">
-        <button id="musicBtn" class="glass-card px-4 py-2.5 rounded-full flex items-center gap-3 text-sm font-medium hover:border-rose-400/50 transition-all duration-300 shadow-xl group">
+    <!-- Music Player Top Right -->
+    <div id="musicWidget" class="fixed top-5 right-5 z-50 transition-all duration-500 hidden opacity-0">
+        <button id="musicBtn" onclick="toggleMusic()" class="glass-card px-4 py-2.5 rounded-full flex items-center gap-3 text-sm font-medium hover:border-rose-400/50 transition-all duration-300 shadow-xl group">
             <span class="w-8 h-8 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400 group-hover:bg-rose-500 group-hover:text-white transition-all">
                 <i id="musicIcon" class="fas fa-music"></i>
             </span>
@@ -155,7 +147,7 @@
 
 
     <!-- ==================== SCREEN 1: GREETING INTERFACE ==================== -->
-    <section id="greetingScreen" class="fixed inset-0 z-40 flex items-center justify-center p-4 transition-all duration-1000">
+    <section id="greetingScreen" class="fixed inset-0 z-40 flex items-center justify-center p-4 transition-all duration-500">
         <div class="glass-card max-w-lg w-full p-8 sm:p-12 rounded-3xl text-center space-y-6 border-rose-500/30 floating-element relative overflow-hidden">
             
             <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-300 flex items-center justify-center text-white text-3xl mx-auto shadow-lg shadow-rose-500/30">
@@ -172,7 +164,7 @@
             </p>
 
             <div class="pt-2">
-                <button id="openThisBtn" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-400 text-white font-semibold text-sm shadow-xl shadow-rose-500/30 hover:scale-105 hover:shadow-rose-500/50 transition-all duration-300 flex items-center justify-center gap-3 mx-auto">
+                <button onclick="openMainHub()" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-400 text-white font-semibold text-sm shadow-xl shadow-rose-500/30 hover:scale-105 hover:shadow-rose-500/50 transition-all duration-300 flex items-center justify-center gap-3 mx-auto cursor-pointer">
                     <span>Open This ✨</span>
                     <i class="fas fa-arrow-right"></i>
                 </button>
@@ -183,13 +175,13 @@
 
 
     <!-- ==================== SCREEN 2: MAIN HUB ==================== -->
-    <main id="mainHub" class="relative z-10 max-w-5xl mx-auto px-4 py-12 flex flex-col items-center min-h-screen opacity-0 pointer-events-none transition-all duration-1000">
+    <main id="mainHub" class="relative z-10 max-w-5xl mx-auto px-4 py-12 flex flex-col items-center min-h-screen hidden opacity-0 transition-all duration-700">
 
         <!-- HEADER BANNER -->
         <header class="w-full text-center py-8 flex flex-col items-center">
             <div class="inline-block mb-4 px-5 py-2 rounded-full glass-card text-rose-300 text-xs sm:text-sm font-medium tracking-wider uppercase border border-rose-500/30">
                 <i class="fas fa-heart text-rose-400 mr-2 animate-pulse"></i> Dedicated To 
-                <span id="herNickname" class="font-bold text-white">My Princess</span>
+                <span class="font-bold text-white">My Princess</span>
             </div>
             
             <h1 class="font-serif text-4xl sm:text-6xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-pink-300 to-amber-200 mb-4 leading-tight">
@@ -202,7 +194,7 @@
         </header>
 
 
-        <!-- SPECIAL PROPOSAL BANNER ("Click here if you're feeling good") -->
+        <!-- PROPOSAL BANNER -->
         <section class="w-full max-w-3xl my-4">
             <div onclick="openModal('proposalModal')" class="glass-card-glow p-6 sm:p-8 rounded-3xl cursor-pointer hover:scale-[1.02] transition-all duration-300 flex flex-col sm:flex-row items-center justify-between gap-6 group relative overflow-hidden">
                 <div class="flex items-center gap-5 text-center sm:text-left">
@@ -226,147 +218,9 @@
         <!-- 4 FOLDERS GRID SECTION -->
         <section class="w-full max-w-4xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 my-8">
             
-            <!-- FOLDER 1: THANK YOU -->
             <div onclick="openModal('thankYouModal')" class="glass-folder p-6 rounded-2xl cursor-pointer flex flex-col items-center text-center group">
                 <div class="w-16 h-16 rounded-2xl bg-amber-500/20 text-amber-300 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
                     <i class="fas fa-folder-closed group-hover:hidden"></i>
                     <i class="fas fa-folder-open hidden group-hover:inline-block"></i>
                 </div>
                 <span class="text-xs uppercase tracking-widest text-amber-300 font-semibold mb-1">Folder 01</span>
-                <h3 class="font-serif text-lg font-bold text-white mb-1">Thank You Letter</h3>
-                <p class="text-[11px] text-slate-300">Expressing gratitude for everything you bring to my life.</p>
-            </div>
-
-            <!-- FOLDER 2: SORRY -->
-            <div onclick="openModal('sorryModal')" class="glass-folder p-6 rounded-2xl cursor-pointer flex flex-col items-center text-center group">
-                <div class="w-16 h-16 rounded-2xl bg-rose-500/20 text-rose-400 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
-                    <i class="fas fa-folder-closed group-hover:hidden"></i>
-                    <i class="fas fa-folder-open hidden group-hover:inline-block"></i>
-                </div>
-                <span class="text-xs uppercase tracking-widest text-rose-300 font-semibold mb-1">Folder 02</span>
-                <h3 class="font-serif text-lg font-bold text-white mb-1">Sorry Letter</h3>
-                <p class="text-[11px] text-slate-300">Owning my mistakes and acknowledging your feelings.</p>
-            </div>
-
-            <!-- FOLDER 3: APOLOGY & PROMISES -->
-            <div onclick="openModal('apologyModal')" class="glass-folder p-6 rounded-2xl cursor-pointer flex flex-col items-center text-center group">
-                <div class="w-16 h-16 rounded-2xl bg-pink-500/20 text-pink-300 flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform">
-                    <i class="fas fa-folder-closed group-hover:hidden"></i>
-                    <i class="fas fa-folder-open hidden group-hover:inline-block"></i>
-                </div>
-                <span class="text-xs uppercase tracking-widest text-pink-300 font-semibold mb-1">Folder 03</span>
-                <h3 class="font-serif text-lg font-bold text-white mb-1">Apology & Promises</h3>
-                <p class="text-[11px] text-slate-300">My commitments to change and protect your peace.</p>
-            </div>
-
-            <!-- FOLDER 4: BOUQUET SURPRISE -->
-            <div onclick="openModal('bouquetModal')" class="glass-folder p-6 rounded-2xl cursor-pointer flex flex-col items-center text-center group border-rose-400/40 bg-rose-500/10">
-                <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-400 text-white flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition-transform shadow-lg shadow-rose-500/30">
-                    <i class="fas fa-gift"></i>
-                </div>
-                <span class="text-xs uppercase tracking-widest text-rose-300 font-semibold mb-1">Special Gift</span>
-                <h3 class="font-serif text-lg font-bold text-white mb-1">Digital Bouquet 💐</h3>
-                <p class="text-[11px] text-rose-200">Fresh roses that will never wither, just for you.</p>
-            </div>
-
-        </section>
-
-
-        <!-- PHOTO GALLERY SECTION -->
-        <section id="memoriesGallery" class="w-full space-y-8 my-10">
-            <div class="text-center">
-                <span class="text-xs uppercase tracking-widest text-rose-400 font-semibold">Our Unbreakable Bond</span>
-                <h2 class="font-serif text-3xl font-bold text-white mt-1">Moments I Treasure</h2>
-                <p class="text-xs text-slate-400 mt-1">Every single moment spent with you is etched in my heart</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 pt-2">
-                <!-- Photo 1 -->
-                <div class="polaroid rounded-lg">
-                    <div class="h-52 sm:h-60 overflow-hidden rounded bg-slate-800">
-                        <img src="memories/photo1.jpg" alt="Memory 1" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80'">
-                    </div>
-                    <p class="font-cursive text-slate-800 text-2xl text-center mt-3 font-semibold">That Unforgettable Smile</p>
-                    <p class="text-slate-500 text-[11px] text-center italic">"Your joy lights up my entire world."</p>
-                </div>
-
-                <!-- Photo 2 -->
-                <div class="polaroid rounded-lg">
-                    <div class="h-52 sm:h-60 overflow-hidden rounded bg-slate-800">
-                        <img src="memories/photo2.jpg" alt="Memory 2" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=600&q=80'">
-                    </div>
-                    <p class="font-cursive text-slate-800 text-2xl text-center mt-3 font-semibold">Precious Memories</p>
-                    <p class="text-slate-500 text-[11px] text-center italic">"Every second with you is a gift."</p>
-                </div>
-
-                <!-- Photo 3 -->
-                <div class="polaroid rounded-lg sm:col-span-2 md:col-span-1">
-                    <div class="h-52 sm:h-60 overflow-hidden rounded bg-slate-800">
-                        <img src="memories/photo3.jpg" alt="Memory 3" class="w-full h-full object-cover hover:scale-110 transition-transform duration-500" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80'">
-                    </div>
-                    <p class="font-cursive text-slate-800 text-2xl text-center mt-3 font-semibold">Waiting For You</p>
-                    <p class="text-slate-500 text-[11px] text-center italic">"Counting down until I hold your hand again."</p>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- RESPONSE SECTION (WHATSAPP INTEGRATION) -->
-        <section id="interactiveResponse" class="w-full text-center py-10 glass-card rounded-3xl p-6 sm:p-12 relative overflow-hidden border-rose-500/30 my-6">
-            <div class="max-w-xl mx-auto space-y-6">
-                <div class="inline-block p-4 bg-rose-500/10 rounded-full text-rose-400 text-3xl mb-1">
-                    <i class="fas fa-heart-pulse"></i>
-                </div>
-
-                <h2 class="font-serif text-3xl font-bold text-white">Whenever You Are Ready</h2>
-
-                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
-                    There is no pressure or rush. Take all the time you need to heal. Whenever you feel comfortable, click below to message me directly.
-                </p>
-
-                <div class="pt-4 flex flex-col sm:flex-row gap-4 justify-center items-center">
-                    <!-- REPLACE 9779800000000 WITH YOUR ACTUAL WHATSAPP PHONE NUMBER -->
-                    <a href="https://wa.me/9779800000000?text=I%20read%20your%20website.%20I'm%20ready%20to%20talk%20❤️" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 text-white font-semibold shadow-lg hover:shadow-rose-500/40 hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-comment-heart"></i> I'm Ready To Talk
-                    </a>
-                    
-                    <a href="https://wa.me/9779800000000?text=I%20read%20your%20website.%20I%20need%20a%20little%20more%20time%20⏳" target="_blank" class="w-full sm:w-auto px-8 py-4 rounded-full glass-card border border-white/20 text-slate-200 hover:bg-white/10 font-semibold transition-all duration-300 flex items-center justify-center gap-2 text-sm">
-                        <i class="fas fa-hourglass-half"></i> I Need A Little More Time
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- FOOTER -->
-        <footer class="text-center py-6 text-xs text-slate-500 border-t border-white/5 w-full">
-            Crafted with all my love by Ridesh for the most special girl in his life. ❤️
-        </footer>
-
-    </main>
-
-
-    <!-- ==================== MODALS / FOLDERS POPUPS ==================== -->
-
-    <!-- PROPOSAL MODAL ("IF YOU'RE FEELING GOOD") -->
-    <div id="proposalModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 flex items-center justify-center p-4 opacity-0 pointer-events-none transition-opacity duration-300">
-        <div class="glass-card-glow max-w-xl w-full rounded-3xl p-6 sm:p-10 relative text-center max-h-[90vh] overflow-y-auto">
-            <button onclick="closeModal('proposalModal')" class="absolute top-5 right-5 text-slate-400 hover:text-white text-xl">
-                <i class="fas fa-times"></i>
-            </button>
-
-            <div class="w-16 h-16 rounded-full bg-gradient-to-tr from-rose-500 to-pink-500 text-white flex items-center justify-center text-3xl mx-auto mb-4 shadow-lg shadow-rose-500/50">
-                <i class="fas fa-ring"></i>
-            </div>
-
-            <span class="font-cursive text-3xl text-rose-300">From The Depth Of My Heart</span>
-            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white mb-4">Will You Give Us Another Chance?</h2>
-
-            <div class="font-sans text-slate-200 text-sm sm:text-base leading-relaxed space-y-4 my-6 text-left">
-                <p class="text-center italic text-rose-200">"In spite of the distance, in spite of the arguments, my heart still chooses you every single day."</p>
-
-                <p>
-                    My love, I don't just want to say sorry—I want to rebuild our bond stronger, kinder, and more loving than ever before. You are my best friend, my happiness, and the person I want to share my future with.
-                </p>
-
-                <p>
-                    I promise to cherish you, respect your feelings, and hold your hand through every season of life. Will you take my
