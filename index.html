@@ -3,525 +3,784 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Dearest Love ❤️</title>
-    <style>
-        /* Base Reset & Styling */
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        }
+    <title>For My Forever Love | Ridesh</title>
 
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['Playfair Display', 'serif'],
+                        cursive: ['Dancing Script', 'cursive'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
         body {
-            background: #0b020d;
-            background: radial-gradient(circle at top center, #380720 0%, #150317 50%, #08010a 100%);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: radial-gradient(circle at top center, #420826 0%, #1a051c 55%, #09010c 100%);
             color: #f8fafc;
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem 1rem;
             overflow-x: hidden;
-            position: relative;
         }
 
-        /* Ambient Glow Effects */
-        .glow-1, .glow-2 {
+        /* Ambient Glow Background Spheres */
+        .glow-bg-1 {
             position: fixed;
-            border-radius: 50%;
+            top: 10%;
+            left: 10%;
+            width: 450px;
+            height: 450px;
+            background: radial-gradient(circle, rgba(244, 63, 94, 0.3) 0%, rgba(0, 0, 0, 0) 70%);
+            filter: blur(80px);
+            pointer-events: none;
+            z-index: 0;
+            animation: pulseGlow 6s infinite alternate ease-in-out;
+        }
+
+        .glow-bg-2 {
+            position: fixed;
+            bottom: 10%;
+            right: 10%;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(217, 70, 239, 0.25) 0%, rgba(0, 0, 0, 0) 70%);
             filter: blur(90px);
             pointer-events: none;
             z-index: 0;
-            opacity: 0.35;
-        }
-        .glow-1 {
-            top: 10%;
-            left: 15%;
-            width: 320px;
-            height: 320px;
-            background: #f43f5e;
-        }
-        .glow-2 {
-            bottom: 10%;
-            right: 15%;
-            width: 320px;
-            height: 320px;
-            background: #8b5cf6;
+            animation: pulseGlow 8s infinite alternate-reverse ease-in-out;
         }
 
-        /* Falling Petals Canvas */
+        @keyframes pulseGlow {
+            0% { transform: scale(0.9); opacity: 0.6; }
+            100% { transform: scale(1.15); opacity: 1; }
+        }
+
+        /* Glassmorphism Styling */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(35px);
+            -webkit-backdrop-filter: blur(35px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+        }
+
+        .glass-glow-pink {
+            background: linear-gradient(135deg, rgba(244, 63, 94, 0.25), rgba(217, 70, 239, 0.18));
+            backdrop-filter: blur(35px);
+            border: 1px solid rgba(244, 63, 94, 0.45);
+            box-shadow: 0 0 60px rgba(244, 63, 94, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        }
+
+        .glass-glow-warm {
+            background: linear-gradient(135deg, rgba(251, 146, 60, 0.2), rgba(244, 63, 94, 0.2));
+            backdrop-filter: blur(35px);
+            border: 1px solid rgba(251, 146, 60, 0.45);
+            box-shadow: 0 0 60px rgba(251, 146, 60, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        }
+
+        .glass-glow-deep {
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.2), rgba(244, 63, 94, 0.18));
+            backdrop-filter: blur(35px);
+            border: 1px solid rgba(168, 85, 247, 0.45);
+            box-shadow: 0 0 60px rgba(168, 85, 247, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+        }
+
+        /* Heart Loader */
+        .pulsing-heart {
+            font-size: 5rem;
+            color: #f43f5e;
+            animation: heartBeat 0.85s infinite ease-in-out;
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); filter: drop-shadow(0 0 15px rgba(244, 63, 94, 0.6)); }
+            50% { transform: scale(1.38); filter: drop-shadow(0 0 45px rgba(244, 63, 94, 1)); }
+        }
+
+        /* Click Particle Effects */
+        .click-heart {
+            position: fixed;
+            pointer-events: none;
+            animation: floatAndFade 1.3s ease-out forwards;
+            font-size: 30px;
+            color: #fb7185;
+            z-index: 9999;
+        }
+
+        @keyframes floatAndFade {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5) rotate(0deg); }
+            50% { opacity: 0.95; transform: translate(-50%, -100px) scale(1.5) rotate(20deg); }
+            100% { opacity: 0; transform: translate(-50%, -170px) scale(1.8) rotate(-20deg); }
+        }
+
+        /* Canvas Overlay */
         #petalCanvas {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 1;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 1;
         }
 
-        /* Main Container */
-        .main-container {
-            width: 100%;
-            max-width: 620px;
-            position: relative;
-            z-index: 10;
+        /* Float Animation */
+        @keyframes floatGentle {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-12px) rotate(0.5deg); }
+        }
+        .float-animation { animation: floatGentle 4.5s infinite ease-in-out; }
+
+        /* Polaroid Styling */
+        .polaroid {
+            background: #ffffff;
+            padding: 12px 12px 24px 12px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.65);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .polaroid:hover {
+            transform: scale(1.08) rotate(0deg) !important;
+            z-index: 20;
+            box-shadow: 0 30px 60px rgba(244, 63, 94, 0.5);
         }
 
-        /* Glassmorphism Card */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.07);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            border-radius: 24px;
-            padding: 2.5rem 2rem;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 25px rgba(244, 63, 94, 0.15);
-            text-align: center;
-        }
-
-        /* Interactive Screens */
-        .screen {
-            display: none;
-            opacity: 0;
-            transform: translateY(12px);
-            transition: opacity 0.35s ease, transform 0.35s ease;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        /* Initial Default Screen */
-        #screen1 {
-            display: flex;
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .screen.active {
-            display: flex !important;
-            opacity: 1 !important;
-            transform: translateY(0) !important;
-        }
-
-        /* Typography */
-        .badge {
-            display: inline-block;
-            background: rgba(244, 63, 94, 0.2);
-            color: #fda4af;
-            border: 1px solid rgba(244, 63, 94, 0.3);
-            padding: 0.35rem 0.85rem;
-            border-radius: 9999px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        h1 {
-            font-size: 2.1rem;
-            font-weight: 700;
-            margin-bottom: 0.75rem;
-            background: linear-gradient(135deg, #ffffff 0%, #ffe4e6 50%, #fda4af 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            line-height: 1.2;
-        }
-
-        p {
-            color: #cbd5e1;
-            font-size: 1.05rem;
-            line-height: 1.6;
-            margin-bottom: 1.5rem;
-        }
-
-        /* Buttons */
-        .btn {
-            background: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
-            color: #ffffff;
-            font-size: 1.05rem;
-            font-weight: 600;
-            padding: 0.85rem 1.8rem;
-            border-radius: 9999px;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 8px 20px rgba(244, 63, 94, 0.35);
-            transition: all 0.25s ease;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            text-decoration: none;
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 25px rgba(244, 63, 94, 0.5);
-            background: linear-gradient(135deg, #fb7185 0%, #f43f5e 100%);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: #e2e8f0;
-            box-shadow: none;
-            border: 1px solid rgba(255, 255, 255, 0.15);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(255, 255, 255, 0.18);
-        }
-
-        /* Options Grid */
-        .options-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 0.85rem;
-            width: 100%;
-            margin-bottom: 1.5rem;
-        }
-
-        @media (min-width: 500px) {
-            .options-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .opt-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 1rem 1.2rem;
-            border-radius: 16px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            text-align: left;
-            color: #f1f5f9;
-            font-size: 0.95rem;
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-        }
-
-        .opt-card:hover {
-            background: rgba(244, 63, 94, 0.18);
-            border-color: rgba(244, 63, 94, 0.4);
-            transform: translateY(-2px);
-        }
-
-        /* Animated Heart */
-        .floating-heart {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            animation: pulse 2s infinite ease-in-out;
-            display: inline-block;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-
-        /* Runaway Proposal Area */
-        .proposal-btn-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1.25rem;
-            margin-top: 1.5rem;
-            position: relative;
-            min-height: 60px;
-            width: 100%;
-        }
-
-        #btnNo {
-            position: relative;
-            transition: transform 0.15s ease-out;
-        }
-
-        /* Audio Controls Widget */
-        .audio-widget {
-            position: fixed;
-            top: 1rem;
-            right: 1rem;
-            z-index: 100;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 0.5rem 0.85rem;
-            border-radius: 9999px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            color: #f1f5f9;
-            font-size: 0.85rem;
-            user-select: none;
-            transition: background 0.2s ease;
-        }
-
-        .audio-widget:hover {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        /* Love Letter Box */
-        .letter-box {
-            background: rgba(0, 0, 0, 0.25);
-            border: 1px solid rgba(244, 63, 94, 0.25);
-            padding: 1.5rem;
-            border-radius: 16px;
-            text-align: left;
-            margin: 1.25rem 0;
-            font-size: 0.98rem;
-            line-height: 1.7;
-            color: #ffe4e6;
-            max-height: 240px;
-            overflow-y: auto;
-        }
-
-        /* Mobile tweaks */
-        @media (max-width: 480px) {
-            .glass-card { padding: 1.75rem 1.25rem; }
-            h1 { font-size: 1.75rem; }
-            .btn { font-size: 0.95rem; padding: 0.75rem 1.4rem; }
+        /* Smooth Screen Transitions */
+        .screen-transition {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
         }
     </style>
 </head>
-<body>
+<body class="relative min-h-screen text-slate-100 antialiased selection:bg-rose-500 selection:text-white flex flex-col items-center justify-center p-4 sm:p-8">
 
     <!-- Ambient Glow BG -->
-    <div class="glow-1"></div>
-    <div class="glow-2"></div>
+    <div class="glow-bg-1"></div>
+    <div class="glow-bg-2"></div>
 
-    <!-- Falling Petals Canvas -->
+    <!-- Petals Canvas -->
     <canvas id="petalCanvas"></canvas>
 
-    <!-- Floating Audio Control -->
-    <div class="audio-widget" id="audioToggle" onclick="toggleAudio()">
-        <span id="audioIcon">🎵</span>
-        <span id="audioText">Play Music</span>
+    <!-- Background Music Audio -->
+    <audio id="upaharAudio" src="upahar.mp3" loop preload="auto"></audio>
+
+    <!-- Music Player Header Widget -->
+    <div class="fixed top-5 right-5 z-50">
+        <button onclick="toggleMusic()" class="glass-card px-5 py-3 rounded-full flex items-center gap-3 text-sm font-medium hover:border-rose-400/60 transition-all duration-300 shadow-2xl group cursor-pointer">
+            <span class="w-9 h-9 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400 group-hover:bg-rose-500 group-hover:text-white transition-all">
+                <i id="musicIcon" class="fas fa-music text-base"></i>
+            </span>
+            <div class="flex flex-col text-left">
+                <span id="musicText" class="text-xs font-bold text-rose-200">Play "Upahar"</span>
+                <span class="text-[10px] text-slate-400 font-medium">Swoopna Suman</span>
+            </div>
+        </button>
     </div>
 
-    <!-- Background Music -->
-    <audio id="bgMusic" loop preload="auto">
-        <source src="https://assets.mixkit.co/music/preview/mixkit-romantic-piano-123.mp3" type="audio/mpeg">
-    </audio>
-
-    <!-- Main Container -->
-    <div class="main-container">
-        <div class="glass-card">
-
-            <!-- SCREEN 1: Welcome & Mood -->
-            <div id="screen1" class="screen">
-                <span class="badge">A Special Message For You</span>
-                <div class="floating-heart">💖</div>
-                <h1>Hey Beautiful ❤️</h1>
-                <p>I built this little digital space just for you because you mean the world to me. Before we begin, how are you feeling today?</p>
-
-                <div class="options-grid">
-                    <div class="opt-card" onclick="selectMood('Happy & Cozy')">
-                        <span>😊</span> <span>Happy & Cozy</span>
-                    </div>
-                    <div class="opt-card" onclick="selectMood('Feeling Loved')">
-                        <span>🥰</span> <span>Feeling Loved</span>
-                    </div>
-                    <div class="opt-card" onclick="selectMood('A bit tired')">
-                        <span>😴</span> <span>Tired, but glad to see this</span>
-                    </div>
-                    <div class="opt-card" onclick="selectMood('Ready for Magic')">
-                        <span>✨</span> <span>Ready for Magic!</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SCREEN 2: Memory & Appreciation -->
-            <div id="screen2" class="screen">
-                <span class="badge">Memory & Appreciation</span>
-                <div class="floating-heart">🌟</div>
-                <h1>A Little Reflection...</h1>
-                <p>Do you know what makes my day brighter every single time?</p>
-
-                <div class="options-grid">
-                    <div class="opt-card" onclick="answerPoll('Your cute smile and laugh!')">
-                        <span>1️⃣</span> <span>Your cute smile & laugh</span>
-                    </div>
-                    <div class="opt-card" onclick="answerPoll('Your voice calls & texts!')">
-                        <span>2️⃣</span> <span>Getting random texts from you</span>
-                    </div>
-                    <div class="opt-card" onclick="answerPoll('How caring you are!')">
-                        <span>3️⃣</span> <span>How warm and caring you are</span>
-                    </div>
-                    <div class="opt-card" onclick="answerPoll('All of the above!')">
-                        <span>4️⃣</span> <span>All of the above (and more!)</span>
-                    </div>
-                </div>
-
-                <p id="pollFeedback" style="color: #f43f5e; font-weight: 600; display: none; margin-bottom: 1rem;"></p>
-                <button id="screen2Next" class="btn" style="display: none;" onclick="goToScreen('screen3')">Continue ❤️</button>
-            </div>
-
-            <!-- SCREEN 3: The Big Question (Proposal) -->
-            <div id="screen3" class="screen">
-                <span class="badge">The Big Question</span>
-                <div class="floating-heart">🌹</div>
-                <h1>Will You Be My Valentine?</h1>
-                <p>You bring so much warmth, laughter, and peace into my life. I couldn't imagine doing this journey without you!</p>
-
-                <div class="proposal-btn-container">
-                    <button class="btn" onclick="acceptProposal()">YES! Absolutely! ❤️</button>
-                    <button id="btnNo" class="btn btn-secondary">No 😜</button>
-                </div>
-            </div>
-
-            <!-- SCREEN 4: Celebration & Love Letter -->
-            <div id="screen4" class="screen">
-                <span class="badge">Forever & Always</span>
-                <div class="floating-heart">🎉</div>
-                <h1>You Made My Day! 💖</h1>
-                <p>I knew you'd say yes! Here is a letter straight from my heart:</p>
-
-                <div class="letter-box">
-                    <p><strong>My Dearest,</strong></p>
-                    <br>
-                    <p>Thank you for bringing so much light and laughter into my life every single day. Having you by my side makes every moment sweeter and every challenge lighter.</p>
-                    <br>
-                    <p>I promise to always cherish you, make you laugh when you're down, and stand by you through thick and thin. You mean everything to me.</p>
-                    <br>
-                    <p><strong>Forever Yours ❤️</strong></p>
-                </div>
-
-                <button class="btn btn-secondary" onclick="goToScreen('screen1')">Replay Experience 🔄</button>
-            </div>
-
+    <!-- Step Progress Header -->
+    <div id="progressHeader" class="fixed top-6 left-1/2 -translate-x-1/2 z-40 flex items-center gap-3 px-6 py-2.5 rounded-full glass-card border border-white/15 text-xs sm:text-sm shadow-xl">
+        <span id="stepText" class="font-bold text-rose-300 tracking-wide">Chapter 1 of 3</span>
+        <div class="w-28 bg-slate-900/80 h-2 rounded-full overflow-hidden ml-1 border border-white/10">
+            <div id="stepProgressBar" class="bg-gradient-to-r from-rose-500 via-pink-400 to-amber-300 h-full w-1/3 transition-all duration-500"></div>
         </div>
     </div>
 
+
+    <!-- ==================== SCREEN 1: MOOD CHECK-IN ==================== -->
+    <section id="screen1" class="relative z-10 w-full max-w-2xl sm:max-w-3xl screen-transition opacity-100 block my-auto">
+        <div class="glass-card p-8 sm:p-14 rounded-[2.5rem] text-center space-y-8 border-rose-500/30 float-animation relative">
+            
+            <div class="w-24 h-24 rounded-full bg-gradient-to-tr from-rose-500 via-pink-500 to-amber-300 flex items-center justify-center text-white text-4xl mx-auto shadow-2xl shadow-rose-500/40 border-2 border-white/20">
+                <i class="fas fa-heart"></i>
+            </div>
+
+            <div class="space-y-3">
+                <span class="font-cursive text-3xl sm:text-4xl text-rose-300 block">Namaste, My Princess</span>
+                <h1 class="font-serif text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">How Are You Feeling Today?</h1>
+            </div>
+
+            <p class="text-sm sm:text-base text-slate-300 leading-relaxed max-w-lg mx-auto font-light">
+                Tap the option that fits your heart best right now:
+            </p>
+
+            <div class="space-y-4 pt-2 max-w-xl mx-auto">
+                <!-- Option 1: Better Mood -->
+                <button onclick="selectMood('better')" class="w-full py-4 px-6 rounded-2xl glass-card hover:bg-rose-500/25 border-rose-500/40 text-rose-100 text-sm sm:text-base font-semibold transition-all flex items-center justify-between group cursor-pointer shadow-lg hover:scale-[1.02]">
+                    <span class="flex items-center gap-3"><span class="text-xl">🌸</span> I'm feeling a bit better today</span>
+                    <i class="fas fa-arrow-right text-rose-400 group-hover:translate-x-2 transition-transform"></i>
+                </button>
+
+                <!-- Option 2: Need Warmth -->
+                <button onclick="selectMood('warmth')" class="w-full py-4 px-6 rounded-2xl glass-card hover:bg-pink-500/25 border-pink-500/40 text-pink-100 text-sm sm:text-base font-semibold transition-all flex items-center justify-between group cursor-pointer shadow-lg hover:scale-[1.02]">
+                    <span class="flex items-center gap-3"><span class="text-xl">🥺</span> I need some warmth & peace</span>
+                    <i class="fas fa-arrow-right text-pink-400 group-hover:translate-x-2 transition-transform"></i>
+                </button>
+
+                <!-- Option 3: Still Hurting -->
+                <button onclick="selectMood('hurting')" class="w-full py-4 px-6 rounded-2xl glass-card hover:bg-amber-500/25 border-amber-500/40 text-amber-100 text-sm sm:text-base font-semibold transition-all flex items-center justify-between group cursor-pointer shadow-lg hover:scale-[1.02]">
+                    <span class="flex items-center gap-3"><span class="text-xl">🤍</span> I'm still hurting, but I'm listening</span>
+                    <i class="fas fa-arrow-right text-amber-400 group-hover:translate-x-2 transition-transform"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== BRANCH 1: FEELING BETTER (INTERFACE 1) ==================== -->
+    <section id="branchBetter" class="relative z-10 w-full max-w-2xl sm:max-w-3xl screen-transition opacity-0 hidden my-auto">
+        <div class="glass-glow-pink p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8 relative">
+            
+            <!-- Back Button -->
+            <button onclick="goBackToStart()" class="absolute top-6 left-6 text-rose-200 hover:text-white transition-all text-xs font-semibold flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer shadow-lg">
+                <i class="fas fa-arrow-left"></i> Back to Start
+            </button>
+
+            <div class="w-20 h-20 rounded-full bg-rose-500/20 border border-rose-400/50 flex items-center justify-center text-rose-300 text-3xl mx-auto shadow-2xl pt-2 sm:pt-0">
+                ✨
+            </div>
+
+            <div class="space-y-3">
+                <span class="font-cursive text-3xl text-rose-300 block">I am so happy your heart feels lighter...</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">What extra magic can I do right now to make you smile wider?</h2>
+            </div>
+
+            <!-- Interactive Ask Anything To Make Her Happy -->
+            <div class="space-y-3 max-w-md mx-auto text-left">
+                <button onclick="answerBetterPoll('Take me on a cute coffee date & hold my hand tight ☕')" class="w-full py-3.5 px-5 rounded-xl bg-white/10 hover:bg-rose-500/30 border border-white/20 hover:border-rose-300 text-xs sm:text-sm text-slate-100 transition-all flex items-center justify-between cursor-pointer">
+                    <span>☕ Take me on a sweet coffee date & hold my hand</span>
+                    <i class="fas fa-heart text-rose-400"></i>
+                </button>
+
+                <button onclick="answerBetterPoll('Send me cute voice notes every morning saying I am your princess 🎙️')" class="w-full py-3.5 px-5 rounded-xl bg-white/10 hover:bg-rose-500/30 border border-white/20 hover:border-rose-300 text-xs sm:text-sm text-slate-100 transition-all flex items-center justify-between cursor-pointer">
+                    <span>🎙️ Send me morning voice notes telling me you adore me</span>
+                    <i class="fas fa-heart text-rose-400"></i>
+                </button>
+
+                <button onclick="answerBetterPoll('Plan a long romantic walk under the night stars 🌙')" class="w-full py-3.5 px-5 rounded-xl bg-white/10 hover:bg-rose-500/30 border border-white/20 hover:border-rose-300 text-xs sm:text-sm text-slate-100 transition-all flex items-center justify-between cursor-pointer">
+                    <span>🌙 Plan a serene walk under the night stars together</span>
+                    <i class="fas fa-heart text-rose-400"></i>
+                </button>
+            </div>
+
+            <!-- Dynamic Feedback -->
+            <div id="betterFeedback" class="hidden p-4 rounded-2xl bg-rose-500/20 border border-rose-400/40 text-rose-100 text-xs sm:text-sm font-medium">
+            </div>
+
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <button onclick="goToProposal('betterProposal')" class="px-10 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-300 text-slate-900 font-extrabold text-base shadow-2xl hover:scale-105 transition-all cursor-pointer">
+                    Open My Sweet Confession For You 🌸
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPOSAL 1 (Better Branch) -->
+    <section id="betterProposal" class="relative z-10 w-full max-w-2xl sm:max-w-3xl screen-transition opacity-0 hidden my-auto">
+        <div class="glass-glow-pink p-8 sm:p-14 rounded-[2.5rem] text-center space-y-8 relative">
+            
+            <!-- Back Button -->
+            <button onclick="goBackToStart()" class="absolute top-6 left-6 text-rose-200 hover:text-white transition-all text-xs font-semibold flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer shadow-lg z-20">
+                <i class="fas fa-arrow-left"></i> Back to Start
+            </button>
+
+            <div class="polaroid rounded-2xl rotate-2 max-w-xs mx-auto shadow-2xl pt-4">
+                <div class="h-48 overflow-hidden rounded-lg bg-slate-800">
+                    <img src="memories/photo1.jpg" alt="Our Memory" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80'">
+                </div>
+                <p class="font-cursive text-slate-800 text-2xl text-center mt-3 font-bold">Forever My Princess 🌸</p>
+            </div>
+
+            <div class="space-y-3">
+                <span class="font-cursive text-3xl text-rose-300 block">From Ridesh, with all my heart...</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white leading-tight">Will You Be My Girl & My Forever Love?</h2>
+            </div>
+
+            <p class="text-sm sm:text-base text-rose-100 leading-relaxed max-w-xl mx-auto font-light bg-black/20 p-6 rounded-2xl border border-rose-400/30">
+                "You bring color into my darkest days and peace to my chaotic mind. I don't just want today; I want every sunrise, every quiet evening, and every sweet moment with you. Will you hold my hand and let us be the happiest pair again?"
+            </p>
+
+            <!-- Proposal Buttons -->
+            <div class="pt-2 flex flex-col sm:flex-row gap-4 justify-center items-center relative min-h-[70px]">
+                <button onclick="triggerProposalResult('betterResult')" class="px-10 py-4 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 text-white font-extrabold text-base shadow-2xl hover:scale-110 transition-all cursor-pointer">
+                    Yes, Ridesh! I Am Yours! ❤️
+                </button>
+
+                <button id="noBtnBetter" class="px-8 py-4 rounded-full glass-card border border-white/20 text-slate-200 font-semibold text-sm transition-all duration-150 cursor-pointer">
+                    Let me think 🙈
+                </button>
+            </div>
+
+            <!-- Heart Loader -->
+            <div id="betterLoader" class="hidden flex-col items-center justify-center space-y-4 py-8">
+                <div class="pulsing-heart"><i class="fas fa-heart"></i></div>
+                <p class="font-cursive text-2xl text-rose-300">Sealing our sweet love...</p>
+            </div>
+
+            <!-- Final Result Overlay -->
+            <div id="betterResult" class="hidden space-y-6 pt-4 text-center">
+                <div class="w-48 h-48 rounded-3xl overflow-hidden border-2 border-rose-400 mx-auto shadow-2xl">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z6NmNhbGJ5NG1pODdzYnJycGt2azJsaTRxNXVvZXFsdnl3cmNycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LMB3W50M3I760/giphy.gif" alt="Happy Hug Cat" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-serif text-3xl font-bold text-white">You Just Made Me The Happiest Man Alive! 🎉</h3>
+                <p class="text-sm text-rose-200">I promise to hold you tight and never let that precious smile fade!</p>
+                <a href="https://wa.me/9779800000000?text=Yes%20Ridesh!%20I'm%20feeling%20better%20and%20I'm%20yours%20❤️" target="_blank" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-emerald-500 text-white font-bold text-sm shadow-xl hover:bg-emerald-600 transition-all">
+                    <i class="fab fa-whatsapp text-xl"></i> Send Me A Message On WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== BRANCH 2: NEEDS WARMTH (INTERFACE 2) ==================== -->
+    <section id="branchWarmth" class="relative z-10 w-full max-w-2xl sm:max-w-3xl screen-transition opacity-0 hidden my-auto">
+        <div class="glass-glow-warm p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8 relative">
+            
+            <!-- Back Button -->
+            <button onclick="goBackToStart()" class="absolute top-6 left-6 text-amber-200 hover:text-white transition-all text-xs font-semibold flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer shadow-lg">
+                <i class="fas fa-arrow-left"></i> Back to Start
+            </button>
+
+            <div class="w-20 h-20 rounded-full bg-amber-500/20 border border-amber-400/50 flex items-center justify-center text-amber-300 text-3xl mx-auto shadow-2xl pt-2 sm:pt-0">
+                🧸
+            </div>
+
+            <div class="space-y-3">
+                <span class="font-cursive text-3xl text-amber-300 block">Your peace is my highest priority...</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">What can I do right now to make your heart feel warm & cozy?</h2>
+            </div>
+
+            <!-- Interactive Warmth Ask -->
+            <div class="space-y-3 max-w-md mx-auto text-left">
+                <button onclick="answerWarmthPoll('Wrap me in a virtual tight hug and never let go 🫂')" class="w-full py-3.5 px-5 rounded-xl bg-white/10 hover:bg-amber-500/30 border border-white/20 hover:border-amber-300 text-xs sm:text-sm text-slate-100 transition-all flex items-center justify-between cursor-pointer">
+                    <span>🫂 Give me a tight virtual hug and whisper soft words</span>
+                    <i class="fas fa-heart text-amber-400"></i>
+                </button>
+
+                <button onclick="answerWarmthPoll('Pour out 3 reasons why you love me so deeply 💌')" class="w-full py-3.5 px-5 rounded-xl bg-white/10 hover:bg-amber-500/30 border border-white/20 hover:border-amber-300 text-xs sm:text-sm text-slate-100 transition-all flex items-center justify-between cursor-pointer">
+                    <span>💌 Tell me 3 heartfelt reasons why you love me</span>
+                    <i class="fas fa-heart text-amber-400"></i>
+                </button>
+
+                <button onclick="answerWarmthPoll('Promise to be my safe shelter through every life storm 🕯️')" class="w-full py-3.5 px-5 rounded-xl bg-white/10 hover:bg-amber-500/30 border border-white/20 hover:border-amber-300 text-xs sm:text-sm text-slate-100 transition-all flex items-center justify-between cursor-pointer">
+                    <span>🕯️ Promise to be my shelter whenever the world gets cold</span>
+                    <i class="fas fa-heart text-amber-400"></i>
+                </button>
+            </div>
+
+            <!-- Dynamic Feedback -->
+            <div id="warmthFeedback" class="hidden p-4 rounded-2xl bg-amber-500/20 border border-amber-400/40 text-amber-100 text-xs sm:text-sm font-medium">
+            </div>
+
+            <div class="pt-4">
+                <button onclick="goToProposal('warmthProposal')" class="px-10 py-4 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-pink-500 text-slate-900 font-extrabold text-base shadow-2xl hover:scale-105 transition-all cursor-pointer">
+                    Read My Cozy Heart Promise 🕯️
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPOSAL 2 (Warmth Branch) -->
+    <section id="warmthProposal" class="relative z-10 w-full max-w-2xl sm:max-w-3xl screen-transition opacity-0 hidden my-auto">
+        <div class="glass-glow-warm p-8 sm:p-14 rounded-[2.5rem] text-center space-y-8 relative">
+            
+            <!-- Back Button -->
+            <button onclick="goBackToStart()" class="absolute top-6 left-6 text-amber-200 hover:text-white transition-all text-xs font-semibold flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer shadow-lg z-20">
+                <i class="fas fa-arrow-left"></i> Back to Start
+            </button>
+
+            <div class="w-24 h-24 rounded-full bg-amber-500/30 border-2 border-amber-300 flex items-center justify-center text-amber-200 text-4xl mx-auto shadow-2xl pt-2 sm:pt-0">
+                🫂
+            </div>
+
+            <div class="space-y-3">
+                <span class="font-cursive text-3xl text-amber-300 block">My Sanctuary & My Comfort...</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white leading-tight">Will You Let Me Be Your Warm Home Forever?</h2>
+            </div>
+
+            <p class="text-sm sm:text-base text-amber-100 leading-relaxed max-w-xl mx-auto font-light bg-black/20 p-6 rounded-2xl border border-amber-400/30">
+                "I promise to shield you from every chill, comfort you when you're overwhelmed, and wrap you in love every single day. I don't want you to carry anything alone. Will you let me hold your hand and walk through life together?"
+            </p>
+
+            <div class="pt-2 flex flex-col sm:flex-row gap-4 justify-center items-center relative min-h-[70px]">
+                <button onclick="triggerProposalResult('warmthResult')" class="px-10 py-4 rounded-full bg-gradient-to-r from-amber-400 to-rose-500 text-slate-900 font-extrabold text-base shadow-2xl hover:scale-110 transition-all cursor-pointer">
+                    Wrap Me In Your Arms Forever! 🫂❤️
+                </button>
+
+                <button id="noBtnWarmth" class="px-8 py-4 rounded-full glass-card border border-white/20 text-slate-200 font-semibold text-sm transition-all duration-150 cursor-pointer">
+                    I need a little time 🙈
+                </button>
+            </div>
+
+            <!-- Heart Loader -->
+            <div id="warmthLoader" class="hidden flex-col items-center justify-center space-y-4 py-8">
+                <div class="pulsing-heart"><i class="fas fa-heart text-amber-400"></i></div>
+                <p class="font-cursive text-2xl text-amber-300">Sending infinite warmth & love...</p>
+            </div>
+
+            <!-- Final Result Overlay -->
+            <div id="warmthResult" class="hidden space-y-6 pt-4 text-center">
+                <div class="w-48 h-48 rounded-3xl overflow-hidden border-2 border-amber-400 mx-auto shadow-2xl">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnY1eW11b21scTB0Zms2OHVtd21rbmd6OHR2OXFveGJic3E2cXk5bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qA9B04yvIZ65q/giphy.gif" alt="Cuddle Cat" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-serif text-3xl font-bold text-white">My Arms Are Waiting For You! 🕯️❤️</h3>
+                <p class="text-sm text-amber-200">You are my safe haven, today and for all eternity.</p>
+                <a href="https://wa.me/9779800000000?text=Ridesh,%20I%20want%20your%20warmth%20and%20hug%20right%20now%20🫂❤️" target="_blank" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-emerald-500 text-white font-bold text-sm shadow-xl hover:bg-emerald-600 transition-all">
+                    <i class="fab fa-whatsapp text-xl"></i> Talk To Me On WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== BRANCH 3: STILL HURTING (INTERFACE 3) ==================== -->
+    <section id="branchHurting" class="relative z-10 w-full max-w-2xl sm:max-w-3xl screen-transition opacity-0 hidden my-auto">
+        <div class="glass-glow-deep p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8 relative">
+            
+            <!-- Back Button -->
+            <button onclick="goBackToStart()" class="absolute top-6 left-6 text-purple-200 hover:text-white transition-all text-xs font-semibold flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer shadow-lg">
+                <i class="fas fa-arrow-left"></i> Back to Start
+            </button>
+
+            <div class="w-20 h-20 rounded-full bg-purple-500/20 border border-purple-400/50 flex items-center justify-center text-purple-300 text-3xl mx-auto shadow-2xl pt-2 sm:pt-0">
+                🤍
+            </div>
+
+            <div class="space-y-3">
+                <span class="font-cursive text-3xl text-purple-300 block">I honor every emotion in your heart...</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-white">What else can I do right now so you feel 100% safe with me?</h2>
+            </div>
+
+            <!-- Interactive Healing Ask -->
+            <div class="space-y-3 max-w-md mx-auto text-left">
+                <button onclick="answerHurtingPoll('Listen to my words completely without defending yourself 🎧')" class="w-full py-3.5 px-5 rounded-xl bg-white/10 hover:bg-purple-500/30 border border-white/20 hover:border-purple-300 text-xs sm:text-sm text-slate-100 transition-all flex items-center justify-between cursor-pointer">
+                    <span>🎧 Quietly listen to my thoughts without getting defensive</span>
+                    <i class="fas fa-heart text-purple-400"></i>
+                </button>
+
+                <button onclick="answerHurtingPoll('Prove your promises through gentle actions every single day 🕯️')" class="w-full py-3.5 px-5 rounded-xl bg-white/10 hover:bg-purple-500/30 border border-purple-300/20 hover:border-purple-300 text-xs sm:text-sm text-slate-100 transition-all flex items-center justify-between cursor-pointer">
+                    <span>🕯️ Prove your respect & love through actions every day</span>
+                    <i class="fas fa-heart text-purple-400"></i>
+                </button>
+
+                <button onclick="answerHurtingPoll('Never go to sleep angry or ignore my feelings again 🕊️')" class="w-full py-3.5 px-5 rounded-xl bg-white/10 hover:bg-purple-500/30 border border-white/20 hover:border-purple-300 text-xs sm:text-sm text-slate-100 transition-all flex items-center justify-between cursor-pointer">
+                    <span>🕊️ Promise to never leave my side unresolved before sleeping</span>
+                    <i class="fas fa-heart text-purple-400"></i>
+                </button>
+            </div>
+
+            <!-- Dynamic Feedback -->
+            <div id="hurtingFeedback" class="hidden p-4 rounded-2xl bg-purple-500/20 border border-purple-400/40 text-purple-100 text-xs sm:text-sm font-medium">
+            </div>
+
+            <div class="pt-4">
+                <button onclick="goToProposal('hurtingProposal')" class="px-10 py-4 rounded-full bg-gradient-to-r from-purple-500 via-rose-500 to-pink-500 text-white font-extrabold text-base shadow-2xl hover:scale-105 transition-all cursor-pointer">
+                    Read My Solemn Promises & Proposal 🕊️
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROPOSAL 3 (Hurting Branch) -->
+    <section id="hurtingProposal" class="relative z-10 w-full max-w-2xl sm:max-w-3xl screen-transition opacity-0 hidden my-auto">
+        <div class="glass-glow-deep p-8 sm:p-14 rounded-[2.5rem] text-center space-y-8 relative">
+            
+            <!-- Back Button -->
+            <button onclick="goBackToStart()" class="absolute top-6 left-6 text-purple-200 hover:text-white transition-all text-xs font-semibold flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 border border-white/20 cursor-pointer shadow-lg z-20">
+                <i class="fas fa-arrow-left"></i> Back to Start
+            </button>
+
+            <div class="w-24 h-24 rounded-full bg-purple-500/30 border-2 border-purple-300 flex items-center justify-center text-purple-200 text-4xl mx-auto shadow-2xl pt-2 sm:pt-0">
+                🕊️
+            </div>
+
+            <div class="space-y-3">
+                <span class="font-cursive text-3xl text-purple-300 block">A New Beginning Built On Trust...</span>
+                <h2 class="font-serif text-3xl sm:text-5xl font-extrabold text-white leading-tight">Will You Give Us A Fresh, Pure Start Together?</h2>
+            </div>
+
+            <p class="text-sm sm:text-base text-purple-100 leading-relaxed max-w-xl mx-auto font-light bg-black/20 p-6 rounded-2xl border border-purple-400/30">
+                "I don't expect instant magic, but I promise to earn your trust day by day. I want to treat your heart like the precious treasure it is. Will you take my hand and write a brand new, beautiful chapter together?"
+            </p>
+
+            <div class="pt-2 flex flex-col sm:flex-row gap-4 justify-center items-center relative min-h-[70px]">
+                <button onclick="triggerProposalResult('hurtingResult')" class="px-10 py-4 rounded-full bg-gradient-to-r from-purple-500 via-rose-500 to-pink-500 text-white font-extrabold text-base shadow-2xl hover:scale-110 transition-all cursor-pointer">
+                    Yes, Let's Start Fresh Together 🕊️❤️
+                </button>
+
+                <button id="noBtnHurting" class="px-8 py-4 rounded-full glass-card border border-white/20 text-slate-200 font-semibold text-sm transition-all duration-150 cursor-pointer">
+                    I still need a little time 🙈
+                </button>
+            </div>
+
+            <!-- Heart Loader -->
+            <div id="hurtingLoader" class="hidden flex-col items-center justify-center space-y-4 py-8">
+                <div class="pulsing-heart"><i class="fas fa-heart text-purple-400"></i></div>
+                <p class="font-cursive text-2xl text-purple-300">Healing our bond with love...</p>
+            </div>
+
+            <!-- Final Result Overlay -->
+            <div id="hurtingResult" class="hidden space-y-6 pt-4 text-center">
+                <div class="w-48 h-48 rounded-3xl overflow-hidden border-2 border-purple-400 mx-auto shadow-2xl">
+                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExMnY1eW11b21scTB0Zms2OHVtd21rbmd6OHR2OXFveGJic3E2cXk5bCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/qA9B04yvIZ65q/giphy.gif" alt="Cat Holding Heart" class="w-full h-full object-cover">
+                </div>
+                <h3 class="font-serif text-3xl font-bold text-white">Thank You For Giving Us Hope! 🕊️❤️</h3>
+                <p class="text-sm text-purple-200">I will spend every single day proving that your trust was worth giving.</p>
+                <a href="https://wa.me/9779800000000?text=Ridesh,%20I'm%20ready%20to%20give%20us%20a%20fresh%20start%20🕊️❤️" target="_blank" class="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-emerald-500 text-white font-bold text-sm shadow-xl hover:bg-emerald-600 transition-all">
+                    <i class="fab fa-whatsapp text-xl"></i> Talk To Me On WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ==================== JAVASCRIPT LOGIC ==================== -->
     <script>
-        // Screen Navigation Function
-        function goToScreen(screenId) {
-            const screens = document.querySelectorAll('.screen');
-            screens.forEach(s => {
-                s.classList.remove('active');
-                s.style.display = 'none';
-            });
+        let currentActiveSection = 'screen1';
+        let audioStarted = false;
 
-            const target = document.getElementById(screenId);
-            if (target) {
-                target.style.display = 'flex';
-                setTimeout(() => {
-                    target.classList.add('active');
-                }, 20);
-            }
-        }
-
-        // Screen 1: Select Mood
-        function selectMood(mood) {
-            goToScreen('screen2');
-        }
-
-        // Screen 2: Answer Poll
-        function answerPoll(answer) {
-            const feedback = document.getElementById('pollFeedback');
-            const nextBtn = document.getElementById('screen2Next');
-            feedback.innerText = "Correct! " + answer + " ❤️";
-            feedback.style.display = 'block';
-            nextBtn.style.display = 'inline-flex';
-        }
-
-        // Screen 3: Accept Proposal
-        function acceptProposal() {
-            goToScreen('screen4');
-            burstHearts();
-        }
-
-        // Runaway "No" Button Logic
-        const btnNo = document.getElementById('btnNo');
-        function moveNoButton() {
-            if (!btnNo) return;
-            const container = document.querySelector('.glass-card');
-            const containerRect = container.getBoundingClientRect();
-            const btnRect = btnNo.getBoundingClientRect();
-
-            const maxX = (containerRect.width / 2) - (btnRect.width / 2) - 30;
-            const maxY = (containerRect.height / 2) - (btnRect.height / 2) - 30;
-
-            const randomX = (Math.random() * maxX * 2) - maxX;
-            const randomY = (Math.random() * maxY * 2) - maxY;
-
-            btnNo.style.transform = `translate(${randomX}px, ${randomY}px)`;
-        }
-
-        if (btnNo) {
-            btnNo.addEventListener('mouseenter', moveNoButton);
-            btnNo.addEventListener('touchstart', (e) => {
-                e.preventDefault();
-                moveNoButton();
-            });
-        }
-
-        // Audio Toggle
-        const audio = document.getElementById('bgMusic');
-        const audioIcon = document.getElementById('audioIcon');
-        const audioText = document.getElementById('audioText');
-        let isPlaying = false;
-
-        function toggleAudio() {
-            if (!audio) return;
-            if (isPlaying) {
-                audio.pause();
-                audioIcon.textContent = '🔇';
-                audioText.textContent = 'Music Paused';
-                isPlaying = false;
-            } else {
+        // Auto audio playback on first touch/click
+        function startAudioOnInteraction() {
+            if (!audioStarted) {
+                const audio = document.getElementById('upaharAudio');
                 audio.play().then(() => {
-                    audioIcon.textContent = '🎵';
-                    audioText.textContent = 'Playing Music';
-                    isPlaying = true;
-                }).catch(err => {
-                    console.log("Audio playback failed: ", err);
+                    audioStarted = true;
+                    updateMusicUI(true);
+                }).catch(() => {
+                    audio.src = "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112199.mp3";
+                    audio.play().then(() => {
+                        audioStarted = true;
+                        updateMusicUI(true);
+                    }).catch(e => console.log("Audio waiting for explicit touch"));
                 });
             }
         }
 
-        // Auto Play on first interaction
-        document.addEventListener('click', function startAudio() {
-            if (!isPlaying && audio) {
-                audio.play().then(() => {
-                    isPlaying = true;
-                    if(audioIcon) audioIcon.textContent = '🎵';
-                    if(audioText) audioText.textContent = 'Playing Music';
-                }).catch(() => {});
-            }
-        }, { once: true });
+        document.addEventListener('click', startAudioOnInteraction, { once: true });
+        document.addEventListener('touchstart', startAudioOnInteraction, { once: true });
 
-        // Petals Canvas Animation
+        // Mood Selection Branch Router
+        function selectMood(moodType) {
+            startAudioOnInteraction();
+            hideSection('screen1');
+
+            setTimeout(() => {
+                if (moodType === 'better') {
+                    showSection('branchBetter');
+                    updateProgress('Sweet Chapter', 66);
+                } else if (moodType === 'warmth') {
+                    showSection('branchWarmth');
+                    updateProgress('Warm Haven', 66);
+                } else if (moodType === 'hurting') {
+                    showSection('branchHurting');
+                    updateProgress('Healing Vows', 66);
+                }
+            }, 400);
+        }
+
+        // Navigate Back to Screen 1
+        function goBackToStart() {
+            hideSection(currentActiveSection);
+            setTimeout(() => {
+                showSection('screen1');
+                updateProgress('Chapter 1 of 3', 33);
+                resetRunawayButtons();
+            }, 400);
+        }
+
+        function goToProposal(proposalId) {
+            hideSection(currentActiveSection);
+            setTimeout(() => {
+                showSection(proposalId);
+                updateProgress('Forever Question', 100);
+                attachRunawayButtons();
+            }, 400);
+        }
+
+        function hideSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.style.opacity = '0';
+                setTimeout(() => el.classList.add('hidden'), 400);
+            }
+        }
+
+        function showSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.remove('hidden');
+                setTimeout(() => { el.style.opacity = '1'; }, 50);
+                currentActiveSection = id;
+            }
+        }
+
+        function updateProgress(title, percent) {
+            document.getElementById('stepText').textContent = title;
+            document.getElementById('stepProgressBar').style.width = `${percent}%`;
+        }
+
+        // Poll Feedback Handlers
+        function answerBetterPoll(msg) {
+            const fb = document.getElementById('betterFeedback');
+            fb.innerHTML = `✨ Ridesh Promises: <i>"${msg}"</i>. Anything for my princess!`;
+            fb.classList.remove('hidden');
+            burstHearts();
+        }
+
+        function answerWarmthPoll(msg) {
+            const fb = document.getElementById('warmthFeedback');
+            fb.innerHTML = `🧸 Ridesh Promises: <i>"${msg}"</i>. You will always be safe in my arms.`;
+            fb.classList.remove('hidden');
+            burstHearts();
+        }
+
+        function answerHurtingPoll(msg) {
+            const fb = document.getElementById('hurtingFeedback');
+            fb.innerHTML = `🤍 Ridesh Vows: <i>"${msg}"</i>. I hold this promise close to my heart.`;
+            fb.classList.remove('hidden');
+            burstHearts();
+        }
+
+        // Trigger Final Proposal Result with Heart Loader
+        function triggerProposalResult(resultId) {
+            burstHearts();
+            const parent = document.getElementById(currentActiveSection);
+            const loader = parent.querySelector('[id$="Loader"]');
+            const result = document.getElementById(resultId);
+            const proposalBtns = parent.querySelector('.pt-2');
+            const quoteText = parent.querySelector('p');
+
+            if (proposalBtns) proposalBtns.classList.add('hidden');
+            if (quoteText) quoteText.classList.add('hidden');
+            if (loader) {
+                loader.classList.remove('hidden');
+                loader.style.display = 'flex';
+            }
+
+            setTimeout(() => {
+                if (loader) loader.style.display = 'none';
+                if (result) result.classList.remove('hidden');
+            }, 2500);
+        }
+
+        // Runaway "No" Buttons Effect for All Proposals
+        function attachRunawayButtons() {
+            ['noBtnBetter', 'noBtnWarmth', 'noBtnHurting'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.addEventListener('mouseover', () => moveButton(btn));
+                    btn.addEventListener('touchstart', (e) => { e.preventDefault(); moveButton(btn); });
+                }
+            });
+        }
+
+        function resetRunawayButtons() {
+            ['noBtnBetter', 'noBtnWarmth', 'noBtnHurting'].forEach(id => {
+                const btn = document.getElementById(id);
+                if (btn) {
+                    btn.style.position = 'static';
+                }
+            });
+        }
+
+        function moveButton(btn) {
+            const parent = btn.parentElement;
+            const newX = Math.floor(Math.random() * (parent.offsetWidth - btn.offsetWidth - 20));
+            const newY = Math.floor(Math.random() * 60) - 30;
+            btn.style.position = 'absolute';
+            btn.style.left = `${Math.max(10, newX)}px`;
+            btn.style.top = `${newY}px`;
+        }
+
+        // Music Controls
+        function updateMusicUI(isPlaying) {
+            const musicIcon = document.getElementById('musicIcon');
+            const musicText = document.getElementById('musicText');
+
+            if (isPlaying) {
+                musicIcon.className = 'fas fa-pause text-base text-rose-400';
+                musicText.textContent = 'Pause Music';
+            } else {
+                musicIcon.className = 'fas fa-music text-base text-rose-400';
+                musicText.textContent = 'Play "Upahar"';
+            }
+        }
+
+        function toggleMusic() {
+            const audio = document.getElementById('upaharAudio');
+            if (audio.paused) {
+                audio.play().then(() => updateMusicUI(true)).catch(() => {
+                    audio.src = "https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112199.mp3";
+                    audio.play();
+                    updateMusicUI(true);
+                });
+            } else {
+                audio.pause();
+                updateMusicUI(false);
+            }
+        }
+
+        // Floating Hearts Particle FX
+        function burstHearts() {
+            for (let i = 0; i < 15; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('i');
+                    heart.className = 'fas fa-heart click-heart';
+                    heart.style.left = `${Math.random() * window.innerWidth}px`;
+                    heart.style.top = `${window.innerHeight - 50}px`;
+                    document.body.appendChild(heart);
+                    setTimeout(() => heart.remove(), 1300);
+                }, i * 80);
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('button') || e.target.closest('a')) return;
+            const heart = document.createElement('i');
+            heart.className = 'fas fa-heart click-heart';
+            heart.style.left = `${e.clientX}px`;
+            heart.style.top = `${e.clientY}px`;
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 1300);
+        });
+
+        // Petals Animation Canvas
         const canvas = document.getElementById('petalCanvas');
         const ctx = canvas.getContext('2d');
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
+        let petals = [];
 
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
 
         class Petal {
             constructor() { this.reset(); }
             reset() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * -height;
-                this.size = Math.random() * 7 + 5;
-                this.speedY = Math.random() * 1.5 + 0.8;
-                this.speedX = Math.random() * 1 - 0.5;
-                this.opacity = Math.random() * 0.6 + 0.3;
+                this.x = Math.random() * canvas.width;
+                this.y = -20;
+                this.size = Math.random() * 9 + 6;
+                this.speedY = Math.random() * 1.3 + 0.6;
+                this.speedX = Math.random() * 0.8 - 0.4;
                 this.rotation = Math.random() * 360;
-                this.rotationSpeed = (Math.random() - 0.5) * 2;
-                this.color = ['#f43f5e', '#fb7185', '#fda4af', '#f472b6'][Math.floor(Math.random() * 4)];
+                this.rotSpeed = Math.random() * 2 - 1;
+                this.opacity = Math.random() * 0.6 + 0.35;
+                this.color = ['#fda4af', '#f43f5e', '#e11d48', '#fecdd3', '#fb7185'][Math.floor(Math.random() * 5)];
             }
             update() {
                 this.y += this.speedY;
-                this.x += Math.sin(this.y / 30) + this.speedX;
-                this.rotation += this.rotationSpeed;
-                if (this.y > height + 20) this.reset();
+                this.x += this.speedX + Math.sin(this.y * 0.02) * 0.5;
+                this.rotation += this.rotSpeed;
+                if (this.y > canvas.height + 20) this.reset();
             }
             draw() {
                 ctx.save();
@@ -529,30 +788,26 @@
                 ctx.rotate((this.rotation * Math.PI) / 180);
                 ctx.globalAlpha = this.opacity;
                 ctx.fillStyle = this.color;
+                
                 ctx.beginPath();
                 ctx.moveTo(0, 0);
-                ctx.bezierCurveTo(-this.size, -this.size, -this.size, this.size, 0, this.size * 1.4);
+                ctx.bezierCurveTo(-this.size, -this.size, -this.size, this.size, 0, this.size * 1.5);
                 ctx.bezierCurveTo(this.size, this.size, this.size, -this.size, 0, 0);
                 ctx.fill();
                 ctx.restore();
             }
         }
 
-        const petals = Array.from({ length: 30 }, () => new Petal());
+        for (let i = 0; i < Math.min(Math.floor(window.innerWidth / 10), 60); i++) {
+            petals.push(new Petal());
+        }
 
         function animatePetals() {
-            ctx.clearRect(0, 0, width, height);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
             petals.forEach(p => { p.update(); p.draw(); });
             requestAnimationFrame(animatePetals);
         }
         animatePetals();
-
-        // Celebration Burst
-        function burstHearts() {
-            for (let i = 0; i < 20; i++) {
-                petals.push(new Petal());
-            }
-        }
     </script>
 </body>
 </html>
