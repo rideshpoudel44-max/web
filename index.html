@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For My Love</title>
+  <style>
+    :root {
+      --primary-color: #e63946;
+      --bg-color: #fff0f3;
+      --card-bg: #ffffff;
+      --text-dark: #2b2d42;
+      --text-light: #555555;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      line-height: 1.6;
+      padding: 20px;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      padding: 40px 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      color: var(--text-light);
+    }
+
+    .letter-section {
+      background: #fff8f9;
+      border-left: 4px solid var(--primary-color);
+      padding: 25px;
+      border-radius: 8px;
+      margin-bottom: 40px;
+    }
+
+    .letter-section h2 {
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+
+    .letter-text p {
+      margin-bottom: 15px;
+    }
+
+    .gallery-section {
+      margin-bottom: 40px;
+    }
+
+    .gallery-section h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .polaroid {
+      background: white;
+      padding: 12px 12px 20px 12px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border-radius: 4px;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+
+    .polaroid:hover {
+      transform: translateY(-5px);
+    }
+
+    .polaroid img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 2px;
+    }
+
+    .polaroid .caption {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-dark);
+    }
+
+    .interactive-section {
+      text-align: center;
+      padding: 20px 0;
+    }
+
+    .btn {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      margin: 10px 5px;
+      transition: opacity 0.2s ease;
+    }
+
+    .btn:hover {
+      opacity: 0.9;
+    }
+
+    .btn-secondary {
+      background-color: #6c757d;
+    }
+
+    #response-msg {
+      margin-top: 20px;
+      font-weight: bold;
+      color: var(--primary-color);
+      display: none;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <!-- CUSTOMIZATION: Replace 'My Love' with her name -->
+      <h1>I'm Truly Sorry, My Love</h1>
+      <p>From Ridesh with all my heart</p>
+    </header>
+
+    <div class="letter-section">
+      <h2>A Message For You</h2>
+      <div class="letter-text">
+        <!-- CUSTOMIZATION: Edit this text with your heartfelt message -->
+        <p>I know things have been difficult between us lately, and I want you to know how deeply sorry I am for my mistakes. The last thing I ever want to do is make you feel upset or distant.</p>
+        <p>Being far apart makes it harder, but distance hasn't changed how much you mean to me. I completely respect that you need space right now, and I just wanted to share this so you know where my heart is.</p>
+        <p>Thank you for all the beautiful memories we've created together. I hope we can move forward whenever you feel ready.</p>
+      </div>
+    </div>
+
+    <div class="gallery-section">
+      <h2>Our Favorite Memories</h2>
+      <div class="grid">
+        
+        <!-- Photo 1 -->
+        <div class="polaroid">
+          <!-- Put your image in memories/photo1.jpg -->
+          <img src="memories/photo1.jpg" alt="Memory 1" onerror="this.src='https://via.placeholder.com/200?text=Photo+1'">
+          <!-- CUSTOMIZATION: Caption for photo 1 -->
+          <div class="caption">Our Special Day</div>
+        </div>
+
+        <!-- Photo 2 -->
+        <div class="polaroid">
+          <img src="memories/photo2.jpg" alt="Memory 2" onerror="this.src='https://via.placeholder.com/200?text=Photo+2'">
+          <!-- CUSTOMIZATION: Caption for photo 2 -->
+          <div class="caption">Unforgettable Moments</div>
+        </div>
+
+        <!-- Photo 3 -->
+        <div class="polaroid">
+          <img src="memories/photo3.jpg" alt="Memory 3" onerror="this.src='https://via.placeholder.com/200?text=Photo+3'">
+          <!-- CUSTOMIZATION: Caption for photo 3 -->
+          <div class="caption">Always Laughing Together</div>
+        </div>
+
+        <!-- Photo 4 -->
+        <div class="polaroid">
+          <img src="memories/photo4.jpg" alt="Memory 4" onerror="this.src='https://via.placeholder.com/200?text=Photo+4'">
+          <!-- CUSTOMIZATION: Caption for photo 4 -->
+          <div class="caption">Looking Forward to More</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="interactive-section">
+      <button class="btn" onclick="showResponse('ready')">I'm ready to talk</button>
+      <button class="btn btn-secondary" onclick="showResponse('time')">I still need some time</button>
+
+      <div id="response-msg"></div>
+    </div>
+
+    <footer>
+      <p>Made with ❤️ by Ridesh</p>
+    </footer>
+  </div>
+
+  <script>
+    function showResponse(type) {
+      const msgDiv = document.getElementById('response-msg');
+      msgDiv.style.display = 'block';
+
+      if (type === 'ready') {
+        msgDiv.textContent = "Thank you so much. Please text or call me whenever you are comfortable!";
+      } else if (type === 'time') {
+        msgDiv.textContent = "I completely understand and respect that. Take all the time you need, I am here whenever you are ready.";
+      }
+    }
+  </script>
+
+</body>
+</html>
