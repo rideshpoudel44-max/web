@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Forever Love | Ridesh</title>
+    <title>For My Forever Princess | Ridesh</title>
 
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,700;0,900;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
     <!-- FontAwesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -19,10 +19,15 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        serif: ['Playfair Display', 'serif'],
-                        cursive: ['Dancing Script', 'cursive'],
+                        serif: ['Cormorant Garamond', 'serif'],
+                        cursive: ['Great Vibes', 'cursive'],
                         sans: ['Plus Jakarta Sans', 'sans-serif'],
-                        cinzel: ['Cinzel', 'serif'],
+                    },
+                    colors: {
+                        roseGold: '#e2b170',
+                        deepVelvet: '#140308',
+                        romanticRed: '#e11d48',
+                        warmGold: '#f59e0b',
                     }
                 }
             }
@@ -32,435 +37,524 @@
     <style>
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0c0205;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(225, 29, 72, 0.15) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(226, 177, 112, 0.12) 0px, transparent 50%),
+                radial-gradient(at 50% 50%, rgba(120, 10, 40, 0.25) 0px, transparent 70%);
+            color: #fff1f2;
             min-height: 100vh;
             overflow-x: hidden;
             transition: background 1.2s ease-in-out;
-            background: #05020a;
-            color: #ffffff;
         }
 
-        /* DYNAMIC THEMES BACKGROUNDS */
-        .theme-1 { background: radial-gradient(circle at top, #1e0538 0%, #080214 70%, #020005 100%); } /* Cosmic Starry */
-        .theme-2 { background: radial-gradient(circle at center, #2e081e 0%, #120310 70%, #050004 100%); } /* Retro Sunset Vinyl */
-        .theme-3 { background: radial-gradient(circle at top right, #381205 0%, #120501 70%, #050100 100%); } /* Enchanted Golden Autumn */
-        .theme-4 { background: radial-gradient(circle at bottom, #032030 0%, #010d14 70%, #000408 100%); } /* Bioluminescent Ocean */
-        .theme-5 { background: radial-gradient(circle at top left, #3b051a 0%, #17010a 70%, #050002 100%); } /* Velvet Rose Sanctuary */
-        .theme-6 { background: radial-gradient(circle at center, #1f032e 0%, #0a0112 70%, #020004 100%); } /* Cyberpunk Neon Romance */
-        .theme-7 { background: radial-gradient(circle at top, #2b1704 0%, #120800 70%, #030200 100%); } /* Vintage Warm Polaroid */
-        .theme-8 { background: radial-gradient(circle at bottom right, #090326 0%, #030112 70%, #000003 100%); } /* Galaxy Constellation */
-        .theme-9 { background: radial-gradient(circle at top, #361700 0%, #170900 70%, #050200 100%); } /* Golden Hour Dusk */
-        .theme-10 { background: radial-gradient(circle at center, #42031a 0%, #1f010b 60%, #0a0003 100%); } /* Sacred Diamond Sanctuary */
-
-        /* Canvas Overlay */
-        #bgCanvas {
+        /* Canvas Overlay for Floating Petals */
+        #petalCanvas {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             pointer-events: none; z-index: 1;
         }
 
-        /* Glassmorphism Styles */
-        .glass-box {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        /* Romantic Luxury Glassmorphism */
+        .romantic-card {
+            background: rgba(20, 5, 12, 0.65);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(226, 177, 112, 0.25);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
         }
 
-        .neon-glow-pink { box-shadow: 0 0 50px rgba(244, 63, 94, 0.35), inset 0 0 15px rgba(244, 63, 94, 0.2); }
-        .neon-glow-gold { box-shadow: 0 0 50px rgba(245, 158, 11, 0.35), inset 0 0 15px rgba(245, 158, 11, 0.2); }
-        .neon-glow-blue { box-shadow: 0 0 50px rgba(14, 165, 233, 0.35), inset 0 0 15px rgba(14, 165, 233, 0.2); }
-        .neon-glow-purple { box-shadow: 0 0 50px rgba(168, 85, 247, 0.35), inset 0 0 15px rgba(168, 85, 247, 0.2); }
+        .glow-heart {
+            box-shadow: 0 0 50px rgba(225, 29, 72, 0.35), inset 0 0 20px rgba(225, 29, 72, 0.2);
+        }
 
-        /* Floating animations */
+        .glow-gold {
+            box-shadow: 0 0 50px rgba(226, 177, 112, 0.3), inset 0 0 15px rgba(226, 177, 112, 0.15);
+        }
+
+        /* Soft Floating Animations */
         @keyframes floatGentle {
             0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(0.8deg); }
+            50% { transform: translateY(-8px) rotate(0.5deg); }
         }
-        .float-anim { animation: floatGentle 5s infinite ease-in-out; }
+        .animate-float { animation: floatGentle 6s infinite ease-in-out; }
 
-        /* Screen Transitions */
-        .screen-step {
-            transition: opacity 0.6s ease-in-out, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        @keyframes pulseGlow {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.04); }
+        }
+        .animate-pulse-glow { animation: pulseGlow 3s infinite ease-in-out; }
+
+        /* Smooth Screen Transitions */
+        .chapter-screen {
+            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        /* Memory Game Cards */
-        .game-card {
-            aspect-ratio: 1;
+        /* Interactive Envelope Flip */
+        .envelope-wrapper {
+            perspective: 1000px;
+        }
+        .envelope {
+            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform-style: preserve-3d;
+        }
+        .envelope.open {
+            transform: rotateX(180deg);
+        }
+
+        /* Interactive Flip Cards for Reasons */
+        .reason-card {
             perspective: 1000px;
             cursor: pointer;
         }
-        .game-card-inner {
+        .reason-card-inner {
             position: relative; width: 100%; height: 100%;
             transition: transform 0.6s; transform-style: preserve-3d;
         }
-        .game-card.flipped .game-card-inner { transform: rotateY(180deg); }
-        .game-card-front, .game-card-back {
+        .reason-card.flipped .reason-card-inner { transform: rotateY(180deg); }
+        .reason-front, .reason-back {
             position: absolute; width: 100%; height: 100%;
-            backface-visibility: hidden; border-radius: 1rem;
-            display: flex; align-items: center; justify-content: center;
+            backface-visibility: hidden; border-radius: 1.25rem;
+            display: flex; align-items: center; justify-content: center; padding: 1.25rem;
         }
-        .game-card-front { background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(255, 255, 255, 0.2); }
-        .game-card-back { background: linear-gradient(135deg, #f43f5e, #a855f7); transform: rotateY(180deg); border: 1px solid rgba(255, 255, 255, 0.4); }
+        .reason-front {
+            background: rgba(225, 29, 72, 0.12);
+            border: 1px solid rgba(226, 177, 112, 0.3);
+        }
+        .reason-back {
+            background: linear-gradient(135deg, rgba(225, 29, 72, 0.8), rgba(159, 18, 57, 0.95));
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            transform: rotateY(180deg);
+        }
 
-        /* Polaroid Hover */
-        .polaroid-card {
-            background: #ffffff; padding: 10px 10px 18px 10px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        /* Polaroid Memory Frame */
+        .polaroid-frame {
+            background: #fff;
+            padding: 12px 12px 24px 12px;
             box-shadow: 0 20px 40px rgba(0,0,0,0.8);
+            transition: all 0.4s ease;
         }
-        .polaroid-card:hover {
-            transform: scale(1.08) rotate(0deg) !important;
-            z-index: 30; shadow: 0 30px 60px rgba(244, 63, 94, 0.5);
+        .polaroid-frame:hover {
+            transform: scale(1.06) rotate(0deg) !important;
+            z-index: 20;
+            box-shadow: 0 30px 60px rgba(225, 29, 72, 0.4);
         }
 
-        /* Particle Clicks */
-        .click-heart {
+        /* Floating Click Effect */
+        .click-heart-particle {
             position: fixed; pointer-events: none;
-            animation: floatUp 1.2s ease-out forwards;
-            font-size: 28px; z-index: 9999;
+            animation: floatUpUp 1.4s ease-out forwards;
+            font-size: 26px; z-index: 9999;
         }
-        @keyframes floatUp {
-            0% { opacity: 1; transform: translate(-50%, -50%) scale(0.6); }
-            100% { opacity: 0; transform: translate(-50%, -160px) scale(1.8); }
+        @keyframes floatUpUp {
+            0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
+            100% { opacity: 0; transform: translate(-50%, -180px) scale(1.6); }
         }
     </style>
 </head>
-<body id="mainBody" class="theme-1 relative min-h-screen text-slate-100 antialiased selection:bg-rose-500 selection:text-white flex flex-col items-center justify-center p-4 sm:p-8">
+<body id="mainBody" class="relative min-h-screen text-rose-100 antialiased flex flex-col items-center justify-center p-4 sm:p-8">
 
-    <!-- Canvas Animation Background -->
-    <canvas id="bgCanvas"></canvas>
+    <!-- Canvas Animation Background for Rose Petals & Sparkling Dust -->
+    <canvas id="petalCanvas"></canvas>
 
     <!-- Background Music Audio -->
     <audio id="upaharAudio" src="upahar.mp3" loop preload="auto"></audio>
 
-    <!-- TOP CONTROL BAR -->
-    <header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-8 flex justify-between items-center max-w-6xl mx-auto w-full pointer-events-none">
+    <!-- TOP ELEGANT ROMANTIC HEADER BAR -->
+    <header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-8 flex justify-between items-center max-w-5xl mx-auto w-full pointer-events-none">
         
-        <!-- Step Badges -->
-        <div class="pointer-events-auto glass-box px-4 py-2 rounded-full flex items-center gap-3 border border-white/20">
-            <span id="themeBadge" class="w-3 h-3 rounded-full bg-rose-400 animate-ping"></span>
-            <span id="stepCounterText" class="text-xs sm:text-sm font-bold tracking-wider text-rose-200">1 / 10 • Cosmic Beginnings</span>
+        <!-- Romantic Ribbon Status -->
+        <div class="pointer-events-auto romantic-card px-4 py-2 rounded-full flex items-center gap-2.5 border border-roseGold/30">
+            <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>
+            <span id="chapterRibbonText" class="font-serif text-xs sm:text-sm tracking-widest text-roseGold uppercase font-semibold">Chapter I • Starlight Whispers</span>
         </div>
 
-        <!-- Music Button -->
-        <button onclick="toggleMusic()" class="pointer-events-auto glass-box px-4 py-2.5 rounded-full flex items-center gap-2.5 text-xs font-semibold hover:border-rose-400 transition-all cursor-pointer shadow-2xl">
-            <span class="w-7 h-7 rounded-full bg-rose-500/20 flex items-center justify-center text-rose-400">
-                <i id="musicIcon" class="fas fa-music"></i>
+        <!-- Floating Love Jukebox Button -->
+        <button onclick="toggleMusic()" class="pointer-events-auto romantic-card px-4 py-2 rounded-full flex items-center gap-3 text-xs hover:border-roseGold transition-all cursor-pointer group">
+            <span class="w-8 h-8 rounded-full bg-rose-500/20 border border-rose-400/30 flex items-center justify-center text-rose-300 group-hover:scale-110 transition-transform">
+                <i id="musicIcon" class="fas fa-heart text-xs"></i>
             </span>
             <div class="hidden sm:flex flex-col text-left">
-                <span id="musicStatusText" class="text-[11px] font-bold text-rose-200">Play "Upahar"</span>
-                <span class="text-[9px] text-slate-400">Swoopna Suman</span>
+                <span id="musicStatusText" class="font-serif font-bold text-roseGold text-xs">Play Love Song</span>
+                <span class="text-[9px] text-rose-200/60 font-light">Swoopna Suman • Upahar</span>
             </div>
         </button>
     </header>
 
 
     <!-- ========================================================================= -->
-    <!-- INTERFACE 1: COSMIC STARLIGHT (HELLO BABY & DAY CHECK) -->
+    <!-- CHAPTER 1: STARLIGHT CONFESSION (THE SWEET GREETING) -->
     <!-- ========================================================================= -->
-    <section id="screen-1" class="screen-step relative z-10 w-full max-w-2xl opacity-100 block my-auto pt-16 pb-8">
-        <div class="glass-box neon-glow-purple p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8 float-anim">
-            <div class="w-20 h-20 rounded-full bg-purple-500/20 border border-purple-400/50 flex items-center justify-center text-purple-300 text-3xl mx-auto shadow-2xl">
-                🌌
-            </div>
-
+    <section id="chapter-1" class="chapter-screen relative z-10 w-full max-w-2xl opacity-100 block my-auto pt-16 pb-8">
+        <div class="romantic-card glow-heart p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8 animate-float">
+            
             <div class="space-y-3">
-                <span class="font-cursive text-3xl sm:text-4xl text-purple-300 block">Starlight Greetings, My Princess</span>
-                <h1 class="font-serif text-3xl sm:text-5xl font-extrabold text-white tracking-tight">Hello Baby, How Are You?</h1>
-                <p class="text-base sm:text-lg font-medium text-purple-200 font-serif italic">How is your day going today?</p>
+                <span class="font-cursive text-3xl sm:text-4xl text-roseGold block">For My Dearest Princess</span>
+                <h1 class="font-serif text-3xl sm:text-5xl font-semibold text-white tracking-wide leading-tight">Hello Baby, How Are You Feeling Today?</h1>
+                <p class="text-sm sm:text-base font-serif italic text-rose-200/80">Every second of my day begins and ends with your thought...</p>
             </div>
 
-            <div class="space-y-3 max-w-md mx-auto text-left">
-                <button onclick="recordAnswer(1, 'It was sweet & smooth! 🌸', 'Hearing that fills my soul with pure cosmic joy!')" class="w-full py-3.5 px-5 rounded-2xl glass-box hover:bg-purple-500/30 text-xs sm:text-sm font-semibold transition-all flex items-center justify-between cursor-pointer">
+            <div class="space-y-3.5 max-w-md mx-auto text-left font-serif">
+                <button onclick="saveChapter1('🌸 My day was calm & sweet', 'Your calm happiness is my absolute safe haven. Hearing that makes my entire soul smile!')" class="w-full py-4 px-6 rounded-2xl romantic-card hover:bg-rose-500/20 hover:border-roseGold/60 text-sm font-medium transition-all flex items-center justify-between cursor-pointer group">
                     <span>🌸 It was calm and peaceful</span>
-                    <i class="fas fa-heart text-purple-400"></i>
+                    <i class="fas fa-heart text-rose-400 opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all"></i>
                 </button>
-                <button onclick="recordAnswer(1, 'It was tiring & exhausting... 🥺', 'Come here my baby... wrap yourself in my arms and let go of all stress.')" class="w-full py-3.5 px-5 rounded-2xl glass-box hover:bg-purple-500/30 text-xs sm:text-sm font-semibold transition-all flex items-center justify-between cursor-pointer">
+
+                <button onclick="saveChapter1('🥺 It was tiring & exhausting', 'Come here my sweet princess... rest your heart in my affection. I wish I could wrap you in my warm hug right now.')" class="w-full py-4 px-6 rounded-2xl romantic-card hover:bg-rose-500/20 hover:border-roseGold/60 text-sm font-medium transition-all flex items-center justify-between cursor-pointer group">
                     <span>🥺 It was tiring & overwhelming</span>
-                    <i class="fas fa-heart text-purple-400"></i>
+                    <i class="fas fa-heart text-rose-400 opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all"></i>
                 </button>
-                <button onclick="recordAnswer(1, 'I missed you deeply today... 💭', 'My heart craves you every millisecond! My eyes literally ache to see you.')" class="w-full py-3.5 px-5 rounded-2xl glass-box hover:bg-purple-500/30 text-xs sm:text-sm font-semibold transition-all flex items-center justify-between cursor-pointer">
-                    <span>💭 I missed you so much</span>
-                    <i class="fas fa-heart text-purple-400"></i>
+
+                <button onclick="saveChapter1('💭 I missed you so much today', 'My heart aches for you every microsecond! My eyes crave to see your beautiful smile in person.')" class="w-full py-4 px-6 rounded-2xl romantic-card hover:bg-rose-500/20 hover:border-roseGold/60 text-sm font-medium transition-all flex items-center justify-between cursor-pointer group">
+                    <span>💭 I missed you deeply today</span>
+                    <i class="fas fa-heart text-rose-400 opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all"></i>
                 </button>
             </div>
 
-            <div id="replyBox-1" class="hidden p-4 rounded-xl bg-purple-500/20 border border-purple-400/40 text-purple-100 text-xs font-medium"></div>
+            <div id="reply-1" class="hidden p-4 rounded-2xl bg-rose-500/15 border border-rose-400/30 text-rose-100 text-xs sm:text-sm font-serif italic leading-relaxed"></div>
 
-            <button onclick="nextStep(2)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500 text-white font-extrabold text-sm shadow-2xl hover:scale-105 transition-all cursor-pointer inline-flex items-center gap-2">
-                <span>Continue To Step 2</span>
-                <i class="fas fa-arrow-right"></i>
+            <button onclick="goToChapter(2)" class="px-10 py-4 rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white font-serif text-sm tracking-wider shadow-2xl hover:scale-105 transition-all cursor-pointer inline-flex items-center gap-3">
+                <span>Step Into Chapter II</span>
+                <i class="fas fa-arrow-right text-xs"></i>
             </button>
         </div>
     </section>
 
 
     <!-- ========================================================================= -->
-    <!-- INTERFACE 2: RETRO VINYL SUNSET (MOOD CHECK-IN) -->
+    <!-- CHAPTER 2: MELODY OF OUR HEARTS (LOVE JUKEBOX & MOOD CONNECTION) -->
     <!-- ========================================================================= -->
-    <section id="screen-2" class="screen-step relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="glass-box neon-glow-pink p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8 float-anim">
-            <div class="w-20 h-20 rounded-full bg-rose-500/20 border border-rose-400/50 flex items-center justify-center text-rose-300 text-3xl mx-auto shadow-2xl animate-spin-slow">
-                🎙️
+    <section id="chapter-2" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
+        <div class="romantic-card glow-gold p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8 animate-float">
+            
+            <div class="w-20 h-20 rounded-full bg-roseGold/10 border border-roseGold/40 flex items-center justify-center text-roseGold text-3xl mx-auto shadow-2xl animate-pulse-glow">
+                🎵
             </div>
 
-            <div class="space-y-3">
-                <span class="font-cursive text-3xl text-rose-300 block">Chapter of Heartbeat Melodies</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-white">How Is Your Heart Feeling Right Now?</h2>
+            <div class="space-y-2">
+                <span class="font-cursive text-3xl text-roseGold block">The Rhythm Of My Soul</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">How Does Your Heart Feel Right Now?</h2>
+                <p class="text-xs text-rose-200/70 font-serif italic">Let me tune my love to match your gentle heartbeat...</p>
             </div>
 
-            <div class="space-y-3 max-w-md mx-auto text-left">
-                <button onclick="recordAnswer(2, 'Feeling cheerful & light ✨', 'Your happy smile is my absolute favorite song in the universe!')" class="w-full py-3.5 px-5 rounded-2xl glass-box hover:bg-rose-500/30 text-xs sm:text-sm font-semibold transition-all flex items-center justify-between cursor-pointer">
+            <div class="space-y-3.5 max-w-md mx-auto text-left font-serif">
+                <button onclick="saveChapter2('✨ Cheerful & full of love', 'Your joy is my favorite melody in this world!')" class="w-full py-4 px-6 rounded-2xl romantic-card hover:bg-rose-500/20 text-sm font-medium transition-all flex items-center justify-between cursor-pointer">
                     <span>✨ Cheerful & feeling light</span>
-                    <i class="fas fa-music text-rose-400"></i>
+                    <i class="fas fa-music text-roseGold/70"></i>
                 </button>
-                <button onclick="recordAnswer(2, 'In need of warm hugs 🧸', 'I wish I could hold you tight right now and never let go.')" class="w-full py-3.5 px-5 rounded-2xl glass-box hover:bg-rose-500/30 text-xs sm:text-sm font-semibold transition-all flex items-center justify-between cursor-pointer">
+                <button onclick="saveChapter2('🧸 Craving warm cozy hugs', 'I am wrapping my virtual arms tightly around you right now!')" class="w-full py-4 px-6 rounded-2xl romantic-card hover:bg-rose-500/20 text-sm font-medium transition-all flex items-center justify-between cursor-pointer">
                     <span>🧸 Craving cozy warm hugs</span>
-                    <i class="fas fa-music text-rose-400"></i>
+                    <i class="fas fa-music text-roseGold/70"></i>
                 </button>
-                <button onclick="recordAnswer(2, 'Still feeling hurt or quiet 🤍', 'I listen to your silent pain with total devotion. I am right here with you.')" class="w-full py-3.5 px-5 rounded-2xl glass-box hover:bg-rose-500/30 text-xs sm:text-sm font-semibold transition-all flex items-center justify-between cursor-pointer">
-                    <span>🤍 Still hurting or quiet inside</span>
-                    <i class="fas fa-music text-rose-400"></i>
+                <button onclick="saveChapter2('🤍 Still quiet or feeling hurt', 'I promise to sit quietly beside you and heal every scratch on your heart with love.')" class="w-full py-4 px-6 rounded-2xl romantic-card hover:bg-rose-500/20 text-sm font-medium transition-all flex items-center justify-between cursor-pointer">
+                    <span>🤍 Still quiet or heavy inside</span>
+                    <i class="fas fa-music text-roseGold/70"></i>
                 </button>
             </div>
 
-            <div id="replyBox-2" class="hidden p-4 rounded-xl bg-rose-500/20 border border-rose-400/40 text-rose-100 text-xs font-medium"></div>
+            <div id="reply-2" class="hidden p-4 rounded-2xl bg-roseGold/10 border border-roseGold/30 text-roseGold text-xs sm:text-sm font-serif italic"></div>
 
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2">
-                <button onclick="prevStep(1)" class="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Back</button>
-                <button onclick="nextStep(3)" class="px-8 py-3 rounded-full bg-gradient-to-r from-rose-500 to-pink-500 text-white font-extrabold text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Step 3: Apology <i class="fas fa-arrow-right ml-1"></i></button>
+            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
+                <button onclick="goToChapter(1)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
+                <button onclick="goToChapter(3)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-rose-500 text-white font-medium text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter III: My Apology <i class="fas fa-arrow-right ml-1"></i></button>
             </div>
         </div>
     </section>
 
 
     <!-- ========================================================================= -->
-    <!-- INTERFACE 3: ENCHANTED GOLDEN AUTUMN (SINCERE APOLOGY & SORRY) -->
+    <!-- CHAPTER 3: AN HONEST APOLOGY FROM MY SOUL (TEAR-STAINED LETTER) -->
     <!-- ========================================================================= -->
-    <section id="screen-3" class="screen-step relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="glass-box neon-glow-gold p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
-            <div class="w-20 h-20 rounded-full bg-amber-500/20 border border-amber-400/50 flex items-center justify-center text-amber-300 text-3xl mx-auto shadow-2xl">
-                🍂
+    <section id="chapter-3" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
+        <div class="romantic-card glow-heart p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
+            
+            <div class="w-20 h-20 rounded-full bg-rose-500/15 border border-rose-400/40 flex items-center justify-center text-rose-300 text-3xl mx-auto shadow-2xl">
+                🕯️
             </div>
 
-            <div class="space-y-3">
-                <span class="font-cursive text-3xl text-amber-300 block">From The Purest Corner Of My Soul</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-white">I Am So Deeply Sorry, My Love</h2>
+            <div class="space-y-2">
+                <span class="font-cursive text-3xl text-roseGold block">From The Depth Of My Heart</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">I Am So Deeply Sorry, My Love</h2>
             </div>
 
-            <div class="p-6 rounded-2xl bg-black/40 border border-amber-400/30 text-left space-y-4 font-light text-xs sm:text-sm leading-relaxed text-amber-100">
+            <!-- Parchment Aesthetic Letter -->
+            <div class="p-6 sm:p-8 rounded-3xl bg-black/50 border border-roseGold/30 text-left space-y-4 font-serif text-sm sm:text-base leading-relaxed text-rose-100/90 italic relative overflow-hidden">
+                <div class="absolute top-3 right-4 text-3xl opacity-20">🕊️</div>
                 <p>
-                    "Baby, if I have ever brought tears to your eyes, hurt your soft heart, or made you feel anything less than the supreme queen you are—I am profoundly, sincerely sorry."
+                    "My sweet baby, if I have ever brought tears to your precious eyes, hurt your delicate heart, or caused you pain—I am sincerely, deeply sorry from the bottom of my soul."
                 </p>
                 <p>
-                    "I take full ownership of my mistakes. My intention will only ever be to protect your smile, honor your dignity, and make you feel treasured beyond measure. Please forgive me, my queen."
+                    "I take full ownership of my mistakes. My only desire in life is to protect your beautiful smile, honor your soft heart, and treat you like the supreme queen you truly are. Please forgive me, my forever love."
                 </p>
             </div>
 
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2">
-                <button onclick="prevStep(2)" class="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Back</button>
-                <button onclick="nextStep(4)" class="px-8 py-3 rounded-full bg-gradient-to-r from-amber-500 to-rose-500 text-slate-950 font-extrabold text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Step 4: Missing You <i class="fas fa-arrow-right ml-1"></i></button>
+            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
+                <button onclick="goToChapter(2)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
+                <button onclick="goToChapter(4)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-500 to-rose-600 text-slate-950 font-bold text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter IV: Missing You <i class="fas fa-arrow-right ml-1"></i></button>
             </div>
         </div>
     </section>
 
 
     <!-- ========================================================================= -->
-    <!-- INTERFACE 4: BIOLUMINESCENT OCEAN (MY EYES CRAVE TO SEE YOU) -->
+    <!-- CHAPTER 4: MY EYES CRAVE TO SEE YOU (THE INTENSE LONGING) -->
     <!-- ========================================================================= -->
-    <section id="screen-4" class="screen-step relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="glass-box neon-glow-blue p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
-            <div class="w-20 h-20 rounded-full bg-sky-500/20 border border-sky-400/50 flex items-center justify-center text-sky-300 text-3xl mx-auto shadow-2xl">
-                🌊
+    <section id="chapter-4" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
+        <div class="romantic-card glow-gold p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
+            
+            <div class="w-20 h-20 rounded-full bg-roseGold/10 border border-roseGold/40 flex items-center justify-center text-roseGold text-3xl mx-auto shadow-2xl">
+                👀
             </div>
 
-            <div class="space-y-3">
-                <span class="font-cursive text-3xl text-sky-300 block">Depths Of Endless Longing</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-white">My Eyes Are Craving To See You</h2>
+            <div class="space-y-2">
+                <span class="font-cursive text-3xl text-roseGold block">The Unbearable Distance</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">My Eyes Are Craving To See You</h2>
             </div>
 
-            <p class="text-xs sm:text-sm text-sky-100 font-light leading-relaxed max-w-md mx-auto">
-                No text message or screen can ever be enough. My eyes ache to look directly into yours, to admire your radiance, and to witness every gentle blink and smile right in front of me.
+            <p class="text-sm sm:text-base text-rose-100/80 font-serif italic leading-relaxed max-w-lg mx-auto">
+                No text message, video call, or photo can ever satisfy my heart. My eyes literally ache to gaze directly into yours, to admire every sparkle in your eyes, and to hold your hands in mine.
             </p>
 
-            <div class="p-5 rounded-2xl bg-sky-950/60 border border-sky-400/30 text-sky-200 text-xs italic">
-                👀 "In a world full of millions, my eyes will only ever search for you."
+            <div class="p-5 rounded-2xl bg-rose-950/40 border border-rose-500/30 text-rose-200 text-xs sm:text-sm font-serif italic">
+                ✨ "In a world with billions of people, my eyes will only ever search for you."
             </div>
 
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2">
-                <button onclick="prevStep(3)" class="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Back</button>
-                <button onclick="nextStep(5)" class="px-8 py-3 rounded-full bg-gradient-to-r from-sky-400 to-indigo-500 text-white font-extrabold text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Step 5: Rose Promises <i class="fas fa-arrow-right ml-1"></i></button>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ========================================================================= -->
-    <!-- INTERFACE 5: VELVET ROSE SANCTUARY (INTERACTIVE ROMANTIC CHOICES) -->
-    <!-- ========================================================================= -->
-    <section id="screen-5" class="screen-step relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="glass-box neon-glow-pink p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
-            <div class="w-20 h-20 rounded-full bg-rose-600/20 border border-rose-400/50 flex items-center justify-center text-rose-300 text-3xl mx-auto shadow-2xl">
-                🌹
-            </div>
-
-            <div class="space-y-3">
-                <span class="font-cursive text-3xl text-rose-300 block">Chapter of Devotion & Surprises</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-white">Pick A Romantic Devotion</h2>
-            </div>
-
-            <div class="space-y-3 max-w-md mx-auto text-left">
-                <button onclick="recordAnswer(5, 'Hold my hand under rainy skies 🌧️', 'I promise to shelter you and hold your fingers tight forever!')" class="w-full py-3.5 px-5 rounded-2xl glass-box hover:bg-rose-500/30 text-xs sm:text-sm font-semibold transition-all flex items-center justify-between cursor-pointer">
-                    <span>🌧️ Hold my hand tightly under rainy skies</span>
-                    <i class="fas fa-rose text-rose-400"></i>
-                </button>
-                <button onclick="recordAnswer(5, 'Surprise me with cute notes 💌', 'I will write you endless letters declaring my eternal devotion!')" class="w-full py-3.5 px-5 rounded-2xl glass-box hover:bg-rose-500/30 text-xs sm:text-sm font-semibold transition-all flex items-center justify-between cursor-pointer">
-                    <span>💌 Leave hidden love notes for you to discover</span>
-                    <i class="fas fa-rose text-rose-400"></i>
-                </button>
-                <button onclick="recordAnswer(5, 'Whisper sweet bedtime promises 🌙', 'I will sing you into peaceful sleep every single night!')" class="w-full py-3.5 px-5 rounded-2xl glass-box hover:bg-rose-500/30 text-xs sm:text-sm font-semibold transition-all flex items-center justify-between cursor-pointer">
-                    <span>🌙 Whisper sweet bedtime promises every night</span>
-                    <i class="fas fa-rose text-rose-400"></i>
-                </button>
-            </div>
-
-            <div id="replyBox-5" class="hidden p-4 rounded-xl bg-rose-500/20 border border-rose-400/40 text-rose-100 text-xs font-medium"></div>
-
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2">
-                <button onclick="prevStep(4)" class="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Back</button>
-                <button onclick="nextStep(6)" class="px-8 py-3 rounded-full bg-gradient-to-r from-rose-500 to-purple-500 text-white font-extrabold text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Step 6: Mini Game 🎮 <i class="fas fa-arrow-right ml-1"></i></button>
+            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
+                <button onclick="goToChapter(3)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
+                <button onclick="goToChapter(5)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white font-medium text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter V: Reasons Why <i class="fas fa-arrow-right ml-1"></i></button>
             </div>
         </div>
     </section>
 
 
     <!-- ========================================================================= -->
-    <!-- INTERFACE 6: CYBERPUNK NEON (MINI GAME: MATCH OUR HEARTS) -->
+    <!-- CHAPTER 5: REASONS WHY MY HEART BEATS FOR YOU (INTERACTIVE REASON CARDS) -->
     <!-- ========================================================================= -->
-    <section id="screen-6" class="screen-step relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="glass-box neon-glow-purple p-8 sm:p-12 rounded-[2.5rem] text-center space-y-6">
+    <section id="chapter-5" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
+        <div class="romantic-card glow-heart p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
+            
             <div class="space-y-2">
-                <span class="font-cursive text-3xl text-purple-300 block">Interactive Arcade Of Love</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-white">Match Our Love Symbols 🎮</h2>
-                <p class="text-xs text-slate-300">Match all 6 pairs to prove our hearts beat in sync!</p>
+                <span class="font-cursive text-3xl text-roseGold block">Infinite Reasons To Love You</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">Tap To Reveal Why You Are My World ✨</h2>
+                <p class="text-xs text-rose-200/60 font-serif italic">Click each golden heart card below...</p>
             </div>
 
-            <!-- Memory Game Grid -->
-            <div id="gameGrid" class="grid grid-cols-3 sm:grid-cols-4 gap-3 max-w-xs sm:max-w-sm mx-auto pt-2"></div>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2 max-w-md mx-auto">
+                
+                <div onclick="flipReason(this)" class="reason-card h-32">
+                    <div class="reason-card-inner">
+                        <div class="reason-front flex-col font-serif text-roseGold">
+                            <span class="text-2xl mb-1">💖</span>
+                            <span class="text-xs">Reason #1</span>
+                        </div>
+                        <div class="reason-back font-serif text-white text-xs text-center leading-snug">
+                            "Your soft laughter heals all my hidden bad days instantly."
+                        </div>
+                    </div>
+                </div>
 
-            <div id="gameWinMsg" class="hidden p-3.5 rounded-xl bg-emerald-500/20 border border-emerald-400/40 text-emerald-200 text-xs font-bold animate-bounce">
-                🎉 Perfect Match! Our souls are forever synchronized!
+                <div onclick="flipReason(this)" class="reason-card h-32">
+                    <div class="reason-card-inner">
+                        <div class="reason-front flex-col font-serif text-roseGold">
+                            <span class="text-2xl mb-1">👑</span>
+                            <span class="text-xs">Reason #2</span>
+                        </div>
+                        <div class="reason-back font-serif text-white text-xs text-center leading-snug">
+                            "You carry yourself with the grace and warmth of a true queen."
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="flipReason(this)" class="reason-card h-32">
+                    <div class="reason-card-inner">
+                        <div class="reason-front flex-col font-serif text-roseGold">
+                            <span class="text-2xl mb-1">🌸</span>
+                            <span class="text-xs">Reason #3</span>
+                        </div>
+                        <div class="reason-back font-serif text-white text-xs text-center leading-snug">
+                            "Your kindness makes this chaotic world feel peaceful."
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="flipReason(this)" class="reason-card h-32">
+                    <div class="reason-card-inner">
+                        <div class="reason-front flex-col font-serif text-roseGold">
+                            <span class="text-2xl mb-1">✨</span>
+                            <span class="text-xs">Reason #4</span>
+                        </div>
+                        <div class="reason-back font-serif text-white text-xs text-center leading-snug">
+                            "Your eyes hold a brightness brighter than all galaxy stars."
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="flipReason(this)" class="reason-card h-32">
+                    <div class="reason-card-inner">
+                        <div class="reason-front flex-col font-serif text-roseGold">
+                            <span class="text-2xl mb-1">🕊️</span>
+                            <span class="text-xs">Reason #5</span>
+                        </div>
+                        <div class="reason-back font-serif text-white text-xs text-center leading-snug">
+                            "With you, I feel completely understood and truly home."
+                        </div>
+                    </div>
+                </div>
+
+                <div onclick="flipReason(this)" class="reason-card h-32">
+                    <div class="reason-card-inner">
+                        <div class="reason-front flex-col font-serif text-roseGold">
+                            <span class="text-2xl mb-1">♾️</span>
+                            <span class="text-xs">Reason #6</span>
+                        </div>
+                        <div class="reason-back font-serif text-white text-xs text-center leading-snug">
+                            "My heart has chosen you for eternity, without hesitation."
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2">
-                <button onclick="prevStep(5)" class="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Back</button>
-                <button onclick="nextStep(7)" class="px-8 py-3 rounded-full bg-gradient-to-r from-purple-500 to-amber-500 text-white font-extrabold text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Step 7: Our Memories 🖼️ <i class="fas fa-arrow-right ml-1"></i></button>
+            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
+                <button onclick="goToChapter(4)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
+                <button onclick="goToChapter(6)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white font-medium text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter VI: Sealed Letter <i class="fas fa-arrow-right ml-1"></i></button>
             </div>
         </div>
     </section>
 
 
     <!-- ========================================================================= -->
-    <!-- INTERFACE 7: VINTAGE POLAROID SCRAPBOOK (OUR MEMORIES GALLERY) -->
+    <!-- CHAPTER 6: THE SECRET LOVE ENVELOPE (INTERACTIVE UNSEALING) -->
     <!-- ========================================================================= -->
-    <section id="screen-7" class="screen-step relative z-10 w-full max-w-3xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="glass-box neon-glow-gold p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
+    <section id="chapter-6" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
+        <div class="romantic-card glow-gold p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
+            
             <div class="space-y-2">
-                <span class="font-cursive text-3xl text-amber-300 block">Timeless Moments With You</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-white">Our Beautiful Memories Space 🖼️</h2>
-                <p class="text-xs text-slate-300">Snapshots of the times my heart felt completely full.</p>
+                <span class="font-cursive text-3xl text-roseGold block">Confession Sealed With Gold</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">Tap To Unseal My Hidden Letter 💌</h2>
+            </div>
+
+            <!-- Envelope Container -->
+            <div onclick="unsealEnvelope()" id="envelopeBox" class="p-8 rounded-3xl bg-black/60 border border-roseGold/40 cursor-pointer group hover:border-roseGold transition-all max-w-md mx-auto space-y-4">
+                <div id="waxSealIcon" class="w-20 h-20 rounded-full bg-rose-600/30 border-2 border-roseGold flex items-center justify-center text-roseGold text-4xl mx-auto group-hover:scale-110 transition-transform shadow-2xl">
+                    💌
+                </div>
+                <div id="envelopeTitle" class="font-serif font-bold text-lg text-roseGold">Wax-Sealed Love Letter</div>
+                <p id="envelopeSub" class="text-xs text-rose-200/60 font-serif italic">Tap to break the wax seal and open my letter...</p>
+                
+                <div id="hiddenLetterText" class="hidden text-left font-serif text-sm leading-relaxed text-rose-100/90 pt-4 border-t border-roseGold/20 space-y-3">
+                    <p>"My dearest baby,"</p>
+                    <p>"I wrote this letter in a quiet room thinking of your face. You aren't just a part of my life—you are the center around which my entire life revolves. I promise to always listen to you, hold you when you're tired, and love you more with every sunrise."</p>
+                    <p class="text-right text-roseGold font-cursive text-2xl pt-2">- Yours Forever, Ridesh</p>
+                </div>
+            </div>
+
+            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
+                <button onclick="goToChapter(5)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
+                <button onclick="goToChapter(7)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white font-medium text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter VII: Memory Scrapbook <i class="fas fa-arrow-right ml-1"></i></button>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ========================================================================= -->
+    <!-- CHAPTER 7: OUR MEMORY SCRAPBOOK (POLAROID MEMORY GALLERY) -->
+    <!-- ========================================================================= -->
+    <section id="chapter-7" class="chapter-screen relative z-10 w-full max-w-3xl opacity-0 hidden my-auto pt-16 pb-8">
+        <div class="romantic-card glow-heart p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
+            
+            <div class="space-y-2">
+                <span class="font-cursive text-3xl text-roseGold block">Frozen Moments In Time</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">Our Memory Sanctuary 🖼️</h2>
+                <p class="text-xs text-rose-200/60 font-serif italic">Snapshots of the moments my heart felt complete...</p>
             </div>
 
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
-                <div class="polaroid-card rounded-xl -rotate-3">
-                    <div class="h-48 overflow-hidden rounded-md bg-slate-800">
+                <div class="polaroid-frame rounded-xl -rotate-2">
+                    <div class="h-48 overflow-hidden rounded-md bg-slate-900">
                         <img src="memories/photo1.jpg" alt="Memory 1" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80'">
                     </div>
                     <p class="font-cursive text-slate-800 text-2xl mt-3 font-bold">Your Radiant Smile</p>
                 </div>
 
-                <div class="polaroid-card rounded-xl rotate-2">
-                    <div class="h-48 overflow-hidden rounded-md bg-slate-800">
+                <div class="polaroid-frame rounded-xl rotate-3">
+                    <div class="h-48 overflow-hidden rounded-md bg-slate-900">
                         <img src="memories/photo2.jpg" alt="Memory 2" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80'">
                     </div>
-                    <p class="font-cursive text-slate-800 text-2xl mt-3 font-bold">Warmest Hands</p>
+                    <p class="font-cursive text-slate-800 text-2xl mt-3 font-bold">Holding Your Hands</p>
                 </div>
 
-                <div class="polaroid-card rounded-xl -rotate-1">
-                    <div class="h-48 overflow-hidden rounded-md bg-slate-800">
+                <div class="polaroid-frame rounded-xl -rotate-1">
+                    <div class="h-48 overflow-hidden rounded-md bg-slate-900">
                         <img src="memories/photo3.jpg" alt="Memory 3" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
                     </div>
                     <p class="font-cursive text-slate-800 text-2xl mt-3 font-bold">Craving Your Eyes</p>
                 </div>
             </div>
 
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2">
-                <button onclick="prevStep(6)" class="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Back</button>
-                <button onclick="nextStep(8)" class="px-8 py-3 rounded-full bg-gradient-to-r from-amber-500 to-indigo-500 text-slate-950 font-extrabold text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Step 8: Constellation ✨ <i class="fas fa-arrow-right ml-1"></i></button>
+            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
+                <button onclick="goToChapter(6)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
+                <button onclick="goToChapter(8)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-500 to-rose-600 text-slate-950 font-bold text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter VIII: Promise Jar <i class="fas fa-arrow-right ml-1"></i></button>
             </div>
         </div>
     </section>
 
 
     <!-- ========================================================================= -->
-    <!-- INTERFACE 8: MIDNIGHT CONSTELLATION (INTERACTIVE LOVE STAR PUZZLE) -->
+    <!-- CHAPTER 8: THE JAR OF ETERNAL PROMISES (INTERACTIVE PROMISE JAR) -->
     <!-- ========================================================================= -->
-    <section id="screen-8" class="screen-step relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="glass-box neon-glow-purple p-8 sm:p-12 rounded-[2.5rem] text-center space-y-6">
+    <section id="chapter-8" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
+        <div class="romantic-card glow-gold p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
+            
             <div class="space-y-2">
-                <span class="font-cursive text-3xl text-indigo-300 block">Written In The Stars</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-white">Tap The Stars To Form Our Heart ✨</h2>
-                <p class="text-xs text-indigo-200">Click all 5 cosmic star points to illuminate our love constellation!</p>
+                <span class="font-cursive text-3xl text-roseGold block">Written In Sacred Trust</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">Tap The Jar To Pull A Promise 🍯</h2>
             </div>
 
-            <!-- Constellation Container -->
-            <div id="starContainer" class="relative w-64 h-64 mx-auto border border-indigo-500/30 rounded-full bg-black/40 flex items-center justify-center">
-                <button onclick="clickStar(1)" id="star-1" class="absolute top-6 left-12 w-9 h-9 rounded-full bg-indigo-500/40 border border-indigo-300 text-xs flex items-center justify-center cursor-pointer hover:scale-125 transition-all">⭐</button>
-                <button onclick="clickStar(2)" id="star-2" class="absolute top-6 right-12 w-9 h-9 rounded-full bg-indigo-500/40 border border-indigo-300 text-xs flex items-center justify-center cursor-pointer hover:scale-125 transition-all">⭐</button>
-                <button onclick="clickStar(3)" id="star-3" class="absolute top-28 left-4 w-9 h-9 rounded-full bg-indigo-500/40 border border-indigo-300 text-xs flex items-center justify-center cursor-pointer hover:scale-125 transition-all">⭐</button>
-                <button onclick="clickStar(4)" id="star-4" class="absolute top-28 right-4 w-9 h-9 rounded-full bg-indigo-500/40 border border-indigo-300 text-xs flex items-center justify-center cursor-pointer hover:scale-125 transition-all">⭐</button>
-                <button onclick="clickStar(5)" id="star-5" class="absolute bottom-6 w-9 h-9 rounded-full bg-indigo-500/40 border border-indigo-300 text-xs flex items-center justify-center cursor-pointer hover:scale-125 transition-all">⭐</button>
-                <span id="constellationHeart" class="text-6xl opacity-0 transition-opacity duration-700">💖</span>
+            <div class="relative max-w-md mx-auto p-8 rounded-3xl bg-black/50 border border-roseGold/30 text-center space-y-6">
+                <div onclick="drawPromise()" class="w-24 h-24 rounded-full bg-amber-500/10 border-2 border-roseGold/50 flex items-center justify-center text-5xl mx-auto cursor-pointer hover:scale-110 transition-transform shadow-2xl animate-float">
+                    🏺
+                </div>
+
+                <div id="promiseNote" class="p-4 rounded-2xl bg-roseGold/10 border border-roseGold/30 text-roseGold font-serif italic text-sm min-h-[70px] flex items-center justify-center">
+                    "Click the jar to uncover a lifelong vow from my heart..."
+                </div>
             </div>
 
-            <div id="starSuccess" class="hidden text-xs font-bold text-indigo-200 animate-pulse">
-                🌟 The stars have officially aligned! Ridesh & His Princess Forever!
-            </div>
-
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2">
-                <button onclick="prevStep(7)" class="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Back</button>
-                <button onclick="nextStep(9)" class="px-8 py-3 rounded-full bg-gradient-to-r from-indigo-500 to-amber-500 text-white font-extrabold text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Step 9: Gifts Pledge 🎁 <i class="fas fa-arrow-right ml-1"></i></button>
+            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
+                <button onclick="goToChapter(7)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
+                <button onclick="goToChapter(9)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white font-medium text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter IX: Meetup Gifts <i class="fas fa-arrow-right ml-1"></i></button>
             </div>
         </div>
     </section>
 
 
     <!-- ========================================================================= -->
-    <!-- INTERFACE 9: GOLDEN HOUR DUSK (MY GIFTS & MEETUP PLEDGE) -->
+    <!-- CHAPTER 9: GIFTS & MEETUP SACRED PLEDGE (ROYAL TREATMENT PLEDGE) -->
     <!-- ========================================================================= -->
-    <section id="screen-9" class="screen-step relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="glass-box neon-glow-gold p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
-            <div class="w-20 h-20 rounded-full bg-amber-500/20 border border-amber-400/50 flex items-center justify-center text-amber-300 text-3xl mx-auto shadow-2xl">
+    <section id="chapter-9" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
+        <div class="romantic-card glow-heart p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
+            
+            <div class="w-20 h-20 rounded-full bg-amber-500/15 border border-amber-400/40 flex items-center justify-center text-amber-300 text-3xl mx-auto shadow-2xl">
                 🎁
             </div>
 
-            <div class="space-y-3">
-                <span class="font-cursive text-3xl text-amber-300 block">My Lifetime Sacred Promise</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-extrabold text-white">Gifts For You Whenever We Meet</h2>
+            <div class="space-y-2">
+                <span class="font-cursive text-3xl text-roseGold block">My Sacred Commitment</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">Gifts For You Every Time We Meet</h2>
             </div>
 
-            <p class="text-xs sm:text-sm text-amber-100 font-light leading-relaxed max-w-md mx-auto">
-                Here is my sworn pledge to you, my love: Every single time we meet in person, I will bring you special gifts, beautiful surprises, and tokens of my endless adoration. Seeing your eyes light up with joy is my highest purpose in life.
+            <p class="text-sm sm:text-base text-rose-100/80 font-serif italic leading-relaxed max-w-md mx-auto">
+                Here is my sworn pledge to you, my princess: Every single time we meet in person, I will bring you special gifts, beautiful surprises, and royal affection. Seeing your eyes spark with joy is my ultimate purpose in life.
             </p>
 
-            <div class="p-5 rounded-2xl bg-amber-950/50 border border-amber-400/30 text-amber-200 text-xs font-semibold">
-                🤝 "Every meeting with you will be celebrated like a royal holiday."
+            <div class="p-5 rounded-2xl bg-amber-950/40 border border-amber-400/30 text-amber-200 text-xs sm:text-sm font-serif italic">
+                🤝 "Every meeting with you will feel like a royal celebration."
             </div>
 
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2">
-                <button onclick="prevStep(8)" class="text-xs text-slate-300 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Back</button>
-                <button onclick="nextStep(10)" class="px-10 py-4 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-pink-500 text-slate-950 font-black text-sm shadow-2xl hover:scale-105 transition-all cursor-pointer flex items-center gap-2">
+            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
+                <button onclick="goToChapter(8)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
+                <button onclick="goToChapter(10)" class="px-10 py-4 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-rose-600 text-slate-950 font-bold text-sm shadow-2xl hover:scale-105 transition-all cursor-pointer flex items-center gap-2">
                     <span>Unlock Grand Proposal 💍</span>
                     <i class="fas fa-heart text-rose-950"></i>
                 </button>
@@ -470,74 +564,74 @@
 
 
     <!-- ========================================================================= -->
-    <!-- INTERFACE 10: SACRED DIAMOND SANCTUARY (THE SINGLE FINAL PROPOSAL) -->
+    <!-- CHAPTER 10: SACRED DIAMOND SANCTUARY (THE SINGLE FINAL PROPOSAL INTERFACE) -->
     <!-- ========================================================================= -->
-    <section id="screen-10" class="screen-step relative z-10 w-full max-w-3xl opacity-0 hidden my-auto pt-16 pb-12">
-        <div class="glass-box neon-glow-pink p-8 sm:p-14 rounded-[2.5rem] text-center space-y-10 relative">
+    <section id="chapter-10" class="chapter-screen relative z-10 w-full max-w-3xl opacity-0 hidden my-auto pt-16 pb-12">
+        <div class="romantic-card glow-heart p-8 sm:p-14 rounded-[2.5rem] text-center space-y-10 relative">
             
             <div class="space-y-3">
-                <span class="font-cinzel text-xs tracking-widest text-rose-300 uppercase block">The Ultimate Destination Of Our Love</span>
-                <h1 class="font-serif text-3xl sm:text-5xl font-black text-white leading-tight">Will You Be Mine Forever, My Princess?</h1>
+                <span class="font-serif text-xs tracking-widest text-roseGold uppercase block">The Destination Of Our Love Story</span>
+                <h1 class="font-serif text-3xl sm:text-5xl font-bold text-white leading-tight tracking-wide">Will You Be Mine Forever, My Princess?</h1>
             </div>
 
-            <!-- Ring & Bouquet Presentation Side-By-Side -->
+            <!-- Virtual Bouquet & Interactive Ring Box -->
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
                 
-                <!-- Bouquet Showcase -->
-                <div class="p-6 rounded-3xl bg-black/40 border border-rose-400/40 space-y-3 hover:border-rose-400 transition-all">
+                <!-- Virtual Bouquet Frame -->
+                <div class="p-6 rounded-3xl bg-black/50 border border-rose-500/30 space-y-3 hover:border-rose-400 transition-all">
                     <div class="text-6xl animate-bounce">💐</div>
-                    <h3 class="font-serif font-bold text-lg text-rose-200">Virtual Rose Bouquet</h3>
-                    <p class="text-xs text-slate-300 font-light">
-                        A fresh blooming bouquet created exclusively for you, symbolizing a love that never fades.
+                    <h3 class="font-serif font-semibold text-lg text-rose-200">Fresh Rose Bouquet</h3>
+                    <p class="text-xs text-rose-200/60 font-serif italic">
+                        A everlasting blooming bouquet crafted exclusively for you, my queen.
                     </p>
                 </div>
 
                 <!-- Interactive Ring Box -->
-                <div onclick="openRingBox()" id="finalRingBox" class="p-6 rounded-3xl bg-black/40 border border-amber-400/40 space-y-3 hover:border-amber-400 transition-all cursor-pointer group">
+                <div onclick="openRingBox()" id="finalRingBox" class="p-6 rounded-3xl bg-black/50 border border-roseGold/40 space-y-3 hover:border-roseGold transition-all cursor-pointer group">
                     <div id="finalRingIcon" class="text-6xl group-hover:scale-110 transition-transform">🎁</div>
-                    <h3 id="finalRingTitle" class="font-serif font-bold text-lg text-amber-200">Tap To Open Ring Box 💍</h3>
-                    <p id="finalRingSub" class="text-xs text-slate-300 font-light">
+                    <h3 id="finalRingTitle" class="font-serif font-semibold text-lg text-roseGold">Tap To Open Ring Box 💍</h3>
+                    <p id="finalRingSub" class="text-xs text-rose-200/60 font-serif italic">
                         Click to unbox the diamond ring crafted specially for your finger!
                     </p>
                 </div>
 
             </div>
 
-            <!-- Deep Emotional Letter Box -->
-            <div class="bg-black/50 p-6 sm:p-8 rounded-3xl border border-rose-400/30 text-left space-y-4 text-xs sm:text-sm font-light leading-relaxed">
+            <!-- Deep Emotional Confession Letter -->
+            <div class="bg-black/60 p-6 sm:p-8 rounded-3xl border border-roseGold/30 text-left space-y-4 text-xs sm:text-sm font-serif italic leading-relaxed">
                 <p class="text-rose-100">
-                    "My eyes are craving to see you more than anything in this world. Every second apart feels incomplete. I apologize once again for every flaw, and I promise to spend every day of my life making you feel safe, adored, and cherished."
+                    "My baby, my eyes crave to see you more than words can express. Every second apart feels incomplete. I apologize once again for every single mistake, and I promise to spend every day of my life protecting your smile, honoring your soft heart, and giving you gifts every time we meet."
                 </p>
-                <p class="text-amber-200 font-medium">
-                    "With this ring, this bouquet, and my pledge of giving you gifts every time we meet—I ask you to hold my hand and walk with me through all eternity."
+                <p class="text-roseGold font-medium">
+                    "With this ring, this bouquet, and my soul—I ask you to hold my hand and walk with me through all eternity."
                 </p>
             </div>
 
-            <!-- Action Buttons -->
-            <div id="proposalActionGroup" class="pt-2 flex flex-col sm:flex-row gap-4 justify-center items-center relative min-h-[70px]">
-                <button onclick="acceptProposal()" class="px-10 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-300 text-slate-950 font-black text-base shadow-2xl hover:scale-110 transition-all cursor-pointer">
+            <!-- Proposal Buttons -->
+            <div id="proposalActionGroup" class="pt-2 flex flex-col sm:flex-row gap-4 justify-center items-center relative min-h-[70px] font-serif">
+                <button onclick="acceptProposal()" class="px-10 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-300 text-slate-950 font-bold text-base shadow-2xl hover:scale-105 transition-all cursor-pointer">
                     YES Ridesh! I Accept Your Ring & Love! 💍💐
                 </button>
 
-                <button id="evasiveNoBtn" class="px-8 py-4 rounded-full glass-box border border-white/20 text-slate-300 font-semibold text-xs transition-all duration-150 cursor-pointer">
+                <button id="evasiveNoBtn" class="px-8 py-4 rounded-full romantic-card border border-rose-200/30 text-rose-200 font-semibold text-xs transition-all duration-150 cursor-pointer">
                     Let me think 🙈
                 </button>
             </div>
 
-            <!-- Final Result Celebration Box -->
+            <!-- Celebration Screen -->
             <div id="proposalResult" class="hidden space-y-6 pt-4 text-center">
-                <div class="w-48 h-48 rounded-3xl overflow-hidden border-4 border-rose-400 mx-auto shadow-2xl">
+                <div class="w-48 h-48 rounded-3xl overflow-hidden border-2 border-roseGold mx-auto shadow-2xl">
                     <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z6NmNhbGJ5NG1pODdzYnJycGt2azJsaTRxNXVvZXFsdnl3cmNycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LMB3W50M3I760/giphy.gif" alt="Celebration Cat Hug" class="w-full h-full object-cover">
                 </div>
                 
-                <div class="space-y-2">
-                    <h3 class="font-serif text-3xl sm:text-4xl font-extrabold text-white">WE ARE FOREVER TOGETHER! 🎉💍</h3>
-                    <p class="text-xs sm:text-sm text-rose-200 font-light max-w-md mx-auto">
-                        I am counting down every microsecond until I see you, place this ring on your finger, hand you your bouquet, and give you your meetup gifts!
+                <div class="space-y-2 font-serif">
+                    <h3 class="text-3xl sm:text-4xl font-bold text-white">FOREVER & ALWAYS TOGETHER! 🎉💍</h3>
+                    <p class="text-xs sm:text-sm text-rose-200/80 italic max-w-md mx-auto">
+                        I am counting down every second until I see you, place this diamond ring on your finger, hand you your fresh bouquet, and give you your meetup gifts!
                     </p>
                 </div>
 
-                <a href="https://wa.me/9779800000000?text=Yes%20Ridesh!%20I%20accept%20your%20ring,%20bouquet,%20and%20your%20forever%20love!%20I%20can't%20wait%20to%20see%20you!%20💍💐❤️" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-emerald-500 text-white font-extrabold text-sm shadow-2xl hover:bg-emerald-600 hover:scale-105 transition-all">
+                <a href="https://wa.me/9779800000000?text=Yes%20Ridesh!%20I%20accept%20your%20ring,%20bouquet,%20and%20your%20forever%20love!%20I%20can't%20wait%20to%20see%20you!%20💍💐❤️" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-emerald-600 text-white font-bold text-sm shadow-2xl hover:bg-emerald-500 hover:scale-105 transition-all font-sans">
                     <i class="fab fa-whatsapp text-2xl"></i> Send Ridesh A Message On WhatsApp
                 </a>
             </div>
@@ -559,43 +653,41 @@
         function toggleMusic() {
             if (isPlaying) {
                 audio.pause();
-                musicIcon.className = "fas fa-music";
-                musicStatusText.textContent = 'Play "Upahar"';
+                musicIcon.className = "fas fa-heart text-xs";
+                musicStatusText.textContent = 'Play Love Song';
                 isPlaying = false;
             } else {
                 audio.play().then(() => {
-                    musicIcon.className = "fas fa-pause text-rose-300 animate-spin";
+                    musicIcon.className = "fas fa-pause text-xs text-rose-300 animate-spin";
                     musicStatusText.textContent = 'Playing "Upahar"';
                     isPlaying = true;
-                }).catch(err => console.log("Audio waiting for user interaction", err));
+                }).catch(err => console.log("Audio play waiting for interaction", err));
             }
         }
 
-        /* --- Step Router & Theme Engine --- */
-        const stepThemes = [
-            { name: "Cosmic Starry Night", class: "theme-1" },
-            { name: "Retro Sunset Melodies", class: "theme-2" },
-            { name: "Enchanted Golden Autumn", class: "theme-3" },
-            { name: "Bioluminescent Ocean", class: "theme-4" },
-            { name: "Velvet Rose Sanctuary", class: "theme-5" },
-            { name: "Cyberpunk Neon Romance", class: "theme-6" },
-            { name: "Vintage Warm Scrapbook", class: "theme-7" },
-            { name: "Midnight Constellation", class: "theme-8" },
-            { name: "Golden Hour Dusk", class: "theme-9" },
-            { name: "Sacred Proposal Sanctuary", class: "theme-10" }
+        /* --- Chapter Navigation Engine --- */
+        const chapterTitles = [
+            "Chapter I • Starlight Whispers",
+            "Chapter II • Rhythm Of My Heart",
+            "Chapter III • My Deepest Apology",
+            "Chapter IV • My Eyes Crave You",
+            "Chapter V • Reasons Why I Love You",
+            "Chapter VI • The Sealed Letter",
+            "Chapter VII • Our Memory Sanctuary",
+            "Chapter VIII • The Promise Jar",
+            "Chapter IX • Meetup & Gift Pledge",
+            "Chapter X • The Sacred Proposal"
         ];
 
-        let currentStep = 1;
+        let currentChapter = 1;
 
-        function updateStepUI(step) {
-            document.getElementById('stepCounterText').textContent = `${step} / 10 • ${stepThemes[step - 1].name}`;
-            document.getElementById('mainBody').className = `${stepThemes[step - 1].class} relative min-h-screen text-slate-100 antialiased selection:bg-rose-500 selection:text-white flex flex-col items-center justify-center p-4 sm:p-8`;
-            currentParticleType = step; // Adjust background particle style
+        function updateRibbon(ch) {
+            document.getElementById('chapterRibbonText').textContent = chapterTitles[ch - 1];
         }
 
-        function hideAllScreens() {
+        function hideAllChapters() {
             for (let i = 1; i <= 10; i++) {
-                const el = document.getElementById(`screen-${i}`);
+                const el = document.getElementById(`chapter-${i}`);
                 if (el) {
                     el.classList.add('hidden');
                     el.classList.remove('opacity-100');
@@ -604,11 +696,11 @@
             }
         }
 
-        function nextStep(step) {
-            currentStep = step;
-            hideAllScreens();
-            updateStepUI(step);
-            const target = document.getElementById(`screen-${step}`);
+        function goToChapter(ch) {
+            currentChapter = ch;
+            hideAllChapters();
+            updateRibbon(ch);
+            const target = document.getElementById(`chapter-${ch}`);
             if (target) {
                 target.classList.remove('hidden');
                 setTimeout(() => {
@@ -616,104 +708,69 @@
                     target.classList.add('opacity-100');
                 }, 50);
             }
-            if (step === 6) initMemoryGame();
         }
 
-        function prevStep(step) {
-            nextStep(step);
+        function saveChapter1(option, reply) {
+            const el = document.getElementById('reply-1');
+            el.innerHTML = `💖 <strong>You Chose:</strong> ${option}<br><span class="mt-1 block">${reply}</span>`;
+            el.classList.remove('hidden');
         }
 
-        function recordAnswer(step, optionText, responseMsg) {
-            const replyBox = document.getElementById(`replyBox-${step}`);
-            if (replyBox) {
-                replyBox.innerHTML = `💖 <strong>You Chose:</strong> ${optionText}<br><span class="mt-1 block">${responseMsg}</span>`;
-                replyBox.classList.remove('hidden');
+        function saveChapter2(option, reply) {
+            const el = document.getElementById('reply-2');
+            el.innerHTML = `💖 <strong>Your Heart Feeling:</strong> ${option}<br><span class="mt-1 block">${reply}</span>`;
+            el.classList.remove('hidden');
+        }
+
+        /* --- Interactive Card Flip (Chapter 5) --- */
+        function flipReason(card) {
+            card.classList.toggle('flipped');
+            spawnConfetti(10);
+        }
+
+        /* --- Interactive Unseal Envelope (Chapter 6) --- */
+        let envelopeOpened = false;
+        function unsealEnvelope() {
+            if (!envelopeOpened) {
+                document.getElementById('waxSealIcon').textContent = '📜';
+                document.getElementById('envelopeTitle').textContent = 'My Unsealed Letter To You';
+                document.getElementById('envelopeSub').textContent = 'Here are my innermost true feelings...';
+                document.getElementById('hiddenLetterText').classList.remove('hidden');
+                envelopeOpened = true;
+                spawnConfetti(25);
             }
         }
 
-        /* --- Mini Game 1: Memory Match --- */
-        const gameIcons = ['💖', '🌹', '💍', '🧸', '👑', '✨'];
-        let cardsArray = [...gameIcons, ...gameIcons];
-        let flippedCards = [];
-        let matchedPairs = 0;
-
-        function initMemoryGame() {
-            const grid = document.getElementById('gameGrid');
-            grid.innerHTML = '';
-            cardsArray.sort(() => 0.5 - Math.random());
-            matchedPairs = 0;
-
-            cardsArray.forEach((icon, index) => {
-                const card = document.createElement('div');
-                card.className = 'game-card';
-                card.dataset.icon = icon;
-                card.innerHTML = `
-                    <div class="game-card-inner">
-                        <div class="game-card-front text-lg">❓</div>
-                        <div class="game-card-back text-xl">${icon}</div>
-                    </div>
-                `;
-                card.addEventListener('click', () => flipCard(card));
-                grid.appendChild(card);
-            });
+        /* --- Interactive Promise Jar (Chapter 8) --- */
+        const promisesList = [
+            "I promise to always hold your hand tightly whenever life gets overwhelming.",
+            "I promise to listen to your voice with total devotion and respect.",
+            "I promise to bring you cute surprises every time we meet in person.",
+            "I promise to protect your dignity and treat you like a true queen forever.",
+            "I promise to make you laugh even on your heaviest days."
+        ];
+        let promiseIndex = 0;
+        function drawPromise() {
+            const note = document.getElementById('promiseNote');
+            note.textContent = `✨ "${promisesList[promiseIndex]}"`;
+            promiseIndex = (promiseIndex + 1) % promisesList.length;
+            spawnConfetti(15);
         }
 
-        function flipCard(card) {
-            if (flippedCards.length < 2 && !card.classList.contains('flipped')) {
-                card.classList.add('flipped');
-                flippedCards.push(card);
-
-                if (flippedCards.length === 2) {
-                    const [c1, c2] = flippedCards;
-                    if (c1.dataset.icon === c2.dataset.icon) {
-                        matchedPairs++;
-                        flippedCards = [];
-                        if (matchedPairs === gameIcons.length) {
-                            document.getElementById('gameWinMsg').classList.remove('hidden');
-                            spawnConfetti();
-                        }
-                    } else {
-                        setTimeout(() => {
-                            c1.classList.remove('flipped');
-                            c2.classList.remove('flipped');
-                            flippedCards = [];
-                        }, 800);
-                    }
-                }
-            }
-        }
-
-        /* --- Mini Game 2: Star Constellation --- */
-        let starsClicked = 0;
-        function clickStar(num) {
-            const btn = document.getElementById(`star-${num}`);
-            if (!btn.classList.contains('bg-indigo-400')) {
-                btn.classList.remove('bg-indigo-500/40');
-                btn.classList.add('bg-indigo-400', 'shadow-lg', 'shadow-indigo-300');
-                starsClicked++;
-                if (starsClicked === 5) {
-                    document.getElementById('constellationHeart').classList.remove('opacity-0');
-                    document.getElementById('constellationHeart').classList.add('opacity-100');
-                    document.getElementById('starSuccess').classList.remove('hidden');
-                    spawnConfetti();
-                }
-            }
-        }
-
-        /* --- Ring Box Logic --- */
+        /* --- Ring Box Logic (Chapter 10) --- */
         let ringOpened = false;
         function openRingBox() {
             if (!ringOpened) {
                 document.getElementById('finalRingIcon').textContent = '💍';
                 document.getElementById('finalRingTitle').textContent = 'Diamond Ring Unlocked!';
                 document.getElementById('finalRingSub').textContent = 'This ring is yours forever, my queen!';
-                document.getElementById('finalRingBox').classList.add('border-rose-400', 'bg-rose-500/20');
+                document.getElementById('finalRingBox').classList.add('border-roseGold', 'bg-roseGold/10');
                 ringOpened = true;
-                spawnConfetti();
+                spawnConfetti(40);
             }
         }
 
-        /* --- Evasive No Button --- */
+        /* --- Evasive No Button Logic --- */
         function setupEvasiveBtn() {
             const btn = document.getElementById('evasiveNoBtn');
             if (!btn) return;
@@ -732,80 +789,84 @@
         function acceptProposal() {
             document.getElementById('proposalActionGroup').classList.add('hidden');
             document.getElementById('proposalResult').classList.remove('hidden');
-            spawnConfetti();
+            spawnConfetti(80);
         }
 
-        /* --- Click Particles --- */
+        /* --- Floating Click Particles --- */
         document.addEventListener('click', function(e) {
             const h = document.createElement('div');
-            h.className = 'click-heart';
-            h.innerHTML = ['❤️', '💖', '✨', '🌸', '💍', '💐'][Math.floor(Math.random() * 6)];
+            h.className = 'click-heart-particle';
+            h.innerHTML = ['❤️', '💖', '✨', '🌸', '💍', '🌹'][Math.floor(Math.random() * 6)];
             h.style.left = e.clientX + 'px';
             h.style.top = e.clientY + 'px';
             document.body.appendChild(h);
-            setTimeout(() => h.remove(), 1200);
+            setTimeout(() => h.remove(), 1400);
         });
 
-        /* --- Dynamic Canvas Particle Engine --- */
-        const canvas = document.getElementById('bgCanvas');
+        /* --- Canvas Animation: Floating Rose Petals & Sparkling Dust --- */
+        const canvas = document.getElementById('petalCanvas');
         const ctx = canvas.getContext('2d');
         let width = canvas.width = window.innerWidth;
         let height = canvas.height = window.innerHeight;
-        let currentParticleType = 1;
 
         window.addEventListener('resize', () => {
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
         });
 
-        const particles = [];
-        class Particle {
+        const petals = [];
+        class Petal {
             constructor() { this.reset(); }
             reset() {
                 this.x = Math.random() * width;
-                this.y = Math.random() * height;
-                this.size = Math.random() * 4 + 1;
-                this.speedY = Math.random() * 1 + 0.3;
+                this.y = Math.random() * -height;
+                this.size = Math.random() * 5 + 3;
+                this.speedY = Math.random() * 0.8 + 0.4;
                 this.speedX = Math.random() * 0.6 - 0.3;
-                this.opacity = Math.random() * 0.7 + 0.2;
+                this.opacity = Math.random() * 0.6 + 0.2;
+                this.rotation = Math.random() * Math.PI * 2;
+                this.rotSpeed = Math.random() * 0.02 - 0.01;
             }
             update() {
-                this.y -= this.speedY;
-                this.x += this.speedX;
-                if (this.y < 0) this.y = height;
+                this.y += this.speedY;
+                this.x += Math.sin(this.y * 0.01) * 0.5;
+                this.rotation += this.rotSpeed;
+                if (this.y > height) this.reset();
             }
             draw() {
                 ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.rotation);
                 ctx.globalAlpha = this.opacity;
-                ctx.fillStyle = currentParticleType === 4 ? '#38bdf8' : (currentParticleType === 3 || currentParticleType === 9 ? '#fbbf24' : '#f43f5e');
+                ctx.fillStyle = '#f43f5e';
                 ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.ellipse(0, 0, this.size, this.size * 1.6, 0, 0, Math.PI * 2);
                 ctx.fill();
                 ctx.restore();
             }
         }
 
-        for (let i = 0; i < 50; i++) particles.push(new Particle());
+        for (let i = 0; i < 45; i++) petals.push(new Petal());
 
-        function animateParticles() {
+        function animatePetals() {
             ctx.clearRect(0, 0, width, height);
-            particles.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animateParticles);
+            petals.forEach(p => { p.update(); p.draw(); });
+            requestAnimationFrame(animatePetals);
         }
-        animateParticles();
+        animatePetals();
 
         /* --- Confetti Spawner --- */
-        function spawnConfetti() {
-            for (let i = 0; i < 60; i++) {
+        function spawnConfetti(amount = 40) {
+            for (let i = 0; i < amount; i++) {
                 setTimeout(() => {
                     const c = document.createElement('div');
-                    c.className = 'click-heart';
+                    c.className = 'click-heart-particle';
                     c.innerHTML = ['🎉', '✨', '💖', '💐', '🌹', '💍'][Math.floor(Math.random() * 6)];
                     c.style.left = Math.random() * window.innerWidth + 'px';
                     c.style.top = Math.random() * (window.innerHeight / 2) + 'px';
                     document.body.appendChild(c);
                     setTimeout(() => c.remove(), 1800);
-                }, i * 35);
+                }, i * 30);
             }
         }
     </script>
