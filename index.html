@@ -156,12 +156,13 @@
             
             <!-- Chapter Progress Indicators -->
             <div class="flex items-center gap-1 sm:gap-2 text-xs font-medium">
-                <button onclick="goToPage(1)" id="tab-1" class="px-2.5 py-1 rounded-full border border-rose-500/30 bg-rose-500/20 text-rose-200 transition">1. Cover</button>
-                <button onclick="goToPage(2)" id="tab-2" class="px-2.5 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition">2. Heart</button>
-                <button onclick="goToPage(3)" id="tab-3" class="px-2.5 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition">3. Distance</button>
-                <button onclick="goToPage(4)" id="tab-4" class="px-2.5 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition">4. Apology</button>
-                <button onclick="goToPage(5)" id="tab-5" class="px-2.5 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition">5. Trust</button>
-                <button onclick="goToPage(6)" id="tab-6" class="px-2.5 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition">6. Gratitude</button>
+                <button onclick="goToPage(1)" id="tab-1" class="px-2 py-1 rounded-full border border-rose-500/30 bg-rose-500/20 text-rose-200 transition">1. Cover</button>
+                <button onclick="goToPage(2)" id="tab-2" class="px-2 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition">2. Heart</button>
+                <button onclick="goToPage(3)" id="tab-3" class="px-2 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition">3. Distance</button>
+                <button onclick="goToPage(4)" id="tab-4" class="px-2 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition">4. Apology</button>
+                <button onclick="goToPage(5)" id="tab-5" class="px-2 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition">5. Trust</button>
+                <button onclick="goToPage(6)" id="tab-6" class="px-2 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition">6. Thank You</button>
+                <button onclick="goToPage(7)" id="tab-7" class="px-2 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition">7. Timer</button>
             </div>
         </div>
     </header>
@@ -488,21 +489,21 @@
                 <div class="mt-10 pt-6 border-t border-white/10 flex justify-between items-center">
                     <button onclick="goToPage(4)" class="px-5 py-2.5 rounded-full border border-white/20 text-slate-300 hover:bg-white/10 text-sm transition">← Back to Chapter 3</button>
                     <button onclick="goToPage(6)" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 text-white font-medium text-sm shadow-md hover:scale-105 transition flex items-center gap-2">
-                        <span>Chapter 5: Gratitude & Vows</span>
+                        <span>Chapter 5: Thank You Letter</span>
                         <span>→</span>
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- ==================== PAGE 6: GRATITUDE, TIMER & FINAL VOW ==================== -->
+        <!-- ==================== PAGE 6: THANK YOU LETTER INTERFACE ==================== -->
         <section id="page-6" class="page-step">
             <div class="glass-card rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden">
                 <div class="absolute -top-24 -right-24 w-48 h-48 bg-rose-500/20 rounded-full blur-3xl pointer-events-none"></div>
 
                 <div class="flex items-center justify-between border-b border-rose-500/20 pb-4 mb-6 text-left">
                     <span class="font-cursive text-2xl text-amber-300">Chapter 5</span>
-                    <span class="text-xs uppercase tracking-widest text-amber-400 font-semibold">Gratitude & Vows</span>
+                    <span class="text-xs uppercase tracking-widest text-amber-400 font-semibold">Gratitude & Care</span>
                 </div>
 
                 <h2 class="font-serif text-3xl sm:text-4xl font-bold text-amber-100 mb-4">
@@ -550,7 +551,36 @@
                     </div>
                 </div>
 
-                <!-- Added 1-Week Timer Widget right here in the last page after thank-you letter -->
+                <!-- Page Navigation Controls -->
+                <div class="pt-6 border-t border-white/10 flex justify-between items-center text-left">
+                    <button onclick="goToPage(5)" class="px-5 py-2.5 rounded-full border border-white/20 text-slate-300 hover:bg-white/10 text-sm transition">← Back to Chapter 4</button>
+                    <button onclick="goToPage(7)" class="px-6 py-2.5 rounded-full bg-gradient-to-r from-rose-500 to-pink-600 text-white font-medium text-sm shadow-md hover:scale-105 transition flex items-center gap-2">
+                        <span>Chapter 6: Our Countdown & Final Words</span>
+                        <span>→</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ==================== PAGE 7: COUNTDOWN TIMER & FINAL WORDS INTERFACE ==================== -->
+        <section id="page-7" class="page-step">
+            <div class="glass-card rounded-3xl p-6 sm:p-10 text-center relative overflow-hidden">
+                <div class="absolute -top-24 -left-24 w-48 h-48 bg-purple-500/20 rounded-full blur-3xl pointer-events-none"></div>
+
+                <div class="flex items-center justify-between border-b border-rose-500/20 pb-4 mb-6 text-left">
+                    <span class="font-cursive text-2xl text-rose-300">Chapter 6</span>
+                    <span class="text-xs uppercase tracking-widest text-rose-400 font-semibold">Countdown & Love</span>
+                </div>
+
+                <!-- Emotional Line Requested -->
+                <div class="p-6 rounded-2xl bg-gradient-to-r from-rose-950/60 to-purple-950/60 border border-rose-500/40 my-4 shadow-xl">
+                    <h2 class="font-serif text-2xl sm:text-4xl font-bold bg-gradient-to-r from-rose-200 via-pink-200 to-amber-200 bg-clip-text text-transparent mb-2">
+                        See you very soon baby, I miss you soo much. ❤️
+                    </h2>
+                    <p class="text-sm text-rose-200/80 font-serif italic">"Counting every heartbeat until I hold you in my arms again."</p>
+                </div>
+
+                <!-- 1-Week Timer Widget -->
                 <div class="p-6 rounded-2xl bg-black/60 border border-amber-500/30 text-center shadow-lg my-8">
                     <div class="text-3xl mb-2">⏳</div>
                     <h3 class="font-serif text-xl font-bold text-amber-300 mb-1">The Time You Gave Me To Clear These Things</h3>
@@ -587,7 +617,7 @@
 
                 <!-- Page Navigation Controls -->
                 <div class="pt-6 border-t border-white/10 flex justify-between items-center text-left">
-                    <button onclick="goToPage(5)" class="px-5 py-2.5 rounded-full border border-white/20 text-slate-300 hover:bg-white/10 text-sm transition">← Back to Chapter 4</button>
+                    <button onclick="goToPage(6)" class="px-5 py-2.5 rounded-full border border-white/20 text-slate-300 hover:bg-white/10 text-sm transition">← Back to Thank You Letter</button>
                     <button onclick="goToPage(1)" class="px-5 py-2.5 rounded-full border border-rose-500/30 text-rose-300 hover:bg-rose-500/10 text-sm transition">Back to Top ↺</button>
                 </div>
             </div>
@@ -612,13 +642,13 @@
                 targetPage.classList.add('active');
             }
 
-            for (let i = 1; i <= 6; i++) {
+            for (let i = 1; i <= 7; i++) {
                 const tab = document.getElementById('tab-' + i);
                 if (tab) {
                     if (i === pageNum) {
-                        tab.className = "px-2.5 py-1 rounded-full border border-rose-500/30 bg-rose-500/20 text-rose-200 transition";
+                        tab.className = "px-2 py-1 rounded-full border border-rose-500/30 bg-rose-500/20 text-rose-200 transition";
                     } else {
-                        tab.className = "px-2.5 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition";
+                        tab.className = "px-2 py-1 rounded-full border border-white/10 text-slate-400 hover:text-rose-200 transition";
                     }
                 }
             }
