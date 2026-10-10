@@ -3,871 +3,460 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For My Forever Princess | Ridesh</title>
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-    <!-- FontAwesome Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        serif: ['Cormorant Garamond', 'serif'],
-                        cursive: ['Great Vibes', 'cursive'],
-                        sans: ['Plus Jakarta Sans', 'sans-serif'],
-                    },
-                    colors: {
-                        roseGold: '#e2b170',
-                        deepVelvet: '#140308',
-                        romanticRed: '#e11d48',
-                        warmGold: '#f59e0b',
-                    }
-                }
-            }
-        }
-    </script>
-
+    <title>For Prapti — My Full Truth & Apology</title>
     <style>
+        :root {
+            --bg-color: #0b0d17;
+            --card-bg: #15192b;
+            --card-border: #232942;
+            --accent-purple: #8b5cf6;
+            --accent-pink: #ec4899;
+            --accent-red: #ef4444;
+            --accent-green: #10b981;
+            --text-main: #f3f4f6;
+            --text-sub: #9ca3af;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #0c0205;
-            background-image: 
-                radial-gradient(at 0% 0%, rgba(225, 29, 72, 0.15) 0px, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(226, 177, 112, 0.12) 0px, transparent 50%),
-                radial-gradient(at 50% 50%, rgba(120, 10, 40, 0.25) 0px, transparent 70%);
-            color: #fff1f2;
-            min-height: 100vh;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.7;
             overflow-x: hidden;
-            transition: background 1.2s ease-in-out;
         }
 
-        /* Canvas Overlay for Floating Petals */
-        #petalCanvas {
+        /* Ambient Stars Background */
+        #stars-container {
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
         }
 
-        /* Romantic Luxury Glassmorphism */
-        .romantic-card {
-            background: rgba(20, 5, 12, 0.65);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            border: 1px solid rgba(226, 177, 112, 0.25);
-            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.3;
+            animation: pulse 3s infinite ease-in-out;
         }
 
-        .glow-heart {
-            box-shadow: 0 0 50px rgba(225, 29, 72, 0.35), inset 0 0 20px rgba(225, 29, 72, 0.2);
+        @keyframes pulse {
+            0%, 100% { opacity: 0.2; transform: scale(0.8); }
+            50% { opacity: 0.8; transform: scale(1.2); }
         }
 
-        .glow-gold {
-            box-shadow: 0 0 50px rgba(226, 177, 112, 0.3), inset 0 0 15px rgba(226, 177, 112, 0.15);
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 1;
         }
 
-        /* Soft Floating Animations */
-        @keyframes floatGentle {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(0.5deg); }
-        }
-        .animate-float { animation: floatGentle 6s infinite ease-in-out; }
-
-        @keyframes pulseGlow {
-            0%, 100% { opacity: 0.6; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.04); }
-        }
-        .animate-pulse-glow { animation: pulseGlow 3s infinite ease-in-out; }
-
-        /* Smooth Screen Transitions */
-        .chapter-screen {
-            transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+        /* Header / Hero */
+        header {
+            text-align: center;
+            padding: 60px 0 40px;
         }
 
-        /* Interactive Envelope Flip */
-        .envelope-wrapper {
-            perspective: 1000px;
-        }
-        .envelope {
-            transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            transform-style: preserve-3d;
-        }
-        .envelope.open {
-            transform: rotateX(180deg);
+        header h1 {
+            font-size: 2.5rem;
+            background: linear-gradient(to right, var(--accent-purple), var(--accent-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 15px;
         }
 
-        /* Interactive Flip Cards for Reasons */
-        .reason-card {
-            perspective: 1000px;
+        header p {
+            color: var(--text-sub);
+            font-size: 1.1rem;
+        }
+
+        .intro-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        /* Section Headings */
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--text-main);
+            margin: 50px 0 20px;
+            border-left: 4px solid var(--accent-purple);
+            padding-left: 15px;
+        }
+
+        /* Dispute Cards (Accordion) */
+        .dispute-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .dispute-header {
+            padding: 20px;
             cursor: pointer;
-        }
-        .reason-card-inner {
-            position: relative; width: 100%; height: 100%;
-            transition: transform 0.6s; transform-style: preserve-3d;
-        }
-        .reason-card.flipped .reason-card-inner { transform: rotateY(180deg); }
-        .reason-front, .reason-back {
-            position: absolute; width: 100%; height: 100%;
-            backface-visibility: hidden; border-radius: 1.25rem;
-            display: flex; align-items: center; justify-content: center; padding: 1.25rem;
-        }
-        .reason-front {
-            background: rgba(225, 29, 72, 0.12);
-            border: 1px solid rgba(226, 177, 112, 0.3);
-        }
-        .reason-back {
-            background: linear-gradient(135deg, rgba(225, 29, 72, 0.8), rgba(159, 18, 57, 0.95));
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            transform: rotateY(180deg);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255,255,255,0.02);
         }
 
-        /* Polaroid Memory Frame */
-        .polaroid-frame {
-            background: #fff;
-            padding: 12px 12px 24px 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.8);
-            transition: all 0.4s ease;
-        }
-        .polaroid-frame:hover {
-            transform: scale(1.06) rotate(0deg) !important;
-            z-index: 20;
-            box-shadow: 0 30px 60px rgba(225, 29, 72, 0.4);
+        .dispute-header h3 {
+            font-size: 1.2rem;
+            color: var(--text-main);
         }
 
-        /* Floating Click Effect */
-        .click-heart-particle {
-            position: fixed; pointer-events: none;
-            animation: floatUpUp 1.4s ease-out forwards;
-            font-size: 26px; z-index: 9999;
+        .dispute-header .tag {
+            font-size: 0.85rem;
+            padding: 4px 10px;
+            border-radius: 20px;
+            background: rgba(239, 68, 68, 0.15);
+            color: var(--accent-red);
+            border: 1px solid var(--accent-red);
         }
-        @keyframes floatUpUp {
-            0% { opacity: 1; transform: translate(-50%, -50%) scale(0.5); }
-            100% { opacity: 0; transform: translate(-50%, -180px) scale(1.6); }
+
+        .dispute-body {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.3s ease;
+        }
+
+        .dispute-card.active .dispute-body {
+            padding: 20px;
+            max-height: 2000px;
+        }
+
+        .sub-block {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 2px solid #334155;
+        }
+
+        .sub-block.wrong { border-color: var(--accent-red); }
+        .sub-block.hurt { border-color: var(--accent-purple); }
+        .sub-block.apology { border-color: var(--accent-green); }
+
+        .sub-block h4 {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .sub-block.wrong h4 { color: var(--accent-red); }
+        .sub-block.hurt h4 { color: var(--accent-purple); }
+        .sub-block.apology h4 { color: var(--accent-green); }
+
+        /* Interactive Toggle (Doubt vs Truth) */
+        .toggle-container {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 25px;
+            margin: 20px 0;
+        }
+
+        .toggle-btn {
+            background: var(--accent-purple);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+
+        .toggle-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .truth-content {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid var(--accent-green);
+            border-radius: 8px;
+            color: #d1fae5;
+        }
+
+        /* Promises Grid */
+        .promises-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .promises-grid { grid-template-columns: 1fr; }
+        }
+
+        .promise-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 20px;
+            border-radius: 12px;
+            transition: 0.3s;
+        }
+
+        .promise-card:hover {
+            border-color: var(--accent-purple);
+            transform: translateY(-3px);
+        }
+
+        .promise-card h4 {
+            color: var(--accent-pink);
+            margin-bottom: 8px;
+        }
+
+        /* Closing Note */
+        .closing-box {
+            text-align: center;
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(236, 72, 153, 0.1));
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-sub);
+            font-size: 0.9rem;
         }
     </style>
 </head>
-<body id="mainBody" class="relative min-h-screen text-rose-100 antialiased flex flex-col items-center justify-center p-4 sm:p-8">
+<body>
 
-    <!-- Canvas Animation Background for Rose Petals & Sparkling Dust -->
-    <canvas id="petalCanvas"></canvas>
+    <div id="stars-container"></div>
 
-    <!-- Background Music Audio -->
-    <audio id="upaharAudio" src="upahar.mp3" loop preload="auto"></audio>
-
-    <!-- TOP ELEGANT ROMANTIC HEADER BAR -->
-    <header class="fixed top-4 left-0 right-0 z-50 px-4 sm:px-8 flex justify-between items-center max-w-5xl mx-auto w-full pointer-events-none">
+    <div class="container">
         
-        <!-- Romantic Ribbon Status -->
-        <div class="pointer-events-auto romantic-card px-4 py-2 rounded-full flex items-center gap-2.5 border border-roseGold/30">
-            <span class="w-2.5 h-2.5 rounded-full bg-rose-500 animate-ping"></span>
-            <span id="chapterRibbonText" class="font-serif text-xs sm:text-sm tracking-widest text-roseGold uppercase font-semibold">Chapter I • Starlight Whispers</span>
+        <header>
+            <h1>For Prapti, From My Heart</h1>
+            <p>100% Unfiltered Truth, Absolute Accountability & Every Promise I Make To You</p>
+        </header>
+
+        <div class="intro-box">
+            <p>Prapti,</p>
+            <p>Maile sadhai timlai hurt gare, sadhai timro trust tode, ani yeti dherai chances dadi pani maile timro value bujna sakena. Yo sabai past mistakes ra disputes le garda timro mutu tukra tukra vayo, ani malai aafai mathi ekdam dukhchha.</p>
+            <br>
+            <p>Aja maile kunai bahana (excuses) banaudina. Maile galti gareko ho, ra sabai kura ko responsibility ma aafai linchu. Maile timro agadi sabai kura completely transparent rakhera yo document lekhdai chu. Plz take all your time to read every single line.</p>
         </div>
 
-        <!-- Floating Love Jukebox Button -->
-        <button onclick="toggleMusic()" class="pointer-events-auto romantic-card px-4 py-2 rounded-full flex items-center gap-3 text-xs hover:border-roseGold transition-all cursor-pointer group">
-            <span class="w-8 h-8 rounded-full bg-rose-500/20 border border-rose-400/30 flex items-center justify-center text-rose-300 group-hover:scale-110 transition-transform">
-                <i id="musicIcon" class="fas fa-heart text-xs"></i>
-            </span>
-            <div class="hidden sm:flex flex-col text-left">
-                <span id="musicStatusText" class="font-serif font-bold text-roseGold text-xs">Play Love Song</span>
-                <span class="text-[9px] text-rose-200/60 font-light">Swoopna Suman • Upahar</span>
+        <h2 class="section-title">Deconstructing Every Single Dispute</h2>
+        <p style="color: var(--text-sub); margin-bottom: 20px;">(Click on each card below to see my breakdown of what I did wrong, why it hurt you, and my apology)</p>
+
+        <!-- Dispute 1 -->
+        <div class="dispute-card">
+            <div class="dispute-header" onclick="toggleCard(this)">
+                <h3>1. The Early Past & Situationships</h3>
+                <span class="tag">Dispute #1</span>
             </div>
-        </button>
-    </header>
-
-
-    <!-- ========================================================================= -->
-    <!-- CHAPTER 1: STARLIGHT CONFESSION (THE SWEET GREETING) -->
-    <!-- ========================================================================= -->
-    <section id="chapter-1" class="chapter-screen relative z-10 w-full max-w-2xl opacity-100 block my-auto pt-16 pb-8">
-        <div class="romantic-card glow-heart p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8 animate-float">
-            
-            <div class="space-y-3">
-                <span class="font-cursive text-3xl sm:text-4xl text-roseGold block">For My Dearest Princess</span>
-                <h1 class="font-serif text-3xl sm:text-5xl font-semibold text-white tracking-wide leading-tight">Hello Baby, How Are You Feeling Today?</h1>
-                <p class="text-sm sm:text-base font-serif italic text-rose-200/80">Every second of my day begins and ends with your thought...</p>
-            </div>
-
-            <div class="space-y-3.5 max-w-md mx-auto text-left font-serif">
-                <button onclick="saveChapter1('🌸 My day was calm & sweet', 'Your calm happiness is my absolute safe haven. Hearing that makes my entire soul smile!')" class="w-full py-4 px-6 rounded-2xl romantic-card hover:bg-rose-500/20 hover:border-roseGold/60 text-sm font-medium transition-all flex items-center justify-between cursor-pointer group">
-                    <span>🌸 It was calm and peaceful</span>
-                    <i class="fas fa-heart text-rose-400 opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all"></i>
-                </button>
-
-                <button onclick="saveChapter1('🥺 It was tiring & exhausting', 'Come here my sweet princess... rest your heart in my affection. I wish I could wrap you in my warm hug right now.')" class="w-full py-4 px-6 rounded-2xl romantic-card hover:bg-rose-500/20 hover:border-roseGold/60 text-sm font-medium transition-all flex items-center justify-between cursor-pointer group">
-                    <span>🥺 It was tiring & overwhelming</span>
-                    <i class="fas fa-heart text-rose-400 opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all"></i>
-                </button>
-
-                <button onclick="saveChapter1('💭 I missed you so much today', 'My heart aches for you every microsecond! My eyes crave to see your beautiful smile in person.')" class="w-full py-4 px-6 rounded-2xl romantic-card hover:bg-rose-500/20 hover:border-roseGold/60 text-sm font-medium transition-all flex items-center justify-between cursor-pointer group">
-                    <span>💭 I missed you deeply today</span>
-                    <i class="fas fa-heart text-rose-400 opacity-60 group-hover:opacity-100 group-hover:scale-125 transition-all"></i>
-                </button>
-            </div>
-
-            <div id="reply-1" class="hidden p-4 rounded-2xl bg-rose-500/15 border border-rose-400/30 text-rose-100 text-xs sm:text-sm font-serif italic leading-relaxed"></div>
-
-            <button onclick="goToChapter(2)" class="px-10 py-4 rounded-full bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 text-white font-serif text-sm tracking-wider shadow-2xl hover:scale-105 transition-all cursor-pointer inline-flex items-center gap-3">
-                <span>Step Into Chapter II</span>
-                <i class="fas fa-arrow-right text-xs"></i>
-            </button>
-        </div>
-    </section>
-
-
-    <!-- ========================================================================= -->
-    <!-- CHAPTER 2: MELODY OF OUR HEARTS (LOVE JUKEBOX & MOOD CONNECTION) -->
-    <!-- ========================================================================= -->
-    <section id="chapter-2" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="romantic-card glow-gold p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8 animate-float">
-            
-            <div class="w-20 h-20 rounded-full bg-roseGold/10 border border-roseGold/40 flex items-center justify-center text-roseGold text-3xl mx-auto shadow-2xl animate-pulse-glow">
-                🎵
-            </div>
-
-            <div class="space-y-2">
-                <span class="font-cursive text-3xl text-roseGold block">The Rhythm Of My Soul</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">How Does Your Heart Feel Right Now?</h2>
-                <p class="text-xs text-rose-200/70 font-serif italic">Let me tune my love to match your gentle heartbeat...</p>
-            </div>
-
-            <div class="space-y-3.5 max-w-md mx-auto text-left font-serif">
-                <button onclick="saveChapter2('✨ Cheerful & full of love', 'Your joy is my favorite melody in this world!')" class="w-full py-4 px-6 rounded-2xl romantic-card hover:bg-rose-500/20 text-sm font-medium transition-all flex items-center justify-between cursor-pointer">
-                    <span>✨ Cheerful & feeling light</span>
-                    <i class="fas fa-music text-roseGold/70"></i>
-                </button>
-                <button onclick="saveChapter2('🧸 Craving warm cozy hugs', 'I am wrapping my virtual arms tightly around you right now!')" class="w-full py-4 px-6 rounded-2xl romantic-card hover:bg-rose-500/20 text-sm font-medium transition-all flex items-center justify-between cursor-pointer">
-                    <span>🧸 Craving cozy warm hugs🥺</span>
-                    <i class="fas fa-music text-roseGold/70"></i>
-                </button>
-                <button onclick="saveChapter2('🤍 Still quiet or feeling hurt', 'I promise to sit quietly beside you and heal every scratch on your heart with love.')" class="w-full py-4 px-6 rounded-2xl romantic-card hover:bg-rose-500/20 text-sm font-medium transition-all flex items-center justify-between cursor-pointer">
-                    <span>🤍 Still quiet or heavy inside</span>
-                    <i class="fas fa-music text-roseGold/70"></i>
-                </button>
-            </div>
-
-            <div id="reply-2" class="hidden p-4 rounded-2xl bg-roseGold/10 border border-roseGold/30 text-roseGold text-xs sm:text-sm font-serif italic"></div>
-
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
-                <button onclick="goToChapter(1)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
-                <button onclick="goToChapter(3)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-rose-500 text-white font-medium text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter III: My Apology <i class="fas fa-arrow-right ml-1"></i></button>
+            <div class="dispute-body">
+                <div class="sub-block wrong">
+                    <h4>Mero Galti (What I Did Wrong)</h4>
+                    <p>Relation ko shuruat mai maile timi sanga past ko kura lukaaye. Timile malai sodhda maile 2 ota gf matra thiyo vanera jhut bole, jabaki situationships haru pani thiyo (Class 4 & Class 8 era). Timile malai paila nai "kailai jhut na bolnu" vaneko thiyeu, tara maile timro trust todediyo.</p>
+                </div>
+                <div class="sub-block hurt">
+                    <h4>Why It Hurt You</h4>
+                    <p>Timile malai sacho manale biswas gareko thiyeu, tara maile first step mai dishonesty dekhaaye. Timilai lagyo ki ma timi sanga loyal chuina ra paxi pani maile sodhda sacho bolna sakena.</p>
+                </div>
+                <div class="sub-block apology">
+                    <h4>Mero Deep Apology</h4>
+                    <p>I am extremely sorry, Prapti. Timlai paune bittikai timlai gumaune dar le maile jhut bole, tara fear is never an excuse to lie. Maile timro trust todna hudaina thiyo.</p>
+                </div>
             </div>
         </div>
-    </section>
 
-
-    <!-- ========================================================================= -->
-    <!-- CHAPTER 3: AN HONEST APOLOGY FROM MY SOUL (TEAR-STAINED LETTER) -->
-    <!-- ========================================================================= -->
-    <section id="chapter-3" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="romantic-card glow-heart p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
-            
-            <div class="w-20 h-20 rounded-full bg-rose-500/15 border border-rose-400/40 flex items-center justify-center text-rose-300 text-3xl mx-auto shadow-2xl">
-                🕯️
+        <!-- Dispute 2 -->
+        <div class="dispute-card">
+            <div class="dispute-header" onclick="toggleCard(this)">
+                <h3>2. Concealing Reeya</h3>
+                <span class="tag">Dispute #2</span>
             </div>
-
-            <div class="space-y-2">
-                <span class="font-cursive text-3xl text-roseGold block">From The Depth Of My Heart</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">I Am So Deeply Sorry mero puntuuu❤️🥺, My Love</h2>
-            </div>
-
-            <!-- Parchment Aesthetic Letter -->
-            <div class="p-6 sm:p-8 rounded-3xl bg-black/50 border border-roseGold/30 text-left space-y-4 font-serif text-sm sm:text-base leading-relaxed text-rose-100/90 italic relative overflow-hidden">
-                <div class="absolute top-3 right-4 text-3xl opacity-20">🕊️</div>
-                <p>
-                    "My sweet baby, i know baby mero karan le dherai choti timro aakha ma aasu aako xa ,  and i have hurt your sensitive heart, or caused you pain—I am sincerely, deeply sorry from the bottom of my soul maya 🥺❤️."
-                </p>
-                <p>
-                    "I take full ownership of my mistakes. i always wan to protect your beautiful smile mero fuchhuuu,and all i want is to honor your soft heart, and treat you like the queen you truly are. Please forgive me, my forever love."
-                </p>
-            </div>
-
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
-                <button onclick="goToChapter(2)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
-                <button onclick="goToChapter(4)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-500 to-rose-600 text-slate-950 font-bold text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter IV: Missing You <i class="fas fa-arrow-right ml-1"></i></button>
+            <div class="dispute-body">
+                <div class="sub-block wrong">
+                    <h4>Mero Galti (What I Did Wrong)</h4>
+                    <p>Reeya mero past ma 10 class ko end tira bestfriend bata relation ma thiyin, tara maile timlai vetnu vanda agadi nai sabai break up garisakeko thiye. Timi sanga relation ma aayesi mero us sanga kunai contact thiyena. Tara maile paila 2 ota gf matra cha vanya vayera Reeya ko kura vanna daraye ani yo thulo secret banaye.</p>
+                </div>
+                <div class="sub-block hurt">
+                    <h4>Why It Hurt You</h4>
+                    <p>Timilai lagyo ki maile timi bata main past connections haru chhapairako chu. Euta jhut chhapna maile dherai jhut bolna paryo, jisle timro biswas poori bhatkiyo.</p>
+                </div>
+                <div class="sub-block apology">
+                    <h4>Mero Deep Apology</h4>
+                    <p>I am so sorry, Prapti. Maile timi bata kei lukauna hudaina thiyo. Loyalty vaneko sacho kura vannu pani ho, jun maile timidly lukaye.</p>
+                </div>
             </div>
         </div>
-    </section>
 
-
-    <!-- ========================================================================= -->
-    <!-- CHAPTER 4: MY EYES CRAVE TO SEE YOU (THE INTENSE LONGING) -->
-    <!-- ========================================================================= -->
-    <section id="chapter-4" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="romantic-card glow-gold p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
-            
-            <div class="w-20 h-20 rounded-full bg-roseGold/10 border border-roseGold/40 flex items-center justify-center text-roseGold text-3xl mx-auto shadow-2xl">
-                👀
+        <!-- Dispute 3 -->
+        <div class="dispute-card">
+            <div class="dispute-header" onclick="toggleCard(this)">
+                <h3>3. The Favorite Cap Incident</h3>
+                <span class="tag">Dispute #3</span>
             </div>
-
-            <div class="space-y-2">
-                <span class="font-cursive text-3xl text-roseGold block">The Unbearable Distance- 498km🥺</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">My Eyes Are Craving To See You</h2>
+            <div class="dispute-body">
+                <div class="sub-block wrong">
+                    <h4>Mero Galti (What I Did Wrong)</h4>
+                    <p>Tyo timro ekdam favorite cap thiyo jun timile kosailai dinthenau. Maile ghar janda tyo cap lagera gaye. Bainile photo khichna lagi lagin ani paxi Pratikshya le pani tyo cap lagayera photo khichera post garin. Maile timro special boundary protect garna careless vaye.</p>
+                </div>
+                <div class="sub-block hurt">
+                    <h4>Why It Hurt You</h4>
+                    <p>Timilai lagyo ki maile timro feelings lai respect karina. Timile sochyau ki maile euta special cap safe rakhna sakdaina vane maile timlai kasari protect garchu.</p>
+                </div>
+                <div class="sub-block apology">
+                    <h4>Mero Deep Apology</h4>
+                    <p>I am deeply sorry, Prapti. Maile tyo cap paxi temple ma donation diye pani, timro heart ma bhako hurt maile teti bela erase garna sakena. Maile timro personal boundaries strictly guard garna parne thiyo.</p>
+                </div>
             </div>
+        </div>
 
-            <p class="text-sm sm:text-base text-rose-100/80 font-serif italic leading-relaxed max-w-lg mx-auto">
-                No text message, video call, or photo can ever satisfy my heart. My eyes literallycraving to see you my love, to admire every sparkle in your eyes, and to hold your hands in mine🥺❤️.
+        <!-- Dispute 4 -->
+        <div class="dispute-card">
+            <div class="dispute-header" onclick="toggleCard(this)">
+                <h3>4. Birthday Discovery Night (The Core Wound)</h3>
+                <span class="tag">Dispute #4</span>
+            </div>
+            <div class="dispute-body">
+                <div class="sub-block wrong">
+                    <h4>Mero Galti (What I Did Wrong)</h4>
+                    <p>Mero birthday ko din timile ghar mai cake pathaidiyau, hami 350 km tada thiyem. Rati timile mero account login garda mero past ko sabai situationships, Reeya, ra past chats haru proof vetayau. Tyo rati timile msg garda ma fear le garda hide vaye ani timro messages respond nagari timlai emotional isolation ma chhodidiye 5-6 din samma.</p>
+                </div>
+                <div class="sub-block hurt">
+                    <h4>Why It Hurt You</h4>
+                    <p>Timro mutu tyo rati poori tukra tukra vayo. Timilai teti bela mero direct answers, reassurance ra support chainthiyo, tara ma fear le garda panic vaye ani timilai deep loneliness feel karaye.</p>
+                </div>
+                <div class="sub-block apology">
+                    <h4>Mero Deep Apology</h4>
+                    <p>I am so, so sorry Prapti. Tyo rati maile ghor galti gare. Maile timro anxiety bujhnuko satta flee vaye, jun mero life ko sabai vanda thulo regret ho.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dispute 5 -->
+        <div class="dispute-card">
+            <div class="dispute-header" onclick="toggleCard(this)">
+                <h3>5. The 7-Hour Absence & Defensive Argument</h3>
+                <span class="tag">Dispute #5</span>
+            </div>
+            <div class="dispute-body">
+                <div class="sub-block wrong">
+                    <h4>Mero Galti (What I Did Wrong)</h4>
+                    <p>Kei weeks agadi maile timilai complete assurance ra time dine promise gareko thiye. Tara ekdin mero sancho navayera ma 7 hours sutiye, bina kunai update. Timi panic ma aayera risauda, maile timro fear bujhnuko satta ma aafai defensive vaye ra ultai jhagada gare ani 3 din silence ma basera hamro break up vayo.</p>
+                </div>
+                <div class="sub-block hurt">
+                    <h4>Why It Hurt You</h4>
+                    <p>Past ko broken trust le garda timi panic vako thiyeu. Maile timlai comfort dinu parne thiyo, tara maile ultai ego dekhaaye ra naya promise broke gare.</p>
+                </div>
+                <div class="sub-block apology">
+                    <h4>Mero Deep Apology</h4>
+                    <p>I am so sorry Prapti. Timro reaction pure love ra anxiety bata aako thiyo, tara maile aafno ego aghi rakhe. Maile absolute accountability linuparthyo.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Interactive Doubts vs Truth Section -->
+        <h2 class="section-title">Clearing Every Mind Doubt</h2>
+        
+        <div class="toggle-container">
+            <h3>Doubt: "Did he really love me, or was he being fake?"</h3>
+            <p style="color: var(--text-sub); font-size: 0.95rem;">Click the button below to see my absolute truth.</p>
+            <button class="toggle-btn" onclick="toggleTruth('truth1')">Reveal Absolute Truth</button>
+            <div id="truth1" class="truth-content">
+                <strong>The Truth:</strong> Prapti, ma aaja aafno dhadkan saakshi rakhera vanchhu: Mero life ma timi aayepachi mero heart ma timi baahik koi pani thiyena ra chaina. Maile j-j lukaaye tyo sabai timlai gumaune extreme dar le garda thiyo. Maile galti le sochthye ki past lukauda hamro relation bachchha, tara hiding secrets le garda nai distrust create vayo. Mero love 100% real thiyo ra sadhai hunechha.
+            </div>
+        </div>
+
+        <!-- Concrete Promises Grid -->
+        <h2 class="section-title">My Non-Negotiable Promises For The Future</h2>
+        
+        <div class="promises-grid">
+            <div class="promise-card">
+                <h4>1. 100% Complete Transparency</h4>
+                <p>Zero hidden details. Present hoys ya past, timile sodheko har kura ko sacho ra direct answer paunechhau, instantly.</p>
+            </div>
+            <div class="promise-card">
+                <h4>2. Proactive Updates</h4>
+                <p>Ma busy hunu, birami parnu, ya offline januhunda 5 seconds nikalera timlai agadi nai text garchu so timile kailai panic parnu naparos.</p>
+            </div>
+            <div class="promise-card">
+                <h4>3. Zero Defensive Attitude</h4>
+                <p>Timile past ko hurt ya doubts express garda ma kailai jhagada gardina ya ego dekhaudina. Mero job timilai comfort ra reassurance dine hunechha.</p>
+            </div>
+            <div class="promise-card">
+                <h4>4. Protecting Boundaries</h4>
+                <p>Timro feelings, timro self-respect, ra timro boundaries mero lagi top priority hunechha. Ma timro trust lai top level protection dinchhu.</p>
+            </div>
+        </div>
+
+        <!-- Closing Section -->
+        <div class="closing-box">
+            <h2>No Pressure, Just Pure Intention</h2>
+            <p style="margin-top: 15px; color: var(--text-sub);">
+                Prapti, yo week timile malai clear garne chance diyeko ma ma ekdam grateful chhu. Yo page padhe pachi timile kunai instant pressure naleu. Take as much time as you need to digest everything. Ma timro har decision lai fully respect garchu, ra ma aafai lai completely badlera timlai sadhai protect garna ready chhu.
             </p>
-
-            <div class="p-5 rounded-2xl bg-rose-950/40 border border-rose-500/30 text-rose-200 text-xs sm:text-sm font-serif italic">
-                ✨ "In a world with billions of people, my eyes will only ever search for your eyes ajha tyo gajal lagauda ani tyo seto seto k ho malai ta vanna ni aaudaina 😭❤️."
-            </div>
-
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
-                <button onclick="goToChapter(3)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
-                <button onclick="goToChapter(5)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white font-medium text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter V: Reasons Why <i class="fas fa-arrow-right ml-1"></i></button>
-            </div>
         </div>
-    </section>
 
+        <footer>
+            <p>Made with sincere love and complete accountability for Prapti.</p>
+        </footer>
 
-    <!-- ========================================================================= -->
-    <!-- CHAPTER 5: REASONS WHY MY HEART BEATS FOR YOU (INTERACTIVE REASON CARDS) -->
-    <!-- ========================================================================= -->
-    <section id="chapter-5" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="romantic-card glow-heart p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
-            
-            <div class="space-y-2">
-                <span class="font-cursive text-3xl text-roseGold block">Infinite Reasons To Love You</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">Tap To Reveal Why You Are My World ✨</h2>
-                <p class="text-xs text-rose-200/60 font-serif italic">Click each golden heart card below...</p>
-            </div>
+    </div>
 
-            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-2 max-w-md mx-auto">
-                
-                <div onclick="flipReason(this)" class="reason-card h-32">
-                    <div class="reason-card-inner">
-                        <div class="reason-front flex-col font-serif text-roseGold">
-                            <span class="text-2xl mb-1">💖</span>
-                            <span class="text-xs">Reason #1</span>
-                        </div>
-                        <div class="reason-back font-serif text-white text-xs text-center leading-snug">
-                            "Your soft laughter heals all my hidden pain inside me . timro tyo sano muskan le nai mero entire life lai khusi banauxa 😘❤️."
-                        </div>
-                    </div>
-                </div>
-
-                <div onclick="flipReason(this)" class="reason-card h-32">
-                    <div class="reason-card-inner">
-                        <div class="reason-front flex-col font-serif text-roseGold">
-                            <span class="text-2xl mb-1">👑</span>
-                            <span class="text-xs">Reason #2</span>
-                        </div>
-                        <div class="reason-back font-serif text-white text-xs text-center leading-snug">
-                            "You carry yourself with the grace and warmth of a true queen(halka english ta aauxa ni mero baby lai flirt garda ❤️😂) but its ture puntuu."
-                        </div>
-                    </div>
-                </div>
-
-                <div onclick="flipReason(this)" class="reason-card h-32">
-                    <div class="reason-card-inner">
-                        <div class="reason-front flex-col font-serif text-roseGold">
-                            <span class="text-2xl mb-1">🌸</span>
-                            <span class="text-xs">Reason #3</span>
-                        </div>
-                        <div class="reason-back font-serif text-white text-xs text-center leading-snug">
-                            "Your kindness makes this cruel world feel peaceful."
-                        </div>
-                    </div>
-                </div>
-
-                <div onclick="flipReason(this)" class="reason-card h-32">
-                    <div class="reason-card-inner">
-                        <div class="reason-front flex-col font-serif text-roseGold">
-                            <span class="text-2xl mb-1">✨</span>
-                            <span class="text-xs">Reason #4</span>
-                        </div>
-                        <div class="reason-back font-serif text-white text-xs text-center leading-snug">
-                            "Your eyes hold a brightness brighter than all galaxy stars. stars ko full brightness pani adhyaro lagxa ni feri timro aakha ko agadi 😘❤️."
-                        </div>
-                    </div>
-                </div>
-
-                <div onclick="flipReason(this)" class="reason-card h-32">
-                    <div class="reason-card-inner">
-                        <div class="reason-front flex-col font-serif text-roseGold">
-                            <span class="text-2xl mb-1">🕊️</span>
-                            <span class="text-xs">Reason #5</span>
-                        </div>
-                        <div class="reason-back font-serif text-white text-xs text-center leading-snug">
-                            "With you, I feel completely like a  home."
-                        </div>
-                    </div>
-                </div>
-
-                <div onclick="flipReason(this)" class="reason-card h-32">
-                    <div class="reason-card-inner">
-                        <div class="reason-front flex-col font-serif text-roseGold">
-                            <span class="text-2xl mb-1">♾️</span>
-                            <span class="text-xs">Reason #6</span>
-                        </div>
-                        <div class="reason-back font-serif text-white text-xs text-center leading-snug">
-                            "My heart has chosen you for lifetime . lifetime subscription 😉❤️."
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
-                <button onclick="goToChapter(4)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
-                <button onclick="goToChapter(6)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white font-medium text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter VI: Sealed Letter <i class="fas fa-arrow-right ml-1"></i></button>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ========================================================================= -->
-    <!-- CHAPTER 6: THE SECRET LOVE ENVELOPE (INTERACTIVE UNSEALING) -->
-    <!-- ========================================================================= -->
-    <section id="chapter-6" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="romantic-card glow-gold p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
-            
-            <div class="space-y-2">
-                <span class="font-cursive text-3xl text-roseGold block">Confession Sealed With Gold</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">Tap here puntuuu</h2>
-            </div>
-
-            <!-- Envelope Container -->
-            <div onclick="unsealEnvelope()" id="envelopeBox" class="p-8 rounded-3xl bg-black/60 border border-roseGold/40 cursor-pointer group hover:border-roseGold transition-all max-w-md mx-auto space-y-4">
-                <div id="waxSealIcon" class="w-20 h-20 rounded-full bg-rose-600/30 border-2 border-roseGold flex items-center justify-center text-roseGold text-4xl mx-auto group-hover:scale-110 transition-transform shadow-2xl">
-                    💌
-                </div>
-                <div id="envelopeTitle" class="font-serif font-bold text-lg text-roseGold">Wax-Sealed Love Letter</div>
-                <p id="envelopeSub" class="text-xs text-rose-200/60 font-serif italic">take a hammer to break this and open my  hidden emotions ...</p>
-                
-                <div id="hiddenLetterText" class="hidden text-left font-serif text-sm leading-relaxed text-rose-100/90 pt-4 border-t border-roseGold/20 space-y-3">
-                    <p>"My pretty little baby,"</p>
-                    <p>"I wrote this letter in a quiet room thinking of your face. jaba sajha parxa timro yaad badxa kina yesto hunxa malai 🥺❤️. You aren't just a part of my life—you are the center around which my entire life revolves. I promise to always listen to you, hold you when you're tired, and love you more everyday not only this ill always understand you before me. ill not think about me only . cause you are my first priority 🥺❤️ . ."</p>
-                    <p class="text-right text-roseGold font-cursive text-2xl pt-2">- Yours Forever, Ridesh(ridiculous)</p>
-                </div>
-            </div>
-
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
-                <button onclick="goToChapter(5)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
-                <button onclick="goToChapter(7)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white font-medium text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter VII: Memory Scrapbook <i class="fas fa-arrow-right ml-1"></i></button>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ========================================================================= -->
-    <!-- CHAPTER 7: OUR MEMORY SCRAPBOOK (POLAROID MEMORY GALLERY) -->
-    <!-- ========================================================================= -->
-    <section id="chapter-7" class="chapter-screen relative z-10 w-full max-w-3xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="romantic-card glow-heart p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
-            
-            <div class="space-y-2">
-                <span class="font-cursive text-3xl text-roseGold block">Frozen Moments In Time</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">Our Memory Sanctuary 🖼️</h2>
-                <p class="text-xs text-rose-200/60 font-serif italic">Snapshots of the moments my heart felt complete...</p>
-            </div>
-
-            <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-2">
-                <div class="polaroid-frame rounded-xl -rotate-2">
-                    <div class="h-48 overflow-hidden rounded-md bg-slate-900">
-                        <img src="memories/photo1.jpg" alt="Memory 1" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=600&q=80'">
-                    </div>
-                    <p class="font-cursive text-slate-800 text-2xl mt-3 font-bold">Your Radiant Smile</p>
-                </div>
-
-                <div class="polaroid-frame rounded-xl rotate-3">
-                    <div class="h-48 overflow-hidden rounded-md bg-slate-900">
-                        <img src="memories/photo2.jpg" alt="Memory 2" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=600&q=80'">
-                    </div>
-                    <p class="font-cursive text-slate-800 text-2xl mt-3 font-bold"> craving your eyes</p>
-                </div>
-
-                <div class="polaroid-frame rounded-xl -rotate-1">
-                    <div class="h-48 overflow-hidden rounded-md bg-slate-900">
-                        <img src="memories/photo3.jpg" alt="Memory 3" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80'">
-                    </div>
-                    <p class="font-cursive text-slate-800 text-2xl mt-3 font-bold">Holding Your Hands</p>
-                </div>
-            </div>
-
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
-                <button onclick="goToChapter(6)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
-                <button onclick="goToChapter(8)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-amber-500 to-rose-600 text-slate-950 font-bold text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter VIII: Promise Jar <i class="fas fa-arrow-right ml-1"></i></button>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ========================================================================= -->
-    <!-- CHAPTER 8: THE JAR OF ETERNAL PROMISES (INTERACTIVE PROMISE JAR) -->
-    <!-- ========================================================================= -->
-    <section id="chapter-8" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="romantic-card glow-gold p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
-            
-            <div class="space-y-2">
-                <span class="font-cursive text-3xl text-roseGold block">Written In Sacred Trust</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">Tap The Jar To Pull something... 🍯</h2>
-            </div>
-
-            <div class="relative max-w-md mx-auto p-8 rounded-3xl bg-black/50 border border-roseGold/30 text-center space-y-6">
-                <div onclick="drawPromise()" class="w-24 h-24 rounded-full bg-amber-500/10 border-2 border-roseGold/50 flex items-center justify-center text-5xl mx-auto cursor-pointer hover:scale-110 transition-transform shadow-2xl animate-float">
-                    🏺
-                </div>
-
-                <div id="promiseNote" class="p-4 rounded-2xl bg-roseGold/10 border border-roseGold/30 text-roseGold font-serif italic text-sm min-h-[70px] flex items-center justify-center">
-                    "Click the jar to uncover a lifelong vow from my heart..."
-                </div>
-            </div>
-
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
-                <button onclick="goToChapter(7)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
-                <button onclick="goToChapter(9)" class="px-8 py-3.5 rounded-full bg-gradient-to-r from-rose-600 to-amber-500 text-white font-medium text-xs shadow-xl hover:scale-105 transition-all cursor-pointer">Chapter IX: Meetup Gifts <i class="fas fa-arrow-right ml-1"></i></button>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ========================================================================= -->
-    <!-- CHAPTER 9: GIFTS & MEETUP SACRED PLEDGE (ROYAL TREATMENT PLEDGE) -->
-    <!-- ========================================================================= -->
-    <section id="chapter-9" class="chapter-screen relative z-10 w-full max-w-2xl opacity-0 hidden my-auto pt-16 pb-8">
-        <div class="romantic-card glow-heart p-8 sm:p-12 rounded-[2.5rem] text-center space-y-8">
-            
-            <div class="w-20 h-20 rounded-full bg-amber-500/15 border border-amber-400/40 flex items-center justify-center text-amber-300 text-3xl mx-auto shadow-2xl">
-                🎁
-            </div>
-
-            <div class="space-y-2">
-                <span class="font-cursive text-3xl text-roseGold block">My Commitment</span>
-                <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white">Gifts For You Every Time We Meet</h2>
-            </div>
-
-            <p class="text-sm sm:text-base text-rose-100/80 font-serif italic leading-relaxed max-w-md mx-auto">
-                Here is my promises , my princess: Every single time we meet in person, I will bring you special gifts, beautiful surprises, and  affection .maile sakne gifts j vayepani everytime we meet timro lagi kei na kei surprise from my hearts😘😘. you know baby ?? seeing you happy is the utimate goal of my life🥺❤️.
-            </p>
-
-            <div class="p-5 rounded-2xl bg-amber-950/40 border border-amber-400/30 text-amber-200 text-xs sm:text-sm font-serif italic">
-                🤝 "Every meeting with you will feel like a  celebration.thaha xa mw khasai boldaina tara . tara pani my hearts says it all that im deeply in love with you baby . aba vetda timlai chai bolna dinna mw 😚🙈"
-            </div>
-
-            <div class="flex justify-between items-center max-w-md mx-auto pt-2 font-serif">
-                <button onclick="goToChapter(8)" class="text-xs text-rose-200/60 hover:text-white flex items-center gap-1 cursor-pointer"><i class="fas fa-arrow-left"></i> Previous</button>
-                <button onclick="goToChapter(10)" class="px-10 py-4 rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-rose-600 text-slate-950 font-bold text-sm shadow-2xl hover:scale-105 transition-all cursor-pointer flex items-center gap-2">
-                    <span>Unlock Grand Proposal 💍</span>
-                    <i class="fas fa-heart text-rose-950"></i>
-                </button>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- ========================================================================= -->
-    <!-- CHAPTER 10: SACRED DIAMOND SANCTUARY (THE SINGLE FINAL PROPOSAL INTERFACE) -->
-    <!-- ========================================================================= -->
-    <section id="chapter-10" class="chapter-screen relative z-10 w-full max-w-3xl opacity-0 hidden my-auto pt-16 pb-12">
-        <div class="romantic-card glow-heart p-8 sm:p-14 rounded-[2.5rem] text-center space-y-10 relative">
-            
-            <div class="space-y-3">
-                <span class="font-serif text-xs tracking-widest text-roseGold uppercase block">The Destination Of Our Love Story</span>
-                <h1 class="font-serif text-3xl sm:text-5xl font-bold text-white leading-tight tracking-wide">Will You Be Mine Forever, My Princess?</h1>
-            </div>
-
-            <!-- Virtual Bouquet & Interactive Ring Box -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 items-center">
-                
-                <!-- Virtual Bouquet Frame -->
-                <div class="p-6 rounded-3xl bg-black/50 border border-rose-500/30 space-y-3 hover:border-rose-400 transition-all">
-                    <div class="text-6xl animate-bounce">💐</div>
-                    <h3 class="font-serif font-semibold text-lg text-rose-200">Fresh Rose Bouquet</h3>
-                    <p class="text-xs text-rose-200/60 font-serif italic">
-                        A everlasting blooming bouquet kailai pani oailidaina , my life .
-                    </p>
-                </div>
-
-                <!-- Interactive Ring Box -->
-                <div onclick="openRingBox()" id="finalRingBox" class="p-6 rounded-3xl bg-black/50 border border-roseGold/40 space-y-3 hover:border-roseGold transition-all cursor-pointer group">
-                    <div id="finalRingIcon" class="text-6xl group-hover:scale-110 transition-transform">🎁</div>
-                    <h3 id="finalRingTitle" class="font-serif font-semibold text-lg text-roseGold">Tap To Open the Box 💍</h3>
-                    <p id="finalRingSub" class="text-xs text-rose-200/60 font-serif italic">
-                        Click to unbox  this which is  crafted specially for your finger!
-                    </p>
-                </div>
-
-            </div>
-
-            <!-- Deep Emotional Confession Letter -->
-            <div class="bg-black/60 p-6 sm:p-8 rounded-3xl border border-roseGold/30 text-left space-y-4 text-xs sm:text-sm font-serif italic leading-relaxed">
-                <p class="text-rose-100">
-                    "My baby, my eyes crave to see you more than words can express. Every second apart feels incomplete. I apologize once again for every single mistake, and I promise to spend every day of my life protecting your smile,ill always protect  your soft heart, and make you laugh everytime we met🥺❤️."
-                </p>
-                <p class="text-roseGold font-medium">
-                    "With this ring, this bouquet, and my soul—I ask you to hold my hand and walk with me through the entire life(bacha vayo timilai mero❤️😘)."
-                </p>
-            </div>
-
-            <!-- Proposal Buttons -->
-            <div id="proposalActionGroup" class="pt-2 flex flex-col sm:flex-row gap-4 justify-center items-center relative min-h-[70px] font-serif">
-                <button onclick="acceptProposal()" class="px-10 py-4 rounded-full bg-gradient-to-r from-rose-500 via-pink-500 to-amber-300 text-slate-950 font-bold text-base shadow-2xl hover:scale-105 transition-all cursor-pointer">
-                    YES Ridesh! I Accept Your Ring & Love! 💍💐
-                </button>
-
-                <button id="evasiveNoBtn" class="px-8 py-4 rounded-full romantic-card border border-rose-200/30 text-rose-200 font-semibold text-xs transition-all duration-150 cursor-pointer">
-                    Let me think 🙈
-                </button>
-            </div>
-
-            <!-- Celebration Screen -->
-            <div id="proposalResult" class="hidden space-y-6 pt-4 text-center">
-                <div class="w-48 h-48 rounded-3xl overflow-hidden border-2 border-roseGold mx-auto shadow-2xl">
-                    <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3Z6NmNhbGJ5NG1pODdzYnJycGt2azJsaTRxNXVvZXFsdnl3cmNycCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/LMB3W50M3I760/giphy.gif" alt="Celebration Cat Hug" class="w-full h-full object-cover">
-                </div>
-                
-                <div class="space-y-2 font-serif">
-                    <h3 class="text-3xl sm:text-4xl font-bold text-white">FOREVER & ALWAYS TOGETHER! 🎉💍</h3>
-                    <p class="text-xs sm:text-sm text-rose-200/80 italic max-w-md mx-auto">
-                        I am counting down every second until I see you, place this diamond ring on your finger, hand you your fresh bouquet, and give you your meetup gifts!
-                    </p>
-                </div>
-
-                <a href="https://wa.me/9779768344356?text=Yes%20Ridesh!%20I%20accept%20your%20ring,%20bouquet,%20and%20your%20forever%20love!%20I%20can't%20wait%20to%20see%20you!%20💍💐❤️" target="_blank" class="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-emerald-600 text-white font-bold text-sm shadow-2xl hover:bg-emerald-500 hover:scale-105 transition-all font-sans">
-                    <i class="fab fa-whatsapp text-2xl"></i> Send Ridesh A Message On WhatsApp im waiting for you baby 
-                </a>
-            </div>
-
-        </div>
-    </section>
-
-
-    <!-- ========================================================================= -->
-    <!-- JAVASCRIPT ENGINE & LOGIC -->
-    <!-- ========================================================================= -->
     <script>
-        /* --- Audio Controls --- */
-        const audio = document.getElementById('upaharAudio');
-        const musicIcon = document.getElementById('musicIcon');
-        const musicStatusText = document.getElementById('musicStatusText');
-        let isPlaying = false;
+        // Toggle Accordion Cards
+        function toggleCard(headerElement) {
+            const card = headerElement.parentElement;
+            card.classList.toggle('active');
+        }
 
-        function toggleMusic() {
-            if (isPlaying) {
-                audio.pause();
-                musicIcon.className = "fas fa-heart text-xs";
-                musicStatusText.textContent = 'Play Love Song';
-                isPlaying = false;
+        // Toggle Truth
+        function toggleTruth(id) {
+            const content = document.getElementById(id);
+            if (content.style.display === "block") {
+                content.style.display = "none";
             } else {
-                audio.play().then(() => {
-                    musicIcon.className = "fas fa-pause text-xs text-rose-300 animate-spin";
-                    musicStatusText.textContent = 'Playing "Upahar"';
-                    isPlaying = true;
-                }).catch(err => console.log("Audio play waiting for interaction", err));
+                content.style.display = "block";
             }
         }
 
-        /* --- Chapter Navigation Engine --- */
-        const chapterTitles = [
-            "Chapter I • Starlight Whispers",
-            "Chapter II • Rhythm Of My Heart",
-            "Chapter III • My Deepest Apology",
-            "Chapter IV • My Eyes Crave You",
-            "Chapter V • Reasons Why I Love You",
-            "Chapter VI • The Sealed Letter",
-            "Chapter VII • Our Memory Sanctuary",
-            "Chapter VIII • The Promise Jar",
-            "Chapter IX • Meetup & Gift Pledge",
-            "Chapter X • The Sacred Proposal"
-        ];
-
-        let currentChapter = 1;
-
-        function updateRibbon(ch) {
-            document.getElementById('chapterRibbonText').textContent = chapterTitles[ch - 1];
-        }
-
-        function hideAllChapters() {
-            for (let i = 1; i <= 10; i++) {
-                const el = document.getElementById(`chapter-${i}`);
-                if (el) {
-                    el.classList.add('hidden');
-                    el.classList.remove('opacity-100');
-                    el.classList.add('opacity-0');
-                }
-            }
-        }
-
-        function goToChapter(ch) {
-            currentChapter = ch;
-            hideAllChapters();
-            updateRibbon(ch);
-            const target = document.getElementById(`chapter-${ch}`);
-            if (target) {
-                target.classList.remove('hidden');
-                setTimeout(() => {
-                    target.classList.remove('opacity-0');
-                    target.classList.add('opacity-100');
-                }, 50);
-            }
-        }
-
-        function saveChapter1(option, reply) {
-            const el = document.getElementById('reply-1');
-            el.innerHTML = `💖 <strong>You Chose:</strong> ${option}<br><span class="mt-1 block">${reply}</span>`;
-            el.classList.remove('hidden');
-        }
-
-        function saveChapter2(option, reply) {
-            const el = document.getElementById('reply-2');
-            el.innerHTML = `💖 <strong>Your Heart Feeling:</strong> ${option}<br><span class="mt-1 block">${reply}</span>`;
-            el.classList.remove('hidden');
-        }
-
-        /* --- Interactive Card Flip (Chapter 5) --- */
-        function flipReason(card) {
-            card.classList.toggle('flipped');
-            spawnConfetti(10);
-        }
-
-        /* --- Interactive Unseal Envelope (Chapter 6) --- */
-        let envelopeOpened = false;
-        function unsealEnvelope() {
-            if (!envelopeOpened) {
-                document.getElementById('waxSealIcon').textContent = '📜';
-                document.getElementById('envelopeTitle').textContent = 'My Unsealed Letter To You';
-                document.getElementById('envelopeSub').textContent = 'Here are my innermost true feelings...';
-                document.getElementById('hiddenLetterText').classList.remove('hidden');
-                envelopeOpened = true;
-                spawnConfetti(25);
-            }
-        }
-
-        /* --- Interactive Promise Jar (Chapter 8) --- */
-        const promisesList = [
-            "I promise to always hold your hand tightly whenever life gets overwhelming.",
-            "I promise to listen to your voice with total devotion and respect.",
-            "I promise to bring you cute surprises every time we meet in person.",
-            "I promise to protect your dignity and treat you like a true queen forever.",
-            "I promise to make you laugh even on your heaviest days."
-        ];
-        let promiseIndex = 0;
-        function drawPromise() {
-            const note = document.getElementById('promiseNote');
-            note.textContent = `✨ "${promisesList[promiseIndex]}"`;
-            promiseIndex = (promiseIndex + 1) % promisesList.length;
-            spawnConfetti(15);
-        }
-
-        /* --- Ring Box Logic (Chapter 10) --- */
-        let ringOpened = false;
-        function openRingBox() {
-            if (!ringOpened) {
-                document.getElementById('finalRingIcon').textContent = '💍';
-                document.getElementById('finalRingTitle').textContent = 'Diamond Ring Unlocked!';
-                document.getElementById('finalRingSub').textContent = 'This ring is yours forever, my queen!';
-                document.getElementById('finalRingBox').classList.add('border-roseGold', 'bg-roseGold/10');
-                ringOpened = true;
-                spawnConfetti(40);
-            }
-        }
-
-        /* --- Evasive No Button Logic --- */
-        function setupEvasiveBtn() {
-            const btn = document.getElementById('evasiveNoBtn');
-            if (!btn) return;
-            const move = () => {
-                const x = (Math.random() - 0.5) * 260;
-                const y = (Math.random() - 0.5) * 160;
-                btn.style.transform = `translate(${x}px, ${y}px)`;
-            };
-            btn.addEventListener('mouseenter', move);
-            btn.addEventListener('touchstart', (e) => { e.preventDefault(); move(); });
-            btn.addEventListener('click', move);
-        }
-        setupEvasiveBtn();
-
-        /* --- Proposal Accept --- */
-        function acceptProposal() {
-            document.getElementById('proposalActionGroup').classList.add('hidden');
-            document.getElementById('proposalResult').classList.remove('hidden');
-            spawnConfetti(80);
-        }
-
-        /* --- Floating Click Particles --- */
-        document.addEventListener('click', function(e) {
-            const h = document.createElement('div');
-            h.className = 'click-heart-particle';
-            h.innerHTML = ['❤️', '💖', '✨', '🌸', '💍', '🌹'][Math.floor(Math.random() * 6)];
-            h.style.left = e.clientX + 'px';
-            h.style.top = e.clientY + 'px';
-            document.body.appendChild(h);
-            setTimeout(() => h.remove(), 1400);
-        });
-
-        /* --- Canvas Animation: Floating Rose Petals & Sparkling Dust --- */
-        const canvas = document.getElementById('petalCanvas');
-        const ctx = canvas.getContext('2d');
-        let width = canvas.width = window.innerWidth;
-        let height = canvas.height = window.innerHeight;
-
-        window.addEventListener('resize', () => {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-        });
-
-        const petals = [];
-        class Petal {
-            constructor() { this.reset(); }
-            reset() {
-                this.x = Math.random() * width;
-                this.y = Math.random() * -height;
-                this.size = Math.random() * 5 + 3;
-                this.speedY = Math.random() * 0.8 + 0.4;
-                this.speedX = Math.random() * 0.6 - 0.3;
-                this.opacity = Math.random() * 0.6 + 0.2;
-                this.rotation = Math.random() * Math.PI * 2;
-                this.rotSpeed = Math.random() * 0.02 - 0.01;
-            }
-            update() {
-                this.y += this.speedY;
-                this.x += Math.sin(this.y * 0.01) * 0.5;
-                this.rotation += this.rotSpeed;
-                if (this.y > height) this.reset();
-            }
-            draw() {
-                ctx.save();
-                ctx.translate(this.x, this.y);
-                ctx.rotate(this.rotation);
-                ctx.globalAlpha = this.opacity;
-                ctx.fillStyle = '#f43f5e';
-                ctx.beginPath();
-                ctx.ellipse(0, 0, this.size, this.size * 1.6, 0, 0, Math.PI * 2);
-                ctx.fill();
-                ctx.restore();
-            }
-        }
-
-        for (let i = 0; i < 45; i++) petals.push(new Petal());
-
-        function animatePetals() {
-            ctx.clearRect(0, 0, width, height);
-            petals.forEach(p => { p.update(); p.draw(); });
-            requestAnimationFrame(animatePetals);
-        }
-        animatePetals();
-
-        /* --- Confetti Spawner --- */
-        function spawnConfetti(amount = 40) {
-            for (let i = 0; i < amount; i++) {
-                setTimeout(() => {
-                    const c = document.createElement('div');
-                    c.className = 'click-heart-particle';
-                    c.innerHTML = ['🎉', '✨', '💖', '💐', '🌹', '💍'][Math.floor(Math.random() * 6)];
-                    c.style.left = Math.random() * window.innerWidth + 'px';
-                    c.style.top = Math.random() * (window.innerHeight / 2) + 'px';
-                    document.body.appendChild(c);
-                    setTimeout(() => c.remove(), 1800);
-                }, i * 30);
-            }
+        // Generate Ambient Stars
+        const starsContainer = document.getElementById('stars-container');
+        for (let i = 0; i < 60; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.width = Math.random() * 3 + 'px';
+            star.style.height = star.style.width;
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 3 + 's';
+            starsContainer.appendChild(star);
         }
     </script>
 </body>
