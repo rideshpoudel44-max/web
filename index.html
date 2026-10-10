@@ -362,7 +362,7 @@
             margin-bottom: 15px;
         }
 
-        /* Countdown Clock Widget */
+        /* Countdown Timer Widget */
         .countdown-widget {
             background: rgba(20, 10, 25, 0.9);
             border: 2px solid var(--accent-gold);
@@ -370,7 +370,7 @@
             padding: 35px 20px;
             text-align: center;
             box-shadow: 0 0 35px rgba(251, 191, 36, 0.2);
-            margin-top: 30px;
+            margin-top: 35px;
         }
 
         .clock-header {
@@ -420,34 +420,6 @@
             50% { transform: scale(1.25); opacity: 1; }
         }
 
-        /* New Chapter 7: Care & Cherish Cards */
-        .care-card {
-            background: var(--rose-card);
-            border: 1px solid var(--border-rose);
-            border-radius: 18px;
-            padding: 24px 28px;
-            margin-bottom: 18px;
-            display: flex;
-            align-items: flex-start;
-            gap: 18px;
-        }
-
-        .care-icon {
-            font-size: 2rem;
-            line-height: 1;
-        }
-
-        .care-content h4 {
-            color: var(--accent-pink);
-            font-size: 1.2rem;
-            margin-bottom: 6px;
-        }
-
-        .care-content p {
-            color: var(--text-sub);
-            font-size: 1rem;
-        }
-
         /* Next Page Control Footer */
         .page-footer-nav {
             display: flex;
@@ -493,7 +465,6 @@
         <button onclick="showPage(4)" id="nav-4">🌸 Thank You</button>
         <button onclick="showPage(5)" id="nav-5">🕊️ Deep Apology</button>
         <button onclick="showPage(6)" id="nav-6">✨ Rebuilding Trust</button>
-        <button onclick="showPage(7)" id="nav-7">💖 Things I Cherish</button>
     </nav>
 
     <div class="page-container">
@@ -740,7 +711,7 @@
                 </div>
             </div>
 
-            <!-- Requested 1-Week Timer -->
+            <!-- Added 1-Week Timer -->
             <div class="countdown-widget">
                 <div class="pulsing-heart">⏳</div>
                 <h3 class="clock-header serif">The Time You Gave Me To Clear These Things</h3>
@@ -774,61 +745,6 @@
 
             <div class="page-footer-nav">
                 <button class="nav-link-btn" onclick="showPage(5)">📑 Back to Apology</button>
-                <button class="nav-link-btn" onclick="showPage(7)">Next: Things I Cherish & Protect ➔</button>
-            </div>
-        </div>
-
-        <!-- Page 7: NEW Final Chapter - Things I Will Always Care & Protect About You -->
-        <div id="page-7" class="page">
-            <div class="chapter-header">
-                <span>Chapter VI</span>
-                <h2 class="serif">Things I Will Always Cherish & Protect About You</h2>
-            </div>
-
-            <p style="color: var(--text-sub); text-align: center; margin-bottom: 30px;">
-                Timro harek chota-chota kura ra feelings mero lagi sabai vanda important hun. Ma yo sabai kura ko aaja dekhi poori khyal rakhnechhu:
-            </p>
-
-            <div class="care-card">
-                <div class="care-icon">👑</div>
-                <div class="care-content">
-                    <h4 class="serif">1. Timro Self-Respect Ra Boundaries</h4>
-                    <p>Timro boundaries mero lagi top priority hunechha. Timile sensitive feel garne kunai pani kura ma ma kailai careless hundina.</p>
-                </div>
-            </div>
-
-            <div class="care-card">
-                <div class="care-icon">🕊️</div>
-                <div class="care-content">
-                    <h4 class="serif">2. Timro Inner Peace Ra Mental Health</h4>
-                    <p>Mero wajah le timile kailai anxiety, doubt, ya overthinking feel garnu naparos. Ma timlai sadhai emotional safety zone dinchhu.</p>
-                </div>
-            </div>
-
-            <div class="care-card">
-                <div class="care-icon">💬</div>
-                <div class="care-content">
-                    <h4 class="serif">3. Timro Har Expression Ra Unspoken Words</h4>
-                    <p>Timi risauda ya thakda maile timlai bujhera warmth dinechhu, aafno ego dekhauna chhodera timro man ko kura sunnechhu.</p>
-                </div>
-            </div>
-
-            <div class="care-card">
-                <div class="care-icon">🌸</div>
-                <div class="care-content">
-                    <h4 class="serif">4. Timro Smile Ra Happiness</h4>
-                    <p>Timro mukh ma sacho muskaan lyaunu ra timro life ma peace retain garna mero aafno responsiblity banaunechhu.</p>
-                </div>
-            </div>
-
-            <div style="text-align: center; margin-top: 40px; background: rgba(244, 114, 182, 0.1); padding: 30px; border-radius: 20px; border: 1px solid var(--border-rose);">
-                <h3 class="serif" style="font-size: 1.8rem; color: #fbcfe8; margin-bottom: 10px;">For Prapti, Always & Forever ❤️</h3>
-                <p style="color: var(--text-sub); margin-bottom: 20px;">I am here for you, ready to listen, change, and love you better every day.</p>
-                <button class="enter-btn" onclick="triggerHearts()">Shower Hearts For Us 💕</button>
-            </div>
-
-            <div class="page-footer-nav">
-                <button class="nav-link-btn" onclick="showPage(6)">📑 Back to Trust Vow</button>
                 <span></span>
             </div>
         </div>
@@ -865,22 +781,6 @@
         function toggleCard(headerElement) {
             const card = headerElement.parentElement;
             card.classList.toggle('active');
-        }
-
-        // Heart Shower Trigger
-        function triggerHearts() {
-            const heartBg = document.getElementById('heart-bg');
-            const heartIcons = ['❤️', '🌸', '✨', '💖', '💕'];
-            for (let i = 0; i < 35; i++) {
-                setTimeout(() => {
-                    const heart = document.createElement('div');
-                    heart.className = 'floating-heart';
-                    heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
-                    heart.style.left = Math.random() * 100 + '%';
-                    heart.style.animationDuration = (3 + Math.random() * 3) + 's';
-                    heartBg.appendChild(heart);
-                }, i * 100);
-            }
         }
 
         // Live 1-Week Countdown Timer Script
