@@ -218,7 +218,6 @@
             margin-bottom: 40px;
         }
 
-        /* Filigree Decorative Corner Accents */
         .parchment-paper::before, .parchment-paper::after {
             content: "✦";
             position: absolute;
@@ -252,7 +251,7 @@
             text-align: justify;
         }
 
-        /* Chapter 2: Redesigned Dispute Cards (Romantic Memory Cards) */
+        /* Dispute Cards */
         .dispute-card {
             background: var(--rose-card);
             border: 1px solid var(--border-rose);
@@ -333,7 +332,7 @@
             font-size: 1.02rem;
         }
 
-        /* Emotional Thank-You Cards */
+        /* Thank-You Cards */
         .thankyou-card {
             background: var(--rose-card);
             border: 1px solid var(--border-rose);
@@ -363,49 +362,7 @@
             margin-bottom: 15px;
         }
 
-        /* Extra Chapter: Feedback & Alarm Countdown */
-        .feedback-box {
-            background: var(--rose-card);
-            border: 1px solid var(--border-rose);
-            border-radius: 20px;
-            padding: 30px;
-            margin-bottom: 40px;
-        }
-
-        .feedback-box textarea {
-            width: 100%;
-            height: 120px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid var(--border-rose);
-            border-radius: 12px;
-            padding: 15px;
-            color: var(--text-main);
-            font-family: inherit;
-            font-size: 1rem;
-            resize: vertical;
-            margin-top: 15px;
-            outline: none;
-        }
-
-        .feedback-box textarea:focus {
-            border-color: var(--accent-pink);
-            box-shadow: 0 0 15px rgba(244, 114, 182, 0.2);
-        }
-
-        .submit-btn {
-            background: linear-gradient(135deg, var(--accent-pink), var(--accent-rose));
-            color: white;
-            border: none;
-            padding: 12px 28px;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            margin-top: 15px;
-            box-shadow: 0 4px 20px rgba(244, 63, 94, 0.3);
-        }
-
-        /* Vintage Alarm Clock Countdown Widget */
+        /* Countdown Clock Widget */
         .countdown-widget {
             background: rgba(20, 10, 25, 0.9);
             border: 2px solid var(--accent-gold);
@@ -413,7 +370,7 @@
             padding: 35px 20px;
             text-align: center;
             box-shadow: 0 0 35px rgba(251, 191, 36, 0.2);
-            position: relative;
+            margin-top: 30px;
         }
 
         .clock-header {
@@ -463,6 +420,34 @@
             50% { transform: scale(1.25); opacity: 1; }
         }
 
+        /* New Chapter 7: Care & Cherish Cards */
+        .care-card {
+            background: var(--rose-card);
+            border: 1px solid var(--border-rose);
+            border-radius: 18px;
+            padding: 24px 28px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 18px;
+        }
+
+        .care-icon {
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        .care-content h4 {
+            color: var(--accent-pink);
+            font-size: 1.2rem;
+            margin-bottom: 6px;
+        }
+
+        .care-content p {
+            color: var(--text-sub);
+            font-size: 1rem;
+        }
+
         /* Next Page Control Footer */
         .page-footer-nav {
             display: flex;
@@ -508,7 +493,7 @@
         <button onclick="showPage(4)" id="nav-4">🌸 Thank You</button>
         <button onclick="showPage(5)" id="nav-5">🕊️ Deep Apology</button>
         <button onclick="showPage(6)" id="nav-6">✨ Rebuilding Trust</button>
-        <button onclick="showPage(7)" id="nav-7">⏳ Her Voice & Clock</button>
+        <button onclick="showPage(7)" id="nav-7">💖 Things I Cherish</button>
     </nav>
 
     <div class="page-container">
@@ -730,7 +715,7 @@
             </div>
         </div>
 
-        <!-- Page 6: Letter to Rebuild Trust -->
+        <!-- Page 6: Letter to Rebuild Trust + Timer -->
         <div id="page-6" class="page">
             <div class="chapter-header">
                 <span>Chapter V</span>
@@ -741,7 +726,7 @@
                 <div class="letter-text">
                     <p><strong>My Dear Prapti,</strong></p><br>
                     <p>
-                        Trust vaneko kura euta sानो glass bowl jastai hunchha, jun maile aafno carelessness le futaye. Tara ma aaja promise garchhu: Ma tyo trust lai feri rebuild garna har euta step linchhu.
+                        Trust vaneko kura euta sano glass bowl jastai hunchha, jun maile aafno carelessness le futaye. Tara ma aaja promise garchhu: Ma tyo trust lai feri rebuild garna har euta step linchhu.
                     </p><br>
                     <p>
                         <strong>1. 100% Proactive Transparency:</strong> Timile nasodhi nai ma timlai aafno updates, location, ra plans haru share garchhu so that timilai kailai fear parnu naparos.
@@ -755,36 +740,12 @@
                 </div>
             </div>
 
-            <div class="page-footer-nav">
-                <button class="nav-link-btn" onclick="showPage(5)">📑 Back to Apology</button>
-                <button class="nav-link-btn" onclick="showPage(7)">Next: Her Voice & Countdown Clock ➔</button>
-            </div>
-        </div>
-
-        <!-- Page 7: Her Voice / Doubts & Alarm Countdown Widget -->
-        <div id="page-7" class="page">
-            <div class="chapter-header">
-                <span>Chapter VI</span>
-                <h2 class="serif">Her Voice, Doubts & Our Countdown</h2>
-            </div>
-
-            <!-- Feedback & Doubts Box -->
-            <div class="feedback-box">
-                <h3 class="serif" style="font-size: 1.6rem; color: #fbcfe8;">Prapti, How Does Your Heart Feel?</h3>
-                <p style="color: var(--text-sub); font-size: 0.95rem; margin-top: 5px;">
-                    Yo sabai padhepachi pani timro man ma kunai remaining doubt, fear, ya unsaid pain cha vane, please write it here. Ma har kura sunna ra timlai reassurance dine ready chhu.
-                </p>
-                <textarea id="prapti-response" placeholder="Write your doubts or feelings here... I am listening attentively ❤️"></textarea>
-                <button class="submit-btn" onclick="saveFeedback()">Send Your Heart's Response ✨</button>
-                <p id="feedback-status" style="color: var(--accent-green); font-size: 0.9rem; margin-top: 10px; display: none;">Thank you for sharing your heart with me. I have saved it with utmost care ❤️</p>
-            </div>
-
-            <!-- Creative Vintage Alarm Clock Widget (1-Week Countdown) -->
+            <!-- Requested 1-Week Timer -->
             <div class="countdown-widget">
                 <div class="pulsing-heart">⏳</div>
-                <h3 class="clock-header serif">Countdown Until We Meet In Person</h3>
+                <h3 class="clock-header serif">The Time You Gave Me To Clear These Things</h3>
                 <p style="color: var(--text-sub); font-size: 0.95rem;">
-                    Counting down every second until I can hold your hands and look into your eyes.
+                    Counting down every single second of this 1 week to prove my absolute honesty and change to you.
                 </p>
 
                 <div class="clock-display">
@@ -807,8 +768,63 @@
                 </div>
 
                 <p style="color: var(--accent-gold); font-size: 0.9rem; font-style: italic;">
-                    "Time ticks, but my dedication for you remains constant."
+                    "Har euta second ma timro biswas feri jitna kaam garchhu."
                 </p>
+            </div>
+
+            <div class="page-footer-nav">
+                <button class="nav-link-btn" onclick="showPage(5)">📑 Back to Apology</button>
+                <button class="nav-link-btn" onclick="showPage(7)">Next: Things I Cherish & Protect ➔</button>
+            </div>
+        </div>
+
+        <!-- Page 7: NEW Final Chapter - Things I Will Always Care & Protect About You -->
+        <div id="page-7" class="page">
+            <div class="chapter-header">
+                <span>Chapter VI</span>
+                <h2 class="serif">Things I Will Always Cherish & Protect About You</h2>
+            </div>
+
+            <p style="color: var(--text-sub); text-align: center; margin-bottom: 30px;">
+                Timro harek chota-chota kura ra feelings mero lagi sabai vanda important hun. Ma yo sabai kura ko aaja dekhi poori khyal rakhnechhu:
+            </p>
+
+            <div class="care-card">
+                <div class="care-icon">👑</div>
+                <div class="care-content">
+                    <h4 class="serif">1. Timro Self-Respect Ra Boundaries</h4>
+                    <p>Timro boundaries mero lagi top priority hunechha. Timile sensitive feel garne kunai pani kura ma ma kailai careless hundina.</p>
+                </div>
+            </div>
+
+            <div class="care-card">
+                <div class="care-icon">🕊️</div>
+                <div class="care-content">
+                    <h4 class="serif">2. Timro Inner Peace Ra Mental Health</h4>
+                    <p>Mero wajah le timile kailai anxiety, doubt, ya overthinking feel garnu naparos. Ma timlai sadhai emotional safety zone dinchhu.</p>
+                </div>
+            </div>
+
+            <div class="care-card">
+                <div class="care-icon">💬</div>
+                <div class="care-content">
+                    <h4 class="serif">3. Timro Har Expression Ra Unspoken Words</h4>
+                    <p>Timi risauda ya thakda maile timlai bujhera warmth dinechhu, aafno ego dekhauna chhodera timro man ko kura sunnechhu.</p>
+                </div>
+            </div>
+
+            <div class="care-card">
+                <div class="care-icon">🌸</div>
+                <div class="care-content">
+                    <h4 class="serif">4. Timro Smile Ra Happiness</h4>
+                    <p>Timro mukh ma sacho muskaan lyaunu ra timro life ma peace retain garna mero aafno responsiblity banaunechhu.</p>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px; background: rgba(244, 114, 182, 0.1); padding: 30px; border-radius: 20px; border: 1px solid var(--border-rose);">
+                <h3 class="serif" style="font-size: 1.8rem; color: #fbcfe8; margin-bottom: 10px;">For Prapti, Always & Forever ❤️</h3>
+                <p style="color: var(--text-sub); margin-bottom: 20px;">I am here for you, ready to listen, change, and love you better every day.</p>
+                <button class="enter-btn" onclick="triggerHearts()">Shower Hearts For Us 💕</button>
             </div>
 
             <div class="page-footer-nav">
@@ -824,23 +840,19 @@
     </div>
 
     <script>
-        // Multi-Chapter Page Switcher
+        // Page Switcher
         function showPage(pageNumber) {
-            // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(p => p.classList.remove('active'));
 
-            // Deactivate all nav buttons
             const navBtns = document.querySelectorAll('nav button');
             navBtns.forEach(b => b.classList.remove('active'));
 
-            // Show selected page
             const targetPage = document.getElementById('page-' + pageNumber);
             if (targetPage) {
                 targetPage.classList.add('active');
             }
 
-            // Activate corresponding nav button
             const targetNav = document.getElementById('nav-' + pageNumber);
             if (targetNav) {
                 targetNav.classList.add('active');
@@ -855,18 +867,23 @@
             card.classList.toggle('active');
         }
 
-        // Save Feedback Local Action
-        function saveFeedback() {
-            const text = document.getElementById('prapti-response').value;
-            if (text.trim() !== "") {
-                localStorage.setItem('prapti_feedback', text);
-                const status = document.getElementById('feedback-status');
-                status.style.display = 'block';
+        // Heart Shower Trigger
+        function triggerHearts() {
+            const heartBg = document.getElementById('heart-bg');
+            const heartIcons = ['❤️', '🌸', '✨', '💖', '💕'];
+            for (let i = 0; i < 35; i++) {
+                setTimeout(() => {
+                    const heart = document.createElement('div');
+                    heart.className = 'floating-heart';
+                    heart.innerText = heartIcons[Math.floor(Math.random() * heartIcons.length)];
+                    heart.style.left = Math.random() * 100 + '%';
+                    heart.style.animationDuration = (3 + Math.random() * 3) + 's';
+                    heartBg.appendChild(heart);
+                }, i * 100);
             }
         }
 
         // Live 1-Week Countdown Timer Script
-        // Sets target date to exactly 7 days from now
         let targetDate = new Date().getTime() + (7 * 24 * 60 * 60 * 1000);
 
         function updateCountdown() {
@@ -895,7 +912,7 @@
         setInterval(updateCountdown, 1000);
         updateCountdown();
 
-        // Ambient Background Hearts Animation
+        // Ambient Background Hearts
         const heartBg = document.getElementById('heart-bg');
         const heartIcons = ['❤️', '🌸', '✨', '💖', '💕'];
         for (let i = 0; i < 22; i++) {
